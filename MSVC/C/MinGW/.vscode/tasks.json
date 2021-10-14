@@ -1,0 +1,181 @@
+{
+    "tasks":
+    [
+        /* Debug Level 1 */
+        {
+            "type": "cppbuild",
+            "label": "Debug Build Level 1",
+            "command": "C:\\MinGW\\bin\\gcc.exe",
+            "args":
+            [
+                "-g",
+                "-Og",
+                "-Wall",
+                "-Wpedantic",
+                "src\\*.c",
+                "-Isrc\\include",
+                "-o",
+                "bin\\${fileDirname}/${fileBasenameNoExtension}"
+            ],
+            "options":
+            {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher":
+            [
+                "$gcc"
+            ],
+            "group": "build"
+        }, /* Debug Level 1 */
+
+        /* Debug Level 2 */
+        {
+            "type": "cppbuild",
+            "label": "Debug Build Level 2",
+            "command": "C:\\MinGW\\bin\\gcc.exe",
+            "args":
+            [
+                "-g3",
+                "-Og",
+                "-Wall",
+                "-Wpedantic",
+                "-Wextra",
+                "-Wunused",
+                "-time",
+                "-save-temps",
+                "src\\*.c",
+                "-Isrc\\include",
+                "-o",
+                "bin\\${fileDirname}/${fileBasenameNoExtension}"
+            ],
+            "options":
+            {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher":
+            [
+                "$gcc"
+            ],
+            "group":"build"
+        }, /* Debug Level 2 */
+
+        /* Build  Fast */
+        {
+            "type": "cppbuild",
+            "label": "Fast Build",
+            "command": "C:\\MinGW\\bin\\gcc.exe",
+            "args":
+            [
+                "-fwhole-program",
+                "-Of",
+                "src\\*.c",
+                "-Isrc\\include",
+                "-o",
+                "bin\\${fileDirname}\\${fileBasenameNoExtension}.exe"
+            ],
+            "options":
+            {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher":
+            [
+                "$gcc"
+            ],
+            "group": "build"
+        }, /* Build Fast */
+
+        /* Optimized Level 1 */
+        {
+            "type": "cppbuild",
+            "label": "Optimized Build Level 1",
+            "command": "C:\\MinGW\\bin\\gcc.exe",
+            "args":
+            [
+                "-O1",
+                "-g1",
+                "-w",
+                "src\\*.c",
+                "-Isrc\\include",
+                "-o",
+                "bin\\${fileDirname}/${fileBasenameNoExtension}"
+            ],
+            "options":
+            {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher":
+            [
+                "$gcc"
+            ],
+            "group": "build"
+        }, /*  Optimised Level 1 */
+
+        /* Optimised Level 3 (Release)*/
+        {
+            "type": "cppbuild",
+            "label": "Release Build (Max Optimizations)",
+            "command": "C:\\MinGW\\bin\\gcc.exe",
+            "args":
+            [
+                "-O3",
+                "-w",
+                "src\\*.c",
+                "-Isrc\\include",
+                "-o",
+                "bin\\${fileDirname}/${fileBasenameNoExtension}"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build"
+        }, /* Optimised Level 3 (Release) */
+
+        /* Optimised Level 3 (Release | Dynamic Linked Executable)*/
+        {
+            "type": "cppbuild",
+            "label": "Release Build (Max Optimizations | Dynamic Linked Executable)",
+            "command": "C:\\MinGW\\bin\\gcc.exe",
+            "args": [
+                "-O3",
+                "-w",
+                "src\\*.c",
+                "-Isrc\\include",
+                "-pie",
+                "-o",
+                "bin\\${fileDirname}/${fileBasenameNoExtension}"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build"
+        }, /* Optimised Level 3 (Release | Dynamic Linked Executable) */
+
+        /* Clean Dir*/
+        {
+            "type": "shell",
+                    "label": "clean",
+                    "command": "rm",
+                    "args": [
+                        "*.i,",
+                        "*.o,",
+                        "*.s",
+                    ],
+                    "options": {
+                        "cwd": "${workspaceFolder}"
+                    },
+                    "problemMatcher": [
+                        "$gcc"
+                    ],
+                    "group": "build"
+                } /* Clean Dir */
+
+    ],
+    "version" : "2.0.0"
+}
+

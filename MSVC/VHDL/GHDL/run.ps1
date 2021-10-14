@@ -1,0 +1,1 @@
+ghdl -a *.vhdl; if($?) { ghdl -e testbench }; if($?) { ghdl -r testbench --vcd=WaveformDumpAlp.vcd }; if($?) { gtkwave .\WaveformDump.vcd };

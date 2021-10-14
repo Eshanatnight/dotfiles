@@ -1,0 +1,25 @@
+{
+    "configurations": [
+        {
+            "name": "gcc-x64",
+            "includePath": [
+                "${default}",
+                "${workspaceFolder}/src/**",
+                "${workspaceFolder}/src/include/**",
+                "${workspaceFolder}/bin"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "cStandard": "c17",
+            "intelliSenseMode": "gcc-x64",
+            "windowsSdkVersion": "10.0.18362.0",
+            "compilerPath": "C:/MinGW/bin/g++.exe",
+            "cppStandard": "c++17",
+            "compileCommands": "D:\\dev\\Pong\\.vscode\\compile_commands.json"
+        }
+    ],
+    "version": 4
+}
