@@ -1,0 +1,21 @@
+# mingw-w64: Windows Binaries on Linux
+
+    ##CXX Compiler:
+        ### For 64-bit use:
+            x86_64-w64-mingw32-g++
+        ### For 32-bit use:
+            i686-w64-mingw32-g++
+
+    ## C Compiler:
+        ### For 64-bit use:
+            x86_64-w64-mingw32-gcc
+        ### For 32-bit use:
+            i686-w64-mingw32-gcc
+
+# @brief: For Building Windows Binaries in a Linux Environment
+# 	  uses the Cross Compiler ```MINGW```
+# 	  For running the made executable a Compatibility Layer is 
+# 	  required.
+#
+# @suggestion: Use of the Wine Compatibiliy Layer is Recomended.
+# @useage:	```sudo apt-get install wine```
