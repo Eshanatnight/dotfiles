@@ -13,9 +13,8 @@
                 "-Wall",
                 "-Wpedantic",
                 "src\\*.cpp",
-                "-Isrc\\include",
                 "-o",
-                "bin\\${fileDirname}/${fileBasenameNoExtension}"
+                "${fileDirname}/${fileBasenameNoExtension}"
             ],
             "options":
             {
@@ -44,9 +43,8 @@
                 "-time",
                 "-save-temps",
                 "src\\*.cpp",
-                "-Isrc\\include",
                 "-o",
-                "bin\\${fileDirname}/${fileBasenameNoExtension}"
+                "${fileDirname}/${fileBasenameNoExtension}"
             ],
             "options":
             {
@@ -69,9 +67,8 @@
                 "-fwhole-program",
                 "-Of",
                 "src\\*.cpp",
-                "-Isrc\\include",
                 "-o",
-                "bin\\${fileDirname}\\${fileBasenameNoExtension}.exe"
+                "${fileDirname}\\${fileBasenameNoExtension}.exe"
             ],
             "options":
             {
@@ -95,9 +92,8 @@
                 "-g1",
                 "-w",
                 "src\\*.cpp",
-                "-Isrc\\include",
                 "-o",
-                "bin\\${fileDirname}/${fileBasenameNoExtension}"
+                "${fileDirname}/${fileBasenameNoExtension}"
             ],
             "options":
             {
@@ -120,9 +116,8 @@
                 "-O3",
                 "-w",
                 "src\\*.cpp",
-                "-Isrc\\include",
                 "-o",
-                "bin\\${fileDirname}/${fileBasenameNoExtension}"
+                "${fileDirname}/${fileBasenameNoExtension}"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
@@ -142,10 +137,9 @@
                 "-O3",
                 "-w",
                 "src\\*.cpp",
-                "-Isrc\\include",
                 "-pie",
                 "-o",
-                "bin\\${fileDirname}/${fileBasenameNoExtension}"
+                "${fileDirname}/${fileBasenameNoExtension}"
             ],
             "options": {
                 "cwd": "${workspaceFolder}"
@@ -154,27 +148,7 @@
                 "$gcc"
             ],
             "group": "build"
-        }, /* Optimised Level 3 (Release | Dynamic Linked Executable) */
-
-        /* Clean Dir*/
-        {
-            "type": "shell",
-                    "label": "clean",
-                    "command": "rm",
-                    "args": [
-                        "*.i,",
-                        "*.o,",
-                        "*.s",
-                    ],
-                    "options": {
-                        "cwd": "${workspaceFolder}"
-                    },
-                    "problemMatcher": [
-                        "$gcc"
-                    ],
-                    "group": "build"
-                } /* Clean Dir */
-
+        } /* Optimised Level 3 (Release | Dynamic Linked Executable) */
     ],
     "version" : "2.0.0"
 }

@@ -23,8 +23,8 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "Debug Build Level 1",
-            "miDebuggerPath": "C:\\MinGW\\bin\\gdb.exe"
+            "preLaunchTask": "C/C++: Debug Level 1",
+            "miDebuggerPath": "/usr/bin/gdb"
         },
 
         {
@@ -45,8 +45,8 @@
                     "ignoreFailures": true
                 }
             ],
-            "preLaunchTask": "Debug Build Level 2",
-            "miDebuggerPath": "C:\\MinGW\\bin\\gdb.exe"
+            "preLaunchTask": "C/C++: Debug Level 2",
+            "miDebuggerPath": "/usr/bin/gdb"
         }
     ]
 }
