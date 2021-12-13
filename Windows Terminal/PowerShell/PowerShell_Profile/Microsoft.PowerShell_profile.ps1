@@ -13,8 +13,6 @@ Import-Module -Name Terminal-Icons
 #Import-Module PSColors
 #Import-Module posh-git
 #set-alias desktop "Desktop.ps1"
-#Set-Theme ParadoxGlucose
-#Set-PoshPrompt -theme "D:\Dropbox\poshv3.json"
 #Import-Module oh-my-posh
 
 C:\Users\eshan\AppData\Local\Programs\oh-my-posh\bin\oh-my-posh.exe --init --shell pwsh --config D:\Tweaks\oh-my-posh\ohmyposhv3-v2.json | Invoke-Expression

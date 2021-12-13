@@ -1,0 +1,67 @@
+{
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "VHDL BUILD WaveformDump by GHDL",
+            "command": "C:\\Program Files (x86)\\Ghdl\\bin\\ghdl.exe",
+            "args":
+            [
+                "-c",
+                "*.vhdl",
+                "-r",
+                "testbench",
+                "--vcd=WaveformDump.vcd"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+
+            "group": "build",
+        },
+
+        {
+            "type": "shell",
+            "label": "VHDL MAKE CLEAN",
+            "command": "rm",
+            "args":
+            [
+                "*.vhdl,",
+                "WaveformDump.vcd"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build",
+        },
+
+
+        {
+            "type": "shell",
+            "label": "Launch GTKWAVE",
+            "command": "C:\\Program Files (x86)\\gtkwave\\bin\\gtkwave.exe ",
+            "args":
+            [
+                ".\\WaveformDump.vcd"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+
+            "group": "build",
+        }
+
+
+    ],
+
+
+    "version": "2.0.0"
+}
