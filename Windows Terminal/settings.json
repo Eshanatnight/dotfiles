@@ -38,7 +38,7 @@
     ],
     "copyFormatting": "none",
     "copyOnSelect": false,
-    "defaultProfile": "{00000000-0000-0000-0000-000000a12345}",
+    "defaultProfile": "{09051a49-7cea-4ae6-ad58-e8919ce6a9f2}",
     "profiles":
     {
         "defaults":
@@ -54,6 +54,23 @@
         "list":
         [
             {
+                "colorScheme": "xcad_tdl",
+                "commandline": "C:\\Users\\eshan\\AppData\\Local\\Microsoft\\WindowsApps\\Microsoft.PowerShell_8wekyb3d8bbwe\\pwsh.exe",
+                "cursorColor": "#FF0095",
+                "cursorShape": "bar",
+                "font":
+                {
+                    "face": "FiraCode Nerd Font"
+                },
+                "guid": "{09051a49-7cea-4ae6-ad58-e8919ce6a9f2}",
+                "hidden": false,
+                "icon": "ms-appx:///ProfileIcons/pwsh.png",
+                "name": "PowerShell",
+                "opacity": 60,
+                "tabTitle": "Powershell",
+                "useAcrylic": true
+            },
+            {
                 "acrylicOpacity": 0.5,
                 "colorScheme": "xcad_tdl",
                 "commandline": "powershell.exe -NoExit -Command \"&{ $vsInstallPath=& \"${env:ProgramFiles(x86)}/'Microsoft Visual Studio'/Installer/vswhere.exe\" -prerelease -latest -property installationPath; Import-Module \"$vsInstallPath/Common7/Tools/Microsoft.VisualStudio.DevShell.dll\"; Enter-VsDevShell -VsInstallPath $vsInstallPath -SkipAutomaticLocation }\"",
@@ -62,7 +79,7 @@
                 "guid": "{00000000-0000-0000-0000-000000a12345}",
                 "hidden": false,
                 "icon": "ms-appx:///ProfileIcons/{61c54bbd-c2c6-5271-96e7-009a87ff44bf}.png",
-                "name": "Developer PowerShell for VS 2019",
+                "name": "Developer PowerShell for VS 2022",
                 "tabTitle": "Developer Powershell",
                 "useAcrylic": true
             },
@@ -73,7 +90,7 @@
                 "cursorColor": "#FFCC00",
                 "cursorShape": "bar",
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-                "hidden": false,
+                "hidden": true,
                 "name": "Windows PowerShell",
                 "useAcrylic": true
             },
@@ -90,7 +107,7 @@
                 "cursorColor": "#FFCC00",
                 "cursorShape": "bar",
                 "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
-                "hidden": false,
+                "hidden": true,
                 "name": "Command Prompt",
                 "useAcrylic": true
             },
@@ -101,7 +118,7 @@
                 },
                 "colorScheme": "One Half Dark",
                 "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
-                "hidden": false,
+                "hidden": true,
                 "name": "Git Bash",
                 "source": "Git",
                 "tabTitle": "Git Bash"
