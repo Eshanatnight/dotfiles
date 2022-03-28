@@ -1,0 +1,11 @@
+{
+    "name": "Project_Name",
+    "version-string": "0.0.1",
+    "description": "Project_Description",
+
+    "dependencies":
+    [
+        "name_of_package"
+    ]
+
+}
