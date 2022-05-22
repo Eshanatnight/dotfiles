@@ -6,7 +6,7 @@
 
 3.In the Environment field, select one of the available WSL distributions. The list includes the distributions detected by wsl.exe --list, which includes the imported ones.
 
-4. Now to start using the toolchain, do the following:
+4.Now to start using the toolchain, do the following:
 
-    - CMake
-    - Makefile
+- CMake
+- Makefile
