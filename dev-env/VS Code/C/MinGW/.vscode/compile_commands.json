@@ -1,0 +1,10 @@
+{
+    "includePath": [
+        "${default}",
+        "${workspaceFolder}/src/**",
+        "${workspaceFolder}/src/include/**",
+        "${workspaceFolder}/bin"
+        ],
+
+        "defines" : []
+}
