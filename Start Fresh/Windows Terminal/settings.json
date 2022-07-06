@@ -1,4 +1,5 @@
 {
+    "$help": "https://aka.ms/terminal-documentation",
     "$schema": "https://aka.ms/terminal-profiles-schema",
     "actions":
     [
@@ -15,12 +16,12 @@
             "keys": "ctrl+shift+f"
         },
         {
-            "command": "paste",
-            "keys": "ctrl+v"
-        },
-        {
             "command": "closeWindow",
             "keys": "alt+f4"
+        },
+        {
+            "command": "paste",
+            "keys": "ctrl+v"
         },
         {
             "command": "closePane",
@@ -48,95 +49,66 @@
                 "face": "FiraCode Nerd Font"
             },
             "padding": "0, 0, 0, 0",
-            "startingDirectory": "C:\\",
-            "snapOnInput": true
+            "snapOnInput": true,
+            "startingDirectory": "C:\\"
         },
         "list":
         [
+            // Ok, The Terminals would be
+            // 1. `Powershell Core`
+            // 2. `WSL - Ubuntu`
+            // 3. `Developer Poweshell`
+
+            // ? Powershell PWSH
             {
-                "colorScheme": "xcad_tdl",
-                "commandline": "C:\\Users\\eshan\\AppData\\Local\\Microsoft\\WindowsApps\\Microsoft.PowerShell_8wekyb3d8bbwe\\pwsh.exe",
-                "cursorColor": "#FF0095",
-                "cursorShape": "bar",
-                "font":
-                {
-                    "face": "FiraCode Nerd Font"
-                },
-                "guid": "{09051a49-7cea-4ae6-ad58-e8919ce6a9f2}",
-                "hidden": false,
-                "icon": "ms-appx:///ProfileIcons/pwsh.png",
                 "name": "PowerShell",
-                "opacity": 60,
-                "tabTitle": "Powershell",
-                "useAcrylic": true
-            },
-            {
-                "acrylicOpacity": 0.5,
+                "guid": "{09051a49-7cea-4ae6-ad58-e8919ce6a9f2}",
+                "commandline": "C:\\Users\\eshan\\AppData\\Local\\Microsoft\\WindowsApps\\Microsoft.PowerShell_8wekyb3d8bbwe\\pwsh.exe",
+                "icon": "ms-appx:///ProfileIcons/pwsh.png",
                 "colorScheme": "xcad_tdl",
-                "commandline": "powershell.exe -NoExit -Command \"&{ $vsInstallPath=& \"${env:ProgramFiles(x86)}/'Microsoft Visual Studio'/Installer/vswhere.exe\" -prerelease -latest -property installationPath; Import-Module \"$vsInstallPath/Common7/Tools/Microsoft.VisualStudio.DevShell.dll\"; Enter-VsDevShell -VsInstallPath $vsInstallPath -SkipAutomaticLocation }\"",
                 "cursorColor": "#FF0095",
                 "cursorShape": "bar",
-                "guid": "{00000000-0000-0000-0000-000000a12345}",
-                "hidden": false,
-                "icon": "ms-appx:///ProfileIcons/{61c54bbd-c2c6-5271-96e7-009a87ff44bf}.png",
-                "name": "Developer PowerShell for VS 2022",
-                "tabTitle": "Developer Powershell",
-                "useAcrylic": true
-            },
-            {
-                "acrylicOpacity": 0.5,
-                "colorScheme": "xcad_tdl",
-                "commandline": "powershell.exe",
-                "cursorColor": "#FFCC00",
-                "cursorShape": "bar",
-                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-                "hidden": true,
-                "name": "Windows PowerShell",
-                "useAcrylic": true
-            },
-            {
-                "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
-                "hidden": true,
-                "name": "Azure Cloud Shell",
-                "source": "Windows.Terminal.Azure"
-            },
-            {
-                "acrylicOpacity": 0.25,
-                "colorScheme": "One Half Dark",
-                "commandline": "cmd.exe",
-                "cursorColor": "#FFCC00",
-                "cursorShape": "bar",
-                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
-                "hidden": true,
-                "name": "Command Prompt",
-                "useAcrylic": true
-            },
-            {
-                "font":
-                {
-                    "face": "Cascadia Mono"
-                },
-                "colorScheme": "One Half Dark",
-                "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
-                "hidden": true,
-                "name": "Git Bash",
-                "source": "Git",
-                "tabTitle": "Git Bash"
-            },
-            {
-                "acrylicOpacity": 0.5,
-                "colorScheme": "xcad_tdl",
                 "font":
                 {
                     "face": "FiraCode Nerd Font"
                 },
-                "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
-                "hidden": false,
-                "name": "Ubuntu-20.04",
-                "source": "Windows.Terminal.Wsl",
+                "opacity": 60,
+                "useAcrylic": true,
+                "tabTitle": "Powershell",
+                "hidden": false
+            },
+            // ? WSL - Ubuntu
+            {
+                "name": "Ubuntu",
+                "commandline": "wsl.exe -d Ubuntu",
+                "guid": "{af43dd94-6aed-42f3-a549-9c8dfac5b08b}",
+                "icon": "D:\\Tweaks\\icons\\ubuntu_2.png",
+                "colorScheme": "xcad_tdl",
+                "cursorColor": "#FF0095",
+                "cursorShape": "bar",
+                "font":
+                {
+                    "face": "FiraCode Nerd Font"
+                },
+                "useAcrylic": true,
+                "opacity": 59,
                 "tabTitle": "Ubuntu",
-                "icon": "D:\\Tweaks\\Icons\\ubuntu_2.png",
-                "useAcrylic": true
+                "startingDirectory": "/home/kellsatnite",
+                "hidden": false
+            },
+
+            // ? Preffered Visual Studio Developer Shell
+            {
+                "name": "Developer PowerShell for VS 2022",
+                "source": "Windows.Terminal.VisualStudio",
+                "guid": "{8425c53c-2333-5c22-b4bc-555b85de8810}",
+                "colorScheme": "xcad_tdl",
+                "cursorColor": "#FF0095",
+                "cursorShape": "bar",
+                "tabTitle": "Developer Powershell",
+                "useAcrylic": true,
+                "opacity": 59,
+                "hidden": false
             }
         ]
     },
@@ -421,7 +393,7 @@
         {
             "background": "#331038",
             "black": "#000000",
-            "blue": "#2B4FFF",
+            "blue": "#000000",
             "brightBlack": "#2F2F2F",
             "brightBlue": "#5C78FF",
             "brightCyan": "#5AC8FF",
