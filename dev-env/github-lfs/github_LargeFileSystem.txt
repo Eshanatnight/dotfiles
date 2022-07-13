@@ -1,4 +1,0 @@
-git lfs track <*.extention> or <filename_with_extention>
-
-git add large_file
-git commit -m "Added large file"
