@@ -8,6 +8,14 @@
 
 ---
 
+## Installing clang-format
+
+```terminal
+pip install clang-format
+```
+
+---
+
 ## CMake With vcpkg
 
 ### Installation
