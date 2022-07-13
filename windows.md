@@ -100,10 +100,10 @@ place where the top level `CMakelists.txt` file is.
 
 ### import commands
 
-~ std.filesystem -> <filesystem>
-~ std.regex -> <regex>
-~ std.memory -> <memory>
-~ std.threading -> <atomic>, <condition_variable>, <future>, <mutex>, <shared_mutex> and <thread>
+~ std.filesystem -> `<filesystem>`
+~ std.regex -> `<regex>`
+~ std.memory -> `<memory>`
+~ std.threading -> `<atomic>, <condition_variable>, <future>, <mutex>, <shared_mutex> and <thread>`
 ~ std.core -> Everything else in the Standard Library
 
 > Note: -> = Provides the contents of headers
