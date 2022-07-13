@@ -140,4 +140,3 @@ After completion the Rust Toolchain will be updated.
 2. For [Idea](./.jetbrains-settings/Idea)
 
 ---
-
