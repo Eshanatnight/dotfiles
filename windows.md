@@ -110,7 +110,7 @@ place where the top level `CMakelists.txt` file is.
 
 ---
 
-## Updating the MSYS2-MINGW toolchain
+## Updating the MSYS2 toolchain
 
 To update the MSYS2-MINGW toolchain just run the following command in the MSYS2 bash shell.
 
@@ -118,6 +118,14 @@ To update the MSYS2-MINGW toolchain just run the following command in the MSYS2 
 pacman -Syu
 
 pacman -S -u mingw-w64-x86_64-toolchain
+```
+
+To update the MSYS2-clang toolchain just run the following command in the MSYS2 bash shell.
+
+```terminal
+pacman -Syu
+
+pacman -S -u mingw-w64-clang-x86_64-toolchain
 ```
 
 ---
