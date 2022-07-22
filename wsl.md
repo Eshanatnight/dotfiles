@@ -68,13 +68,13 @@ sudo apt-get install mingw-w64 -y
 
 #### CXX Compiler
 
-~ For 64-bit use: x86_64-w64-mingw32-g++
-~ For 32-bit use: i686-w64-mingw32-g++
+* For 64-bit use: x86_64-w64-mingw32-g++
+* For 32-bit use: i686-w64-mingw32-g++
 
 #### C Compiler
 
-~ For 64-bit use: x86_64-w64-mingw32-gcc
-~ For 32-bit use: i686-w64-mingw32-gcc
+* For 64-bit use: x86_64-w64-mingw32-gcc
+* For 32-bit use: i686-w64-mingw32-gcc
 
 > @brief: For Building Windows Binaries in a Linux Environment
 > uses the Cross Compiler ```MINGW```

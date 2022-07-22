@@ -8,14 +8,6 @@
 
 ---
 
-## Installing clang-format
-
-```terminal
-pip install clang-format
-```
-
----
-
 ## CMake With vcpkg
 
 ### Installation
@@ -92,19 +84,17 @@ place where the top level `CMakelists.txt` file is.
 
 ### Activation
 
-~ Solution Properties > Configuration Properties > General
--> C++ Language Standard = "Preview - Features from the Latest C++ Working Draft (/std:c++latest)"
+* Solution Properties > Configuration Properties > General: C++ Language Standard = "Preview - Features from the Latest C++ Working Draft (/std:c++latest)"
 
-~ Solution Properties > C/C++ > Language >
--> Enable External C++ Standard Library Modules = "Yes(/experimental:module)"
+* Solution Properties > C/C++ > Language : Enable External C++ Standard Library Modules = "Yes(/experimental:module)"
 
 ### import commands
 
-~ std.filesystem -> `<filesystem>`
-~ std.regex -> `<regex>`
-~ std.memory -> `<memory>`
-~ std.threading -> `<atomic>, <condition_variable>, <future>, <mutex>, <shared_mutex> and <thread>`
-~ std.core -> Everything else in the Standard Library
+* std.filesystem -> `<filesystem>`
+* std.regex -> `<regex>`
+* std.memory -> `<memory>`
+* std.threading -> `<atomic>, <condition_variable>, <future>, <mutex>, <shared_mutex> and <thread>`
+* std.core -> Everything else in the Standard Library
 
 > Note: -> = Provides the contents of headers
 
