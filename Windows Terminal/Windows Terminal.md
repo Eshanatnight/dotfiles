@@ -27,7 +27,7 @@ conains The Powershell Profile folder that has the profile for the terminal.
 
 > Paths may need updating.
 
-```terminal
+```powershell
 pwsh -ExecutionPolicy ByPass -NoExit -Command "& 'C:\Users\eshan\miniconda3\shell\condabin\conda-hook.ps1' ; conda activate 'C:\Users\eshan\miniconda3' "
 
 conda init powershell
