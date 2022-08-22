@@ -1,22 +1,33 @@
-$initial_path = Get-Location;
+$currentDir = Get-Location;
 
-if(Test-Path -Path "D:\")
+Write-Output "Changing Directory to .\vcpkg";
+Set-Location D:\tools\vcpkg;
+
+Start-Process git -ArgumentList "pull" -NoNewWindow -Wait
+
+if($?)
 {
-    if(!(Test-Path -Path "D:\tools\"))
-    {
-        mkdir 'D:\tools\'
-    }
-
-    Write-Output "Installing vcpkg in `D:\tools\vcpkg` ";
-
-    Set-Location "D:\tools\";
-
-    git clone https://github.com/microsoft/vcpkg.git;
-    Set-Location .\vcpkg;
-    .\bootstrap-vcpkg.bat;
+    Write-Output "Pulling from Remote was Sucessful";
+}
+else
+{
+    Write-Output "Pulling from Remote repository failed";
+    exit 1;
 }
 
-Write-Host "add the path to the env variable `PATH` ";
+Write-Output "Bootstarpping vcpkg upgrade";
+Start-Process -FilePath ".\bootstrap-vcpkg.bat" -NoNewWindow
+Write-Output "Finished Bootstap";
+Write-Output "Running Update";
+Start-Process -FilePath ".\vcpkg.exe" -ArgumentList "update" -NoNewWindow;
 
-Set-Location $initial_path;
-
+if($?)
+{
+    Set-Location $currentDir;
+    exit;
+}
+else
+{
+    Write-Error "Failed to reset directory.";
+    exit;
+}
