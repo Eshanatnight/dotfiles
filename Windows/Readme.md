@@ -2,6 +2,8 @@
 
 ## Generel
 
+My Visual Studio Directory Setup
+
 1. Output Dir: `$(SolutionDir)bin\$(Platform)\$(Configuration)\`
 2. Intermideates Dir: `$(SolutionDir)bin\intermideates\$(Platform)\$(Configuration)\`
 3. Additional Include Directory: `$(SolutionDir)src\include,$(SolutionDir)include`
@@ -12,7 +14,7 @@
 
 ### Installation
 
-To install ***vcpkg*** you can run the [script](./scripts/install-vcpkg.ps1). It's a
+To install ***vcpkg*** you can run the [script](../scripts/install-vcpkg.ps1). It's a
 Poweshell Script that will clone the repository from the
 [official page](https://github.com/microsoft/vcpkg.git) in the location `D:\tools\vcpkg`
 and then bootstrapping vcpkg.
@@ -31,7 +33,7 @@ cd build
 ```
 
 ```terminal
-cmake .. -DCMAKE_TOOLCHAIN_FILE=D:/tools/vcpkg/scripts/buildsystems/vcpkg.cmake
+cmake .. -DCMAKE_TOOLCHAIN_FILE=<path-to-vcpkg>/scripts/buildsystems/vcpkg.cmake
 ```
 
 ```terminal
@@ -134,7 +136,7 @@ After completion the Rust Toolchain will be updated.
 
 ## Jetbrains IDE Settings
 
-1. For [CLion](./.jetbrains-settings/CLion)
-2. For [Idea](./.jetbrains-settings/Idea)
+1. For [CLion](../.jetbrains-settings/CLion)
+2. For [Idea](../.jetbrains-settings/Idea)
 
 ---
