@@ -80,11 +80,13 @@ if ($argsLen -eq 2)
         Write-Error $error_msg_two;
         exit;
     }
-
-
 }
 
-
-
+if($argsLen -gt 2)
+{
+    Write-Error "Too Many Arguments Passed`n";
+    Write-Error $error_msg_one;
+    exit;
+}
 
 #Start-Process git -ArgumentList "clone --recursive ${repository}" -NoNewWindow -Wait
