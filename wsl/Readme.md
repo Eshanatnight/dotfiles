@@ -111,3 +111,10 @@ sudo apt install net-tools
 ```terminal
 sudo apt-get install traceroute
 ```
+
+---
+
+## Homebrew
+
+You can just run the script [install-homebrew.sh](./install-homebrew.sh).
+It follows the instructions on the official site installs and tests it.
