@@ -72,7 +72,7 @@
                 {
                     "face": "FiraCode Nerd Font"
                 },
-                "opacity": 60,
+                "opacity": 80,
                 "useAcrylic": true,
                 "tabTitle": "Powershell",
                 "hidden": false
@@ -91,7 +91,7 @@
                     "face": "FiraCode Nerd Font"
                 },
                 "useAcrylic": true,
-                "opacity": 59,
+                "opacity": 79,
                 "tabTitle": "Ubuntu",
                 "startingDirectory": "/home/kellsatnite",
                 "hidden": false
@@ -107,7 +107,7 @@
                 "cursorShape": "bar",
                 "tabTitle": "Developer Powershell",
                 "useAcrylic": true,
-                "opacity": 59,
+                "opacity": 79,
                 "hidden": false
             }
         ]
