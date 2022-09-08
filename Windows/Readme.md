@@ -74,6 +74,15 @@ place where the top level `CMakelists.txt` file is.
 }
 ```
 
+To use CMake and vcpkg in Manifest Mode. Add the following to the vscode `settings.json` file.
+
+```json
+"cmake.configureSettings": {
+     "CMAKE_TOOLCHAIN_FILE": "path/to/vcpkg/scripts/buildsystems/vcpkg.cmake"
+}
+"cmake.configureOnOpen": true
+```
+
 ---
 
 ## Visual C++ Compiler stdc++=20
