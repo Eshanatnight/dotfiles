@@ -13,6 +13,6 @@ This folder contains scripts that I wrote for convinience purposes.
 | [repairDISM.ps1](repairDISM.ps1)            | used to repair using the DISM                                   |
 | [rmr.ps1](rmr.ps1)                          | recursive force delete of a file or dir                         |
 | [search.ps1](search.ps1)                    | search for a file and get a csv file                            |
-| [dev.ps1](dev.ps1)                          | a short hand for my dev dir                                     |
+| [d.ps1](dev.ps1)                          | a short hand for my dev dir                                     |
 | [gba.ps1](gba.ps1)                          | a short hand for git branch all                                 |
 | [tb.ps1](tb.ps1)                            | a shorthand for termbin                                         |
