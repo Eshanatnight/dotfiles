@@ -17,3 +17,4 @@ This folder contains scripts that I wrote for convinience purposes.
 | [gba.ps1](gba.ps1)                          | a short hand for git branch all                                 |
 | [tb.ps1](tb.ps1)                            | a shorthand for termbin                                         |
 | [al.ps1](al.ps1)                            | a script to write some common files to local from the internet  |
+| [gpl.ps1](gpl.ps1)                          | get a premake5.lua from gitgist                                 |
