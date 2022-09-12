@@ -16,7 +16,7 @@ This folder contains scripts that I wrote for convinience purposes.
 | [rmr.ps1](rmr.ps1)                          | recursive force delete of a file or dir                         |
 | [tb.ps1](tb.ps1)                            | a shorthand for termbin                                         |
 | [ta.ps1](ta.ps1)                            | a shorthand for tar archiving                                   |
-| [tu.ps1](tu.ps1)                            | a shorthand for tar unarchiving                                   |
+| [tu.ps1](tu.ps1)                            | a shorthand for tar unarchiving                                 |
 | [init-codeserver.ps1](int-codeserver.ps1)   | used to initialize the visual studio code server ssh connection |
 | [install-vcpkg.ps1](install-vcpkg.ps1)      | used to install and update vcpkg                                |
 | [search.ps1](search.ps1)                    | search for a file and get a csv file                            |
