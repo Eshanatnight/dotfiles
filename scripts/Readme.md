@@ -11,6 +11,7 @@ This folder contains scripts that I wrote for convinience purposes.
 | [gba.ps1](gba.ps1)                          | a short hand for git branch all                                 |
 | [gcr.ps1](gcr.ps1)                          | clones a git repository recursively                             |
 | [gpl.ps1](gpl.ps1)                          | get a premake5.lua from gitgist                                 |
+| [gvm.ps1](gvm.ps1)                          | get a vcpkg.json from gitgist                                   |
 | [ir.ps1](ir.ps1)                            | initializes a remote repository                                 |
 | [repairDISM.ps1](repairDISM.ps1)            | used to repair using the DISM                                   |
 | [rmr.ps1](rmr.ps1)                          | recursive force delete of a file or dir                         |
