@@ -43,3 +43,5 @@ $global:PSReadLineMarks = @{}
 Set-PSReadLineOption -PredictionSource History
 Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadLineOption -EditMode Windows
+
+$envCMAKE_TOOLCHAIN_FILE="D:/tools/vcpkg/scripts/buildsystems/vcpkg.cmake"
