@@ -22,3 +22,4 @@ This folder contains scripts that I wrote for convinience purposes.
 | [install-vcpkg.ps1](install-vcpkg.ps1)                  | used to install and update vcpkg                                |
 | [search.ps1](search.ps1)                                | search for a file and get a csv file                            |
 | [android-cmd-line-tools.ps1](android-cmd-line-tools.ps1)| initializes android cmd line tools                              |
+| [cf.ps1](cf.ps1)                                        | formats code by calling clang-format                            |
