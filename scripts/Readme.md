@@ -8,10 +8,7 @@ This folder contains scripts that I wrote for convinience purposes.
 |---------------------------------------------------------|-----------------------------------------------------------------|
 | [al.ps1](al.ps1)                                        | a script to write some common files to local from the internet  |
 | [d.ps1](dev.ps1)                                        | a short hand for my dev dir                                     |
-| [gba.ps1](gba.ps1)                                      | a short hand for git branch all                                 |
 | [gcr.ps1](gcr.ps1)                                      | clones a git repository recursively                             |
-| [gpl.ps1](gpl.ps1)                                      | get a premake5.lua from gitgist                                 |
-| [gvm.ps1](gvm.ps1)                                      | get a vcpkg.json from gitgist                                   |
 | [ir.ps1](ir.ps1)                                        | initializes a remote repository                                 |
 | [repairDISM.ps1](repairDISM.ps1)                        | used to repair using the DISM                                   |
 | [rmr.ps1](rmr.ps1)                                      | recursive force delete of a file or dir                         |
@@ -23,3 +20,4 @@ This folder contains scripts that I wrote for convinience purposes.
 | [search.ps1](search.ps1)                                | search for a file and get a csv file                            |
 | [android-cmd-line-tools.ps1](android-cmd-line-tools.ps1)| initializes android cmd line tools                              |
 | [cf.ps1](cf.ps1)                                        | formats code by calling clang-format                            |
+| [ct.ps1](ct.ps1)                                        | calls clang-tidy                                                |
