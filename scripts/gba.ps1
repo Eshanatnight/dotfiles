@@ -1,1 +1,0 @@
-Start-Process git -ArgumentList "branch -a" -NoNewWindow -Wait;
