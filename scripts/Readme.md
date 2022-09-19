@@ -21,3 +21,4 @@ This folder contains scripts that I wrote for convinience purposes.
 | [android-cmd-line-tools.ps1](android-cmd-line-tools.ps1)| initializes android cmd line tools                              |
 | [cf.ps1](cf.ps1)                                        | formats code by calling clang-format                            |
 | [ct.ps1](ct.ps1)                                        | calls clang-tidy                                                |
+| [ual.ps1](ual.ps1)                                      | updates all repos in the current directory                      |
