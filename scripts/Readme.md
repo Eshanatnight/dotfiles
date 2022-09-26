@@ -23,3 +23,5 @@ This folder contains scripts that I wrote for convinience purposes.
 | [ct.ps1](ct.ps1)                                        | calls clang-tidy                                                |
 | [ual.ps1](ual.ps1)                                      | updates all repos in the current directory                      |
 | [fec.ps1](fec.ps1)                                      | coppies all files or directory directory sepcified              |
+| [em.ps1](em.ps1)                                        | shorthand for running the android emulator                      |
+
