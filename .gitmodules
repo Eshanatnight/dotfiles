@@ -4,3 +4,6 @@
 [submodule "ue4 intellisense fix"]
 	path = ue4 intellisense fix
 	url = git@github.com:boocs/ue4-intellisense-fixes.git
+[submodule "dots-mdbook"]
+	path = dots-mdbook
+	url = git@github.com:Eshanatnight/dots-mdbook.git
