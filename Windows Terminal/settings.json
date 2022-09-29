@@ -4,6 +4,14 @@
     "actions":
     [
         {
+            "command": "paste",
+            "keys": "ctrl+v"
+        },
+        {
+            "command": "find",
+            "keys": "ctrl+shift+f"
+        },
+        {
             "command":
             {
                 "action": "copy",
@@ -12,16 +20,8 @@
             "keys": "ctrl+c"
         },
         {
-            "command": "find",
-            "keys": "ctrl+shift+f"
-        },
-        {
             "command": "closeWindow",
             "keys": "alt+f4"
-        },
-        {
-            "command": "paste",
-            "keys": "ctrl+v"
         },
         {
             "command": "closePane",
@@ -54,35 +54,34 @@
         },
         "list":
         [
-            // Ok, The Terminals would be
-            // 1. `Powershell Core`
-            // 2. `WSL - Ubuntu`
-            // 3. `Developer Poweshell`
-
-            // ? Powershell PWSH
             {
-                "name": "PowerShell",
-                "guid": "{09051a49-7cea-4ae6-ad58-e8919ce6a9f2}",
+                "colorScheme": "xcad_tdl",
                 "commandline": "C:\\Users\\eshan\\AppData\\Local\\Microsoft\\WindowsApps\\Microsoft.PowerShell_8wekyb3d8bbwe\\pwsh.exe",
+                "cursorColor": "#FF0095",
+                "cursorShape": "bar",
+                "font":
+                {
+                    "face": "FiraCode Nerd Font"
+                },
+                "guid": "{09051a49-7cea-4ae6-ad58-e8919ce6a9f2}",
+                "hidden": false,
                 "icon": "ms-appx:///ProfileIcons/pwsh.png",
-                "colorScheme": "xcad_tdl",
-                "cursorColor": "#FF0095",
-                "cursorShape": "bar",
-                "font":
-                {
-                    "face": "FiraCode Nerd Font"
-                },
+                "name": "PowerShell",
                 "opacity": 80,
-                "useAcrylic": true,
                 "tabTitle": "Powershell",
-                "hidden": false
+                "useAcrylic": true
             },
-            // ? WSL - Ubuntu
             {
-                "name": "Ubuntu",
-                "commandline": "wsl.exe -d Ubuntu",
-                "guid": "{af43dd94-6aed-42f3-a549-9c8dfac5b08b}",
-                "icon": "D:\\Tweaks\\icons\\ubuntu_2.png",
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "hidden": false,
+                "name": "Windows PowerShell"
+            },
+            {
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "hidden": false,
+                "name": "Command Prompt"
+            },
+            {
                 "colorScheme": "xcad_tdl",
                 "cursorColor": "#FF0095",
                 "cursorShape": "bar",
@@ -90,25 +89,14 @@
                 {
                     "face": "FiraCode Nerd Font"
                 },
-                "useAcrylic": true,
+                "guid": "{58ad8b0c-3ef8-5f4d-bc6f-13e4c00f2530}",
+                "hidden": false,
+                "name": "Debian",
                 "opacity": 79,
+                "source": "Windows.Terminal.Wsl",
+                "startingDirectory": "/home/kellsatnight",
                 "tabTitle": "Ubuntu",
-                "startingDirectory": "/home/kellsatnite",
-                "hidden": false
-            },
-
-            // ? Preffered Visual Studio Developer Shell
-            {
-                "name": "Developer PowerShell for VS 2022",
-                "source": "Windows.Terminal.VisualStudio",
-                "guid": "{8425c53c-2333-5c22-b4bc-555b85de8810}",
-                "colorScheme": "xcad_tdl",
-                "cursorColor": "#FF0095",
-                "cursorShape": "bar",
-                "tabTitle": "Developer Powershell",
-                "useAcrylic": true,
-                "opacity": 79,
-                "hidden": false
+                "useAcrylic": true
             }
         ]
     },
@@ -392,10 +380,10 @@
         },
         {
             "background": "#331038",
-            "black": "#000000",
-            "blue": "#000000",
-            "brightBlack": "#A52AFF",
-            "brightBlue": "#5C78FF",
+            "black": "#212121",
+            "blue": "#212121",
+            "brightBlack": "#ffffff",
+            "brightBlue": "#5c78ff",
             "brightCyan": "#5AC8FF",
             "brightGreen": "#905AFF",
             "brightPurple": "#5EA2FF",
@@ -405,12 +393,12 @@
             "cursorColor": "#FFFFFF",
             "cyan": "#28B9FF",
             "foreground": "#F1F1F1",
-            "green": "#7129FF",
+            "green": "#7129ff",
             "name": "xcad_tdl",
             "purple": "#2883FF",
             "red": "#A52AFF",
             "selectionBackground": "#FFFFFF",
-            "white": "#F1F1F1",
+            "white": "#f1f1f1",
             "yellow": "#3D2AFF"
         }
     ]
