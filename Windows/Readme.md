@@ -147,5 +147,6 @@ After completion the Rust Toolchain will be updated.
 
 1. For [CLion](../.jetbrains-settings/CLion)
 2. For [Idea](../.jetbrains-settings/Idea)
+3. For [Visual Studio](../.visual-studio-settings)
 
 ---
