@@ -1,19 +1,5 @@
 # Windows
 
-## Installing Applications without Admin Privilages
-
-Create a Folder with whatever name. Move the installer executable to that folder. Create a new batch script. The name of the file does not matter necessarily, but it is adviced to follow convention and call it `setup.bat`
-
-### Contents of the `setup.bat` script
-
-`filename: setup.bat`
-```batch
-set __COMPAT_LAYER=RunAsInvoker
-start <name_of_installer>
-```
-
----
-
 ## CPP in Windows
 
 ### Visual Studio
@@ -151,7 +137,7 @@ place where the top level `CMakelists.txt` file is.
 }
 ```
 
-To use CMake and vcpkg in Manifest Mode. Add the following to the vscode `settings.json` file.
+> *vscode only*: To use CMake and vcpkg in Manifest Mode. Add the following to the vscode `settings.json` file.
 
 `filename: .vscode/settings.json`
 ```json
