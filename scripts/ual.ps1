@@ -1,3 +1,5 @@
+#pull down all changes of all repos from cloud
+
 $dir = Get-Location;
 
 Get-ChildItem -Path . -Directory -Recurse -Depth 0 |

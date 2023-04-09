@@ -1,4 +1,4 @@
-
+# shorthand for running the android emulator
 
 if ($args.Count -gt 0) {
     Write-Error "No arguments are allowed";

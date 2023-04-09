@@ -1,3 +1,5 @@
+# calls clang-tidy
+
 $dir = Get-Location;
 
 Get-ChildItem -Path . -Directory -Recurse |

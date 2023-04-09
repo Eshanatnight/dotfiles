@@ -1,3 +1,5 @@
+# copies all files or directory directory sepcified
+
 $argsLen = $args.Count
 
 if ($argsLen -le 1) {

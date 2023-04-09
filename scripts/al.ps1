@@ -1,3 +1,5 @@
+# a script to write some common files to local from the internet
+
 $useage = "`nUseage: `n`nal`nor`nal <option>`n`nOptions:`n--all or -a";
 if ($args.Count -gt 0)
 {

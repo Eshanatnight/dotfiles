@@ -1,3 +1,5 @@
+# formats code by calling clang-format
+
 $dir = Get-Location;
 
 Get-ChildItem -Path . -Directory -Recurse |
