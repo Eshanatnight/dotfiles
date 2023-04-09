@@ -6,8 +6,8 @@ if ($args.Count -gt 0)
     exit
 }
 
-$isRust = Test-Path .\Cargo.toml 
-$isCXX = Test-Path .\CmakeLists.txt -or Test-Path ".\*.sln" -or ".\*.vcxproj"
+$isRust = Test-Path .\Cargo.toml
+$isCXX = (Test-Path .\CmakeLists.txt) -or (Test-Path ".\*.sln") -or (Test-Path ".\*.vcxproj")
 
 # General files
 function getLicense {
@@ -21,13 +21,18 @@ function getLicense {
 }
 
 function getGitFiles {
-    New-Item .\.gitignore -ItemType File -Force
-    Invoke-WebRequest "https://gist.githubusercontent.com/Eshanatnight/2b152fe2f8f80ac257049ee8d72b4238/raw/13c62c639dd124382c273564aadb404cb8df3669/.gitignore" -OutFile ".\.gitignore"
 
-    if(!(Test-Path .\.gitignore)) {
-        Write-Error "Failed to Create .gitignore file";
-        exit;
+    if(-not $isRust)
+    {
+        New-Item .\.gitignore -ItemType File -Force
+        Invoke-WebRequest "https://gist.githubusercontent.com/Eshanatnight/2b152fe2f8f80ac257049ee8d72b4238/raw/13c62c639dd124382c273564aadb404cb8df3669/.gitignore" -OutFile ".\.gitignore"
+
+        if(!(Test-Path .\.gitignore)) {
+            Write-Error "Failed to Create .gitignore file";
+            exit;
+        }
     }
+
 
     New-Item .\.gitattributes -ItemType File -Force
     Invoke-WebRequest "https://gist.githubusercontent.com/Eshanatnight/21a297de28581ff8fa2b50fba59fd163/raw/3b85d477a79360dae67950de178f4dc5ee3f8333/.gitattributes" -OutFile ".\.gitattributes"
@@ -38,8 +43,8 @@ function getGitFiles {
     }
 }
 
-getLicense()
-getGitFiles()
+getLicense
+getGitFiles
 
 if($isRust) {
     # if Cargo.toml exists download the rustfmt file
