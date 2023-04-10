@@ -1,3 +1,5 @@
+# tar archive
+
 $argsCount = $args.Count;
 
 $useage = "tc outfilename /path/to directory"

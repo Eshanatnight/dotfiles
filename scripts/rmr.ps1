@@ -1,3 +1,5 @@
+# shorthand to delete stuff with force
+
 $argsLen = $args.Count
 
 if ($argsLen -eq 0)

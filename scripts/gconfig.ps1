@@ -1,3 +1,5 @@
+# add to safe dfirectory
+
 $dir = Get-Location;
 
 $i = 1;
