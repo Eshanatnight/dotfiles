@@ -52,7 +52,7 @@ if($isRust) {
     # if Cargo.toml exists download the rustfmt file
     # if the file already exists just overwrite it
     New-Item .\rustfmt.toml -ItemType File -Force
-    Invoke-WebRequest "https://gist.githubusercontent.com/Eshanatnight/92e775458ce47910d908b8e80d9e0d2f/raw/eede8a414cde20a343b706ae34aef5106540da9e/rustfmt.toml" -OutFile ".\rustfmt.toml";
+    Invoke-WebRequest "https://gist.githubusercontent.com/Eshanatnight/92e775458ce47910d908b8e80d9e0d2f/raw/897ffa2dff2d7404fb0506f57efe872d040a43b5/rustfmt.toml" -OutFile ".\rustfmt.toml";
 
     if(!(Test-Path .\rustfmt.toml)) {
         Write-Error "Failed to Create rustfmt.toml file";
