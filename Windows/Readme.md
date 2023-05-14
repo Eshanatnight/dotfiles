@@ -7,42 +7,10 @@
 > My Visual Studio Directory Setup
 >
 > Output Dir: `$(SolutionDir)bin\$(Platform)\$(Configuration)\`
-> 
+>
 > Intermideates Dir: `$(SolutionDir)bin\intermideates\$(Platform)\$(Configuration)\`
-> 
+>
 > Additional Include Directory: `$(SolutionDir)src\include,$(SolutionDir)include`
-
-#### Visual C++ Compiler stdc++=20
-
-##### Installation guide
-
-~ Install Visual Sudio
-
-~ Modify Installation
-
-~ Individual Components > search ` modules `
-
-##### Activation
-
-* Solution Properties > Configuration Properties > General: C++ Language Standard = "Preview - Features from the Latest C++ Working Draft (/std:c++latest)"
-
-* Solution Properties > C/C++ > Language : Enable External C++ Standard Library Modules = "Yes(/experimental:module)"
-
-##### import commands
-
-* std.filesystem -> `<filesystem>`
-* std.regex -> `<regex>`
-* std.memory -> `<memory>`
-* std.threading -> `<atomic>, <condition_variable>, <future>, <mutex>, <shared_mutex> and <thread>`
-* std.core -> Everything else in the Standard Library
-
-> Note: -> = Provides the contents of headers
->
-> CPP Standard Core Guidelines Ammended to just use `import std` rather than the above.
->
-> Possibly by the time you are reading this, stdc++20 uses `import std;`
-
----
 
 ### Installing & Updating the MSYS2 toolchain
 
@@ -64,11 +32,11 @@ pacman -S -u mingw-w64-clang-x86_64-toolchain
 
 ---
 
-### vcpkg
+## vcpkg
 
-#### Installing `vcpkg`
+### Installing `vcpkg`
 
-To install ***vcpkg*** you can run the [script](../scripts/upgrade-vcpkg.ps1). It's a
+To install ***vcpkg*** you can run the [script](../scripts/pwsh/upgrade-vcpkg.ps1). It's a
 Poweshell Script that will clone the repository from the
 [official page](https://github.com/microsoft/vcpkg.git) in the location `D:\tools\vcpkg`
 and then bootstrapping vcpkg.
@@ -77,9 +45,9 @@ and then bootstrapping vcpkg.
 
 ---
 
-#### Using vcpkg
+### Using vcpkg
 
-##### ***vcpkg*** in Global Mode
+#### ***vcpkg*** in Global Mode
 
 Navigate to the project repository. Create a build directory `build`, or whatever you want to name.
 Navigate to the build Directory.
@@ -94,6 +62,8 @@ cd build
 cmake .. -DCMAKE_TOOLCHAIN_FILE=<path-to-vcpkg>/scripts/buildsystems/vcpkg.cmake
 ```
 
+> Best is to set this as an environment variable, so that you don't have to type it everytime.
+
 ```terminal
 cmake --build .
 ```
@@ -102,7 +72,7 @@ cmake --build .
 > and you are using the cmake cli to build your application.
 >
 > Then to get the release build of the project.
-> You need to pass `--release` flag in the build command. 
+> You need to pass `--release` flag in the build command.
 >
 > Like so
 
@@ -112,14 +82,15 @@ cmake --build . --release
 
 ---
 
-##### ***vcpkg*** in Manifest Mode
+#### ***vcpkg*** in Manifest Mode
 
 vcpkg has now a mainfest mode. To use it, you need a manifest file `vcpkg.json` in the
 place where the top level `CMakelists.txt` file is.
 
-###### Format for `vcpkg.json`
+##### Format for `vcpkg.json`
 
 `filename: vcpkg.json`
+
 ```json
 {
     "name": "Project_Name",
@@ -140,6 +111,7 @@ place where the top level `CMakelists.txt` file is.
 > *vscode only*: To use CMake and vcpkg in Manifest Mode. Add the following to the vscode `settings.json` file.
 
 `filename: .vscode/settings.json`
+
 ```json
 "cmake.configureSettings": {
         "CMAKE_TOOLCHAIN_FILE": "path/to/vcpkg/scripts/buildsystems/vcpkg.cmake"
