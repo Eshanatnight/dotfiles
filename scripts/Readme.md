@@ -6,7 +6,7 @@ This folder contains scripts that I wrote for convinience purposes.
 
 ### **Powershell**
 
-Powershell Scripts that i use. 
+Powershell Scripts that i use.
 
 | name                                                         | description                                                     |
 |--------------------------------------------------------------|-----------------------------------------------------------------|
@@ -14,11 +14,10 @@ Powershell Scripts that i use.
 | [android-cmd-line-tools.ps1](pwsh/android-cmd-line-tools.ps1)| initializes android cmd line tools                              |
 | [cf.ps1](pwsh/cf.ps1)                                        | formats code by calling clang-format                            |
 | [ct.ps1](pwsh/ct.ps1)                                        | calls clang-tidy                                                |
-| [d.ps1](pwsh/dev.ps1)                                        | a short hand for my dev dir                                     |
 | [em.ps1](pwsh/em.ps1)                                        | shorthand for running the android emulator                      |
 | [fec.ps1](pwsh/fec.ps1)                                      | copies all files or directory directory sepcified               |
+| [gconfig.ps1](pwsh/fec.ps1)                                  | recursively add folders to git safe directory                   |
 | [gcr.ps1](pwsh/gcr.ps1)                                      | clones a git repository recursively                             |
-| [init-codeserver.ps1](pwsh/int-codeserver.ps1)               | used to initialize the visual studio code server ssh connection |
 | [ir.ps1](pwsh/ir.ps1)                                        | initializes a remote repository                                 |
 | [repairDISM.ps1](pwsh/repairDISM.ps1)                        | used to repair using the DISM                                   |
 | [rmr.ps1](pwsh/rmr.ps1)                                      | recursive force delete of a file or dir                         |

@@ -1,6 +1,6 @@
 # a script to write some common files to local from the internet
 
-$useage = "`nUseage: `n`nal`nor`nal <option>`n`nOptions:`n--all or -a";
+$useage = "`nUseage: `n`nal";
 if ($args.Count -gt 0)
 {
     Write-Error "Invalid Useage"
@@ -23,7 +23,6 @@ function getLicense {
 }
 
 function getGitFiles {
-
     if(-not $isRust)
     {
         New-Item .\.gitignore -ItemType File -Force
