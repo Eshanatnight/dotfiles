@@ -1,20 +1,4 @@
-# Git Large File System
-
-Uses LFS for files in the repository that are larger in size.
-
-## Useage
-
-```terminal
-git lfs track <*.extention> or <filename_with_extention>
-```
-
-Now `add` and `commit` as normal.
-
-```terminal
-git add large_file
-
-git commit -m "Added large file"
-```
+# Git: A Version Control System
 
 ## SSH Key for Github
 
@@ -29,3 +13,19 @@ This will start the Key Generation Process. When prompted, press enter to accept
 Open the SSH Folder in a Text Editor. Copy the `public key` and add it to your GitHub account settings.
 You are **All Done** now. Try cloning the repository now.
 An error might pop up, but it's fine. For the first time that is completely normal.
+
+## Git Large File System: Useage
+
+Uses LFS for files in the repository that are larger in size.
+
+```terminal
+git lfs track <*.extention> or <filename_with_extention>
+```
+
+Now `add` and `commit` as normal.
+
+```terminal
+git add large_file
+
+git commit -m "Added large file"
+```
