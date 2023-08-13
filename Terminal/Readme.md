@@ -6,7 +6,6 @@ Contains all the stuff need for windows terminal.
 
 - [settings.json](".\settings.json")
 - [Powershell Folder](".\Powershell")
-- [wsl Folder](".\wsl")
 
 ## settings.json
 
