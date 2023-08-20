@@ -1,0 +1,16 @@
+.gitignore
+.gitattributes
+.gitmodules
+README.md
+LICENSE
+ue4 intellisense fix
+dots-mdbook
+settings
+Terminal
+scripts
+notes
+fresh-setup
+.git
+installer.sh
+zshrc.org
+udevmon.yaml
