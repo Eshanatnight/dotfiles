@@ -126,3 +126,4 @@ esac
 # pnpm end
 
 export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
+export PATH="$PATH:/home/kellsatnite/tools/vcpkg"
