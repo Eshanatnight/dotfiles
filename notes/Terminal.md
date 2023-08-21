@@ -2,24 +2,19 @@
 
 Contains all the stuff need for windows terminal.
 
-## Contains
-
-- [settings.json](".\settings.json")
-- [Powershell Folder](".\Powershell")
-
 ## settings.json
 
 contains the settings for the terminal. Themes, colors, etc.
 
 ## Powershell Folder
 
-- [Powershell_Profile](./Powershell/Microsoft.PowerShell_profile.ps1)
-- [setup](./Powershell/setup-windows-terminal.ps1)
-- [theme](./Powershell/Theme/)
+- [Powershell_Profile](../Terminal/Powershell/Microsoft.PowerShell_profile.ps1)
+- [setup](../Terminal/Powershell/setup-windows-terminal.ps1)
+- [theme](../Terminal/Powershell/Theme/)
 
 ## Removed Settings from Windows Terminal
 
-Settings that are removed from the [settings.json](./settings.json) of the Windows Terminal.
+Settings that are removed from the [settings.json](../Terminal/settings.json) of the Windows Terminal.
 
 ```json
 {
