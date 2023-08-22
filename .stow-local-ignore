@@ -1,16 +1,17 @@
+
+.git
 .gitignore
 .gitattributes
 .gitmodules
+
+
 README.md
 LICENSE
+
 ue4 intellisense fix
-dots-mdbook
-settings
+
 Terminal
+settings
 scripts
-notes
+
 fresh-setup
-.git
-installer.sh
-zshrc.org
-udevmon.yaml
