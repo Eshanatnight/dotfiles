@@ -25,7 +25,7 @@
         "temperature",
         "custom/power_profile",
         "battery",
-        "hyprland/language",
+        //"hyprland/language",
         "custom/myhyprv",
         "custom/light_dark"
     ],
