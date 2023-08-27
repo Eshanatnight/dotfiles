@@ -1,7 +1,7 @@
-dotfiles
+.dotfiles
 ===================
 
-![prompt](http://images.thoughtbot.com/thoughtbot-dotfiles-prompt.png)
+![prompt](./banner.png)
 
 Check out the book version of this README [here](https://dots-eshanatnight.vercel.app)
 
@@ -13,3 +13,7 @@ Clone onto your laptop:
     git clone --recursive https://github.com/Eshanatnite/dotfiles.git
 
     code dotfiles
+
+>
+> Now Stow able
+>
