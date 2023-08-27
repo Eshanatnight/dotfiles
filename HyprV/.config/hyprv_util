@@ -53,9 +53,11 @@ set_current_background() {
     if [[ ! -z "$SET_BG" ]]; then
         #set the current background
         if [[ $THEMEIS == "dark.css" ]]; then
-            swww img ~/.config/HyprV/backgrounds/$VER'-background-dark.jpg'
+            swww img ~/wallpapers/Five.jpg
+            # swww img ~/.config/HyprV/backgrounds/$VER'-background-dark.jpg'
         else
-            swww img ~/.config/HyprV/backgrounds/$VER'-background.jpg'
+            swww img ~/wallpapers/Five.jpg 
+            # swww img ~/.config/HyprV/backgrounds/$VER'-background.jpg'
         fi
     else
         swww img $SET_BG
