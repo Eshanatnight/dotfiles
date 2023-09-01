@@ -2,7 +2,7 @@
 
 $argsCount = $args.Count;
 
-$useage = "tc /path/to/archive"
+$useage = "tu /path/to/archive"
 
 if($argsCount -eq 0)
 {
