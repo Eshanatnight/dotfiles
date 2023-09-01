@@ -2,7 +2,7 @@
 
 $argsCount = $args.Count;
 
-$useage = "tc outfilename /path/to directory"
+$useage = "ta outfilename /path/to directory"
 
 if($argsCount -eq 0)
 {
