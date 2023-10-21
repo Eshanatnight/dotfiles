@@ -92,10 +92,10 @@ if($isCXX) {
 }
 
 if($isTS) {
-    New-Item .\tsconfig.json -ItemType File -Force
-    Invoke-WebRequest "https://gist.githubusercontent.com/Eshanatnight/d47d2d3272a1c3289af88cb413658ead/raw/37bc0d2c5e485d47e20f4e6954264a7ffc9e6acf/.prettierrc.toml" -OutFile ".\tsconfig.json";
+    New-Item .\.prettierrc.toml -ItemType File -Force
+    Invoke-WebRequest "https://gist.githubusercontent.com/Eshanatnight/d47d2d3272a1c3289af88cb413658ead/raw/37bc0d2c5e485d47e20f4e6954264a7ffc9e6acf/.prettierrc.toml" -OutFile ".\.prettierrc.toml";
 
-    if(!(Test-Path .\tsconfig.json)) {
+    if (!(Test-Path .\.prettierrc.toml)) {
         Write-Error "Failed to Create tsconfig.json file";
         exit;
     }
