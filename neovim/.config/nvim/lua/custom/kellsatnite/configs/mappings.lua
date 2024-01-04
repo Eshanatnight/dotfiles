@@ -5,32 +5,41 @@ M.dap = {
     n = {
         ["<leader>db"] = {
             "<cmd> DapToggleBreakpoint <CR>",
-            "Toggle Breakpoint"
+            "Toggle Breakpoint",
         },
         ["<leader>dr"] = {
             "<cmd> DapContinue <CR>",
             "Start or continue the debugger",
-          },
+        },
         ["<leader>dus"] = {
-            function ()
-                local widgets = require("dap.ui.widgets");
-                local sidebar = widgets.sidebar(widgets.scopes);
+            function()
+                local widgets = require "dap.ui.widgets"
+                local sidebar = widgets.sidebar(widgets.scopes)
                 sidebar.open()
             end,
-            "Open Debug Window"
-        }
-    }
+            "Open Debug Window",
+        },
+    },
 }
 
 M.crates = {
     n = {
         ["<leader>rcu"] = {
-            function ()
+            function()
                 require("crates").upgrade_all_crates()
             end,
-            "Upgrade Crates"
-        }
-    }
+            "Upgrade Crates",
+        },
+    },
+}
+
+M.general = {
+    i = {
+        ["jk"] = {
+            "<ESC>",
+            "Exit Insert Mode",
+        },
+    },
 }
 
 return M

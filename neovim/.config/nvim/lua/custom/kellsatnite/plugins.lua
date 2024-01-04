@@ -16,6 +16,7 @@ local plugins = {
                 "codelldb",
                 "lua-ls",
                 "black",
+                "pyright",
             },
         },
     },
@@ -26,7 +27,6 @@ local plugins = {
         config = function()
             require "plugins.configs.lspconfig"
             require "custom.kellsatnite.configs.lspconfig"
-            require "custom.kellsatnite.configs.formatting"
         end,
     },
 
@@ -88,6 +88,15 @@ local plugins = {
     --     event = "VeryLazy",
     --     opt = function()
     --         return require "custom.kellsatnite.configs.null-ls"
+    --     end,
+    -- },
+
+    -- none-ls **cant get it to work**
+    -- {
+    --     "nvimtools/none-ls.nvim",
+    --     event = "VeryLazy",
+    --     opt = function()
+    --         return require "custom.kellsatnite.configs.none-ls"
     --     end,
     -- },
 
@@ -165,32 +174,31 @@ local plugins = {
 
         -- moved to a different file
         -- config = function()
-        --     local lint = require "lint"
-        --
-        --     lint.linters_by_ft = {
-        --         python = { "pylint" },
-        --         cpp = { "clangtidy" },
-        --     }
-        --
-        --     local lint_augroup = vim.api.nvim_create_augroup("lint", {
-        --         clear = true,
-        --     })
-        --
-        --     vim.api.nvim_create_autocmd({
-        --         "BufEnter",
-        --         "BufWritePost",
-        --     }, {
-        --         group = lint_augroup,
-        --         callback = function()
-        --             lint.try_lint()
-        --         end,
-        --     })
-        --
-        --     vim.keymap.set("n", "<leader>l", function()
-        --         lint.try_lint()
-        --     end, {
-        --         desc = "Trigger Linting",
-        --     })
+        -- local lint = require "lint"
+        -- lint.linters_by_ft = {
+        --     python = { "pylint" },
+        --     cpp = { "clangtidy" },
+        -- }
+
+        -- local lint_augroup = vim.api.nvim_create_augroup("lint", {
+        --     clear = true,
+        -- })
+
+        -- vim.api.nvim_create_autocmd({
+        --     "BufEnter",
+        --     "BufWritePost",
+        -- }, {
+        --     group = lint_augroup,
+        --     callback = function()
+        --        lint.try_lint()
+        --      end,
+        -- })
+
+        -- vim.keymap.set("n", "<leader>l", function()
+        --     lint.try_lint()
+        -- end, {
+        --     desc = "Trigger Linting",
+        -- })
         -- end,
         config = function()
             require("custom.kellsatnite.configs.linting").config()
