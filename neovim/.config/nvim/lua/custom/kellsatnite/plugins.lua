@@ -12,7 +12,9 @@ local plugins = {
             ensure_installed = {
                 "rust-analyzer",
                 "clangd",
+                "cmakelint",
                 "clang-format",
+                "clang-tidy",
                 "codelldb",
                 "lua-ls",
                 "black",

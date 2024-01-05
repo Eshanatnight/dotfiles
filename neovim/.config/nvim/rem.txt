@@ -5,7 +5,7 @@ Keymaps
 <leader>td -> get the deleted lines in the current file
 <leader>cc -> jump to current context
 <leader>wK -> open witch key help
-
+<leader>l -> lint file
 <leader>ff -> Find files
 <leader>fa -> Find all
 <leader>fw -> Live grep
