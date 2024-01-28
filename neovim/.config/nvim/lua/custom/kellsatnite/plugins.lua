@@ -51,6 +51,12 @@ local plugins = {
         end,
     },
 
+    -- rustaceanvim
+    -- {
+    --     "mrcjkb/rustaceanvim",
+    --     ft = "rust",
+    -- },
+
     -- rust-tools.nvim
     {
         "simrat39/rust-tools.nvim",
