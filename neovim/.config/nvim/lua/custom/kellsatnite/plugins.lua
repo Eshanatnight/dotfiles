@@ -216,6 +216,20 @@ local plugins = {
             require("custom.kellsatnite.configs.linting").config()
         end,
     },
+
+    -- cloak.nvim
+    {
+        "laytan/cloak.nvim",
+        lazy = false,
+        opts = function()
+            return require "custom.kellsatnite.configs.kcloak"
+        end,
+
+        config = function(_, opts)
+            print "loading cloak"
+            require("cloak").setup(opts)
+        end,
+    },
 }
 
 return plugins
