@@ -147,6 +147,9 @@ local plugins = {
             "williamboman/mason.nvim",
             "mfussenegger/nvim-dap",
         },
+        -- i need to pass the config for nvim dap
+        -- but this is not the right place
+        -- maybe it is in rust-tools
         opts = {
             handlers = {},
         },
