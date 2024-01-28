@@ -1,7 +1,7 @@
 ---@type ChadrcConfig
 local M = {}
 
-M.ui = { theme = "catppuccin" }
+M.ui = { theme = "yoru" }
 M.plugins = "custom.kellsatnite.plugins"
 M.mappings = require "custom.kellsatnite.configs.mappings"
 return M
