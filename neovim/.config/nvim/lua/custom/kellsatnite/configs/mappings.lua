@@ -42,4 +42,23 @@ M.general = {
     },
 }
 
+M.telescope = {
+    n = {
+        ["<leader>fd"] = {
+            "<cmd> Telescope lsp_document_symbols <CR>",
+            "Find Symbols",
+        },
+
+        ["<leader>fe"] = {
+            "<cmd> Telescope lsp_workspace_symbols <CR>",
+            "Find Diagnostics",
+        },
+
+        ["<leader>q"] = {
+            "<cmd> Telescope diagnostics <CR>",
+            "Find Diagnostics",
+        },
+    },
+}
+
 return M
