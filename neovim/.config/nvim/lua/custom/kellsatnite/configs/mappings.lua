@@ -40,6 +40,13 @@ M.general = {
             "Exit Insert Mode",
         },
     },
+
+    n = {
+        ["le"] = {
+            "$",
+            "Move to end of line",
+        },
+    },
 }
 
 M.telescope = {
