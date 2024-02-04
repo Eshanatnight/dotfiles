@@ -3,8 +3,7 @@
 	email = eshan2001221@gmail.com
 [init]
 	defaultBranch = main
-[url "ssh://git@github.com/"]
-	insteadOf = https://github.com/
+
 [core]
 	editor = code --wait
 [alias]

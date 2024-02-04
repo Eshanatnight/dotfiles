@@ -46,6 +46,21 @@ M.general = {
             "$",
             "Move to end of line",
         },
+        ["ls"] = {
+            "0",
+            "Move to start of line",
+        },
+    },
+
+    v = {
+        ["le"] = {
+            "$",
+            "Move to end of line",
+        },
+        ["ls"] = {
+            "0",
+            "Move to start of line",
+        },
     },
 }
 
