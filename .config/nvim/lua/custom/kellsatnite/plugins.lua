@@ -30,6 +30,7 @@ local plugins = {
                 "typescript-language-server",
                 "bash-language-server",
                 "lua-language-server",
+                "protolint",
             },
         },
     },
