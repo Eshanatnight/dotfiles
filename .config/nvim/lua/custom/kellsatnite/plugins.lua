@@ -209,7 +209,7 @@ local plugins = {
         end,
 
         config = function(_, opts)
-            require("cloak").setup(opts)
+            require("cloak").setup { opts }
         end,
     },
 
@@ -240,8 +240,9 @@ local plugins = {
     --     end,
     --     config = function()
     --         print "Inside config of vim-visual-multi"
-    --     end,
+    --   end,
     -- },
+
 }
 
 return plugins
