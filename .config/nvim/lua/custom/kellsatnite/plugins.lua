@@ -6,6 +6,7 @@ local plugins = {
         dependencies = {
             "WhoIsSethDaniel/mason-tool-installer.nvim",
         },
+        -- TODO:
         -- options
         opts = {
             ensure_installed = {
@@ -243,6 +244,18 @@ local plugins = {
     --   end,
     -- },
 
+    -- todo-comments.nvim
+    {
+        "folke/todo-comments.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        lazy = false,
+        opts = function()
+            return require "custom.kellsatnite.configs.redditcomments"
+        end,
+        config = function(_, opts)
+            require("todo-comments").setup { opts }
+        end,
+    },
 }
 
 return plugins
