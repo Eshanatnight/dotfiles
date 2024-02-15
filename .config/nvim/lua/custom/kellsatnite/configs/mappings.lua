@@ -71,6 +71,25 @@ M.telescope = {
             "Find Symbols",
         },
 
+        ["<leader>td"] = {
+            function()
+                require("todo-comments").jump_next()
+            end,
+            "Jump to Next Todo",
+        },
+
+        ["<leader>tt"] = {
+            function()
+                require("todo-comments").jump_prev()
+            end,
+            "Jump to Previous Todo",
+        },
+
+        ["td"] = {
+            "<cmd> TodoTelescope <CR>",
+            "Find Todos",
+        },
+
         ["<leader>fe"] = {
             "<cmd> Telescope lsp_workspace_symbols <CR>",
             "Find Diagnostics",

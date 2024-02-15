@@ -6,7 +6,6 @@ local plugins = {
         dependencies = {
             "WhoIsSethDaniel/mason-tool-installer.nvim",
         },
-        -- TODO:
         -- options
         opts = {
             ensure_installed = {
