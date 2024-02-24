@@ -19,8 +19,8 @@ local options = {
         auto_trigger = true,
         debounce = 75,
         keymap = {
-            accept = "<M-l>",
-            accept_word = "<M-.>", -- to deactive false
+            accept = "ll", --"<M-l>",
+            accept_word = "..", --"<M-.>",  -- to deactive false
             accept_line = "<C-j>",
             next = "<M-]>",
             prev = "<M-[>",
@@ -40,4 +40,5 @@ local options = {
     server_opts_overrides = {},
 }
 
+--
 return options
