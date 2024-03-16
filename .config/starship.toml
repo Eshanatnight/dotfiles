@@ -3,9 +3,39 @@
 
 # Wait 10 milliseconds for starship to check files under the current directory.
 scan_timeout = 10
-
+command_timeout = 2500
 # Inserts a blank line between shell prompts
 add_newline = false
+
+format = """
+[╭─$username](bold purple) $battery$cmd_duration
+[╰─on──❯](bold italic purple) \
+$directory\
+$rust\
+$C\
+$CMake\
+$git_branch\
+${custom.git_host}\
+$git_status\
+$golang\
+$docker_context\
+$python\
+$lua\
+$azure\
+$aws
+"""
+
+[aws]
+symbol = "  "
+style = "bold yellow"
+format = "with [$symbol]($style)"
+disabled = false
+
+[azure]
+symbol = "  "
+style = "bold blue"
+format = "with [$symbol]($style)"
+disabled = false
 
 [battery]
 charging_symbol = '⚡️ '
@@ -13,59 +43,110 @@ discharging_symbol = "󰂃 "
 full_symbol = "󰁹 "
 unknown_symbol = "󰁽 "
 empty_symbol = "󰂎 "
-format = "[]() "
+format = " [$symbol$percentage]($style) "
 disabled = false
 
+[[battery.display]]
+style = "red bold"
+threshold = 25
 
-[bun]
-format = "via [$symbol]($style)"
+[[battery.display]]
+style = "yellow bold"
+threshold = 75
+
+[[battery.display]]
+style = "green bold"
+threshold = 100
 
 [buf]
 format = "via [$symbol]($style)"
 
+[directory]
+truncation_length = 10
+style = "bold italic cyan"
+
+[username]
+style_user = "bold italic purple"
+style_root = "red bold"
+format = "[$user]($style)"
+disabled = false
+show_always = true
+
+[docker_context]
+symbol = " "
+format = "via [$symbol$context]($style) "
+style = "blue bold"
+only_with_files = true
+detect_files = ["docker-compose.yml", "docker-compose.yaml", "Dockerfile"]
+detect_folders = []
+disabled = false
+
+[cmd_duration]
+min_time = 2_000
+
 [cmake]
 format = "via [$symbol]($style)"
 
-[deno]
-format = "via [$symbol]($style)"
+[fill]
+symbol = " "
+style = "bold italic purple"
+disabled = false
 
-[dotnet]
-format = "[$symbol(🎯 $tfm )]($style)"
+[git_state]
+format = '\(:[$state( $progress_current/$progress_total)]($style)\)'
 
-[golang]
-format = 'via [$symbol]($style)'
+[git_status]
+format = '(:[$all_status$ahead_behind]($style)) '
+conflicted = '\[= [$count](bright-white bold)\]'
+ahead = '\[[⇡](bright-blue)[$count](bright-white bold)\]'
+behind = '\[[⇣](white)[$count](bright-white bold)\]'
+diverged = '\[[ ](purple)|[⇡](bright-blue)[$ahead_count](bright-white bold)[⇣](white)[$behind_count](bright-white)\]'
+untracked = '\[ [$count](bright-white bold)\]'
+stashed = '\[[*](yellow) [$count](bright-white bold)\]'
+modified = '\[[ ](bright-yellow)[$count](bright-white bold)\]'
+staged = '\[[ ](bright-green)[$count](bright-white bold)\]'
+renamed = '\[[ ](bright-cyan) [$count](bright-white bold)\]'
+deleted = '\[ [$count](bright-white bold)\]'
 
-[helm]
-format = 'via [$symbol]($style)'
+[custom.git_host]
+command = """
+URL=$(command git ls-remote --get-url 2> /dev/null)
+
+if [[ "$URL" =~ "github" ]]; then
+    ICON=" "
+elif [[ "$URL" =~ "gitlab" ]]; then
+    ICON=" "
+elif [[ "$URL" =~ "bitbucket" ]];then
+    ICON=" "
+elif [[ "$URL" =~ "kernel" ]];then
+    ICON=" "
+else
+    ICON=" "
+fi
+printf "%s" "$ICON"
+"""
+directories = [".git"]
+when = 'git rev-parse --is-inside-work-tree 2> /dev/null'
+style = "yellow bold"
+format = "[$output]($style) "
 
 [lua]
-format = 'via [$symbol]($style)'
-
-[meson]
-format = 'via [$symbol]($style)'
-
-[nodejs]
 format = 'via [$symbol]($style)'
 
 [ocaml]
 format = 'via [$symbol(\($switch_indicator$switch_name\) )]($style)'
 
 [python]
-format = 'via [$symbol]($style)'
+symbol = " "
+format = 'via [${symbol}(\($virtualenv\) )]($style)'
+style = "bold yellow"
+pyenv_prefix = "venv "
+python_binary = ["./venv/bin/python", "python", "python3"]
+detect_extensions = ["py"]
+version_format = "v${raw}"
 
 [rust]
 format = 'via [$symbol]($style)'
 
-[swift]
-format = 'via [$symbol]($style)'
-
-[vagrant]
-format = 'via [$symbol]($style)'
-
-[vlang]
-format = 'via [$symbol]($style)'
-
 [zig]
 format = 'via [$symbol]($style)'
-
-
