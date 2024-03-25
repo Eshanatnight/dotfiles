@@ -11,8 +11,6 @@ alias vim="nvim"
 alias gcr="git clone --recursive"
 alias spt="spt.py"
 alias cs="cs.py"
-# alias npip="/home/kellsatnite/.local/bin/pip3.11"
-alias s="kitten ssh"
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -131,8 +129,6 @@ esac
 export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
 export PATH="$PATH:/home/kellsatnite/tools/vcpkg"
 export PATH="$PATH:/home/kellsatnite/tools/scripts"
-# for the 2 different python installs that I have I dont know why I have 
-export PATH="$PATH:/home/kellsatnite/.local/bin"
 
 # Wasmer
 export WASMER_DIR="/home/kellsatnite/.wasmer"
@@ -141,17 +137,23 @@ export WASMER_DIR="/home/kellsatnite/.wasmer"
 
 # Rust Config
 export RUST_BACKTRACE=1
-export CARGO_TARGET_DIR="/home/kellsatnite/.rustlang/target/"
+export RUST_LOG=debug
+# export CARGO_TARGET_DIR="/home/kellsatnite/.rustlang/target/"
 
 # Parseable Config
-# export P_STAGING_DIR=~/dev/parseable/staging
-# export P_ADDR=0.0.0.0:8000
-# export P_USERNAME=admin
-# export P_PASSWORD=admin
-# export P_S3_URL=http://127.0.0.1:9000
-# export P_S3_BUCKET=somebucket
-# export P_S3_ACCESS_KEY=minioadmin
-# export P_S3_SECRET_KEY=minioadmin
-# export P_S3_REGION=us-east-1
-# export P_RECORDS_PER_REQUEST=102400
-# export P_PARQUET_COMPRESSION_ALGO="gzip"
+export P_STAGING_DIR=~/dev/parseable/staging
+export P_ADDR=0.0.0.0:8000
+export P_USERNAME=admin
+export P_PASSWORD=admin
+export P_S3_URL=http://127.0.0.1:9000
+export P_S3_BUCKET=somebucket
+export P_S3_ACCESS_KEY=minioadmin
+export P_S3_SECRET_KEY=minioadmin
+export P_S3_REGION=us-east-1
+export P_RECORDS_PER_REQUEST=102400
+export P_PARQUET_COMPRESSION_ALGO="gzip"
+
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
+--color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
+--color=marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796"
