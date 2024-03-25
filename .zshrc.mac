@@ -1,0 +1,82 @@
+# Custom Aliases
+## clear the terminal 
+alias cls=clear
+## list all files in the current directory
+alias ls="eza --icons --group-directories-first"
+## list all files in the current directory
+alias la="eza --icons --group-directories-first -al"
+## clear the terminal
+alias cls="clear"
+## nvim -> vim keymapping
+alias vim="nvim"
+## source the zshrc
+alias s="source ~/.zshrc"
+## git clone a repo recursively
+alias gcr="git clone --recursive"
+## use trash instead of rm
+alias rm=trash
+## format json from clipboard and copy back to clipboard
+alias j="pbpaste | jq . | pbcopy"
+## clip -> pbcopy
+alias clip="pbcopy"
+
+alias zed="find ~ -type d -maxdepth 2 | fzf | xargs -o zed"
+alias code="find ~ -type d -maxdepth 2 | fzf | xargs -o code"
+
+# alias for python scripts
+alias spt=spt.py
+alias cs=cs.py
+
+# Wasmer
+export WASMER_DIR="/Users/kellsatnite/.wasmer"
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
+
+export PATH=/Users/kellsatnite/tools/scripts:$PATH
+export PATH=/Users/kellsatnite/tools/vcpkg:$PATH
+
+# shorthand to jump into a directory
+function z () {
+    cd "$(find ~ -type d -maxdepth 2 | fzf)"
+}
+
+# util functions
+function take {
+    mkdir -p $1
+    cd $1
+}
+
+# starship prompt
+eval "$(starship init zsh)"
+
+# zoxide
+eval "$(zoxide init --cmd cd zsh)"
+
+# fzf
+eval "$(fzf --zsh)"
+
+
+# Rust Config
+export RUST_BACKTRACE=1
+export RUST_LOG=debug
+# export CARGO_TARGET_DIR="/home/kellsatnite/.rustlang/target/"
+
+
+# Parseable Config
+export P_STAGING_DIR=~/dev/parseable/staging
+export P_ADDR=0.0.0.0:8000
+export P_USERNAME=admin
+export P_PASSWORD=admin
+export P_S3_URL=http://127.0.0.1:9000
+export P_S3_BUCKET=somebucket
+export P_S3_ACCESS_KEY=minioadmin
+export P_S3_SECRET_KEY=minioadmin
+export P_S3_REGION=us-east-1
+export P_RECORDS_PER_REQUEST=102400
+export P_PARQUET_COMPRESSION_ALGO="gzip"
+
+autoload -Uz compinit && compinit
+
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
+--color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
+--color=marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796"
