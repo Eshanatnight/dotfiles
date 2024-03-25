@@ -33,6 +33,7 @@ local plugins = {
                 "gofumpt",
                 "golines",
                 "goimports-reviser",
+                "delve",
             },
         },
     },
@@ -82,6 +83,17 @@ local plugins = {
         end,
     },
 
+    -- nvim dap go
+    {
+        "leoluz/nvim-dap-go",
+        ft = "go",
+        dependencies = "mfussenegger/nvim-dap",
+        config = function(_, opts)
+            require("dap-go").setup(opts)
+            require("core.utils").load_mappings "dap_go"
+        end,
+    },
+
     -- crates.nvim
     {
         "saecki/crates.nvim",
@@ -104,23 +116,20 @@ local plugins = {
         end,
     },
 
-    -- null-ls depricated
-    -- {
-    --     "jose-elias-alvarez/null-ls.nvim",
-    --     event = "VeryLazy",
-    --     opt = function()
-    --         return require "custom.kellsatnite.configs.null-ls"
-    --     end,
-    -- },
-
     -- none-ls **cant get it to work**
-    -- {
-    --     "nvimtools/none-ls.nvim",
-    --     event = "VeryLazy",
-    --     opt = function()
-    --         return require "custom.kellsatnite.configs.none-ls"
-    --     end,
-    -- },
+    {
+        "nvimtools/none-ls.nvim",
+        -- event = "VeryLazy",
+        ft = { "go", "lua" },
+        requires = {
+            "neovim/nvim-lspconfig",
+            "nvim-lua/plenary.nvim",
+        },
+        config = function(_, _)
+            local opt = require "custom.kellsatnite.configs.null-ls"
+            require("null-ls").setup(opt)
+        end,
+    },
 
     -- dap-ui
     {

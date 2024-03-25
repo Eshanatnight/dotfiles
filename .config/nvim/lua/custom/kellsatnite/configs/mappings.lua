@@ -22,6 +22,24 @@ M.dap = {
     },
 }
 
+M.dap_go = {
+    plugin = true,
+    n = {
+        ["<leader>dgt"] = {
+            function()
+                require("dap-go").debug_test()
+            end,
+            "Debug Go Test",
+        },
+        ["<leader>dgl"] = {
+            function()
+                require("dap-go").debug_last()
+            end,
+            "Debug Last Test",
+        },
+    },
+}
+
 M.crates = {
     n = {
         ["<leader>rcu"] = {
