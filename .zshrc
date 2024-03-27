@@ -1,16 +1,10 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
-# Custom Aliases
-alias cls="clear"
-alias vim="nvim"
-alias gcr="git clone --recursive"
-alias spt="spt.py"
-alias cs="cs.py"
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -83,7 +77,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(zsh-syntax-highlighting zsh-autosuggestions git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -92,7 +86,7 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-export LANG=en_US.UTF-8
+# export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
@@ -113,10 +107,10 @@ export LANG=en_US.UTF-8
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+source  ~/ .oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-# eval "$(starship init zsh)"
-
 
 # pnpm
 export PNPM_HOME="/home/kellsatnite/.local/share/pnpm"
@@ -127,8 +121,8 @@ esac
 # pnpm end
 
 export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
-export PATH="$PATH:/home/kellsatnite/tools/vcpkg"
-export PATH="$PATH:/home/kellsatnite/tools/scripts"
+
+export PATH="$PATH:/home/kellsatnite/tools"
 
 # Wasmer
 export WASMER_DIR="/home/kellsatnite/.wasmer"
@@ -153,7 +147,37 @@ export P_S3_REGION=us-east-1
 export P_RECORDS_PER_REQUEST=102400
 export P_PARQUET_COMPRESSION_ALGO="gzip"
 
+# zoxide
+eval "$(zoxide init --cmd cd zsh)"
+
+# fzf
+eval "$(fzf --zsh)"
+
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
 --color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
 --color=marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796"
+
+# util functions
+function take {
+    mkdir -p $1
+    cd $1
+}
+
+# shorthand to jump into a directory
+function z () {
+    cd "$(find ~ -maxdepth 2 -type d | fzf)"
+}
+
+alias cls=clear
+alias spt=/home/kellsatnite/tools/spt.py
+## nvim -> vim keymapping
+alias vim="nvim"
+## source the zshrc
+alias s="source ~/.zshrc"
+## list all files in the current directory
+alias ls="eza --icons --group-directories-first"
+## list all files in the current directory
+alias la="eza --icons --group-directories-first -al"
+
+alias c="find ~ -type d -maxdepth 2 | fzf | xargs -o code"
