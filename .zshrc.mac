@@ -20,8 +20,8 @@ alias j="pbpaste | jq . | pbcopy"
 ## clip -> pbcopy
 alias clip="pbcopy"
 
-alias zed="find ~ -type d -maxdepth 2 | fzf | xargs -o zed"
-alias code="find ~ -type d -maxdepth 2 | fzf | xargs -o code"
+alias x="find ~ -type d -maxdepth 2 | fzf | xargs -o zed"
+alias c="find ~ -type d -maxdepth 2 | fzf | xargs -o code"
 
 # alias for python scripts
 alias spt=spt.py
