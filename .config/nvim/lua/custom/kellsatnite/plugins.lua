@@ -119,7 +119,7 @@ local plugins = {
     -- none-ls **cant get it to work**
     {
         "nvimtools/none-ls.nvim",
-        -- event = "VeryLazy",
+        event = "VeryLazy",
         ft = { "go", "lua" },
         requires = {
             "neovim/nvim-lspconfig",
