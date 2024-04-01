@@ -19,4 +19,4 @@ fresh-setup
 
 wallpapers
 .p10k.zsh
-.zshrc
+run_stow.sh
