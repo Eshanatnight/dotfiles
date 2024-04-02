@@ -133,9 +133,23 @@ local plugins = {
 
     -- dap-ui
     {
+        -- check
+        -- ".local/share/nvim/lazy/mason-nvim-dap.nvim/lua/mason-nvim-dap/mappings/configurations.lua"
+        --M.codelldb = {
+        -- 	{
+        -- 	...
+        -- 		args = function()
+        -- 			return vim.split(vim.fn.input('Arguments: ', '', 'file'), ' ', {})
+        -- 		end,
+        -- 	},
+        -- }
+
         "rcarriga/nvim-dap-ui",
         event = "VeryLazy",
-        dependencies = "mfussenegger/nvim-dap",
+        dependencies = {
+            "mfussenegger/nvim-dap",
+            "nvim-neotest/nvim-nio",
+        },
         config = function()
             local dap = require "dap"
             local dapui = require "dapui"
