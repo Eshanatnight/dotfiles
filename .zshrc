@@ -180,7 +180,7 @@ alias ls="eza --icons --group-directories-first"
 ## list all files in the current directory
 alias la="eza --icons --group-directories-first -al"
 
-alias c="find ~ -type d -maxdepth 2 | fzf | xargs -o code"
+alias co="find ~ -type d -maxdepth 2 | fzf | xargs -o code"
 alias v="find ~ -type d -maxdepth 2 | fzf | xargs -o nvim"
 
 function ex () {
