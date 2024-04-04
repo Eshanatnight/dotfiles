@@ -8,6 +8,7 @@ local opts = {
         null_ls.builtins.formatting.golines,
         null_ls.builtins.formatting.stylua,
         -- null_ls.builtins.formatting.clang_format,
+        null_ls.builtins.formatting.prettier,
     },
     on_attach = function(client, bufnr)
         if client.supports_method "textDocument/formatting" then

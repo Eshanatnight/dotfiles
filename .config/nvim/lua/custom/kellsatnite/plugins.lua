@@ -1,3 +1,5 @@
+local utils = require "custom.kellsatnite.utils"
+
 -- @type ChadrcPlugins
 local plugins = {
     -- get mason
@@ -8,33 +10,9 @@ local plugins = {
         },
         -- options
         opts = {
-            ensure_installed = {
-                "rust-analyzer",
-                "clangd",
-                "cmakelint",
-                "clang-format",
-                -- "clang-tidy",
-                "codelldb",
-                "lua-ls",
-                "black",
-                "pyright",
-                "checkmate",
-                "cmake-language-server",
-                "isort",
-                "markdownlint",
-                "mypy",
-                "prettier",
-                "pylint",
-                "stylua",
-                "bash-language-server",
-                "lua-language-server",
-                "protolint",
-                "gopls",
-                "gofumpt",
-                "golines",
-                "goimports-reviser",
-                "delve",
-            },
+            ensure_installed = function()
+                return require "kellsatnite.configs.mason-list"
+            end,
         },
     },
 
@@ -116,11 +94,11 @@ local plugins = {
         end,
     },
 
-    -- none-ls **cant get it to work**
+    -- none-ls
     {
         "nvimtools/none-ls.nvim",
         event = "VeryLazy",
-        ft = { "go", "lua" },
+        ft = { "go", "lua", "json" },
         requires = {
             "neovim/nvim-lspconfig",
             "nvim-lua/plenary.nvim",
