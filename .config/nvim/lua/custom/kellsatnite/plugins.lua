@@ -1,5 +1,3 @@
-local utils = require "custom.kellsatnite.utils"
-
 -- @type ChadrcPlugins
 local plugins = {
     -- get mason
@@ -171,6 +169,22 @@ local plugins = {
             require("copilot").setup(opts)
         end,
     },
+
+
+    {
+        "sourcegraph/sg.nvim",
+        dependencies = { "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope.nvim"
+        },
+
+         -- If you have a recent version of lazy.nvim, you don't need to add this!
+          build = "nvim -l build/init.lua",
+
+        config = function ()
+            require("sg").setup()
+        end
+        },
+
 
     -- pretty fold
     {
