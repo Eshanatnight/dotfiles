@@ -52,7 +52,7 @@
                 "cursorShape": "bar",
                 "font":
                 {
-                    "face": "FiraCode Nerd Font"
+                    "face": "JetBrainsMono Nerd Font"
                 },
                 "guid": "{9229aaa9-9299-4116-a593-7039bf1eb687}",
                 "hidden": false,
@@ -67,7 +67,7 @@
                 "cursorShape": "bar",
                 "font":
                 {
-                    "face": "FiraCode Nerd Font"
+                    "face": "JetBrainsMono Nerd Font"
                 },
                 "guid": "{e5a83caa-4c73-52b3-ae6b-bc438d721ef9}",
                 "hidden": false,
@@ -75,6 +75,18 @@
                 "opacity": 95,
                 "source": "CanonicalGroupLimited.Ubuntu22.04LTS_79rhkp1fndgsc",
                 "useAcrylic": true
+            },
+            {
+                "guid": "{0136f1ac-d177-5f1e-ba86-003d7b44e2d9}",
+                "hidden": false,
+                "name": "Developer Command Prompt for VS 2022 [Preview]",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{4aa3da4c-2ec1-531a-ad19-6372c22b5d10}",
+                "hidden": false,
+                "name": "Developer PowerShell for VS 2022 [Preview]",
+                "source": "Windows.Terminal.VisualStudio"
             }
         ]
     },
