@@ -68,6 +68,14 @@ M.general = {
             "0",
             "Move to start of line",
         },
+        ["<leader>cd"] = {
+            "<cmd> :lua vim.diagnostic.show_float() <CR>",
+            "Open Floating Diagnostics Popup",
+        },
+        ["<leader>cq"] = {
+            "<cmd> :lua vim.diagnostic.setloclist() <CR>",
+            "Open Diagnostics Popup",
+        },
     },
 
     v = {
