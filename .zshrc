@@ -206,3 +206,8 @@ function ex () {
         echo "'$1' is not a valid file"
 	fi
 }
+
+
+alias q=". /home/kellsatnite/dev/work/env.bash 1"
+alias i1=". /home/kellsatnite/dev/work/env.bash 2"
+alias i2=". /home/kellsatnite/dev/work/env.bash 3"
