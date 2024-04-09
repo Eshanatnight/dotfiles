@@ -40,6 +40,23 @@ lspconfig.pyright.setup {
     filetypes = { "python" },
 }
 
+lspconfig.taplo.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = { "toml" },
+}
+
+lspconfig.cmake.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = { "cmake" },
+    init_options = {
+        buildDirectory = "build",
+    },
+    root_dir = util.root_pattern("CMakePresets.json", "CTestConfig.cmake", ".git", "build", "cmake"),
+    single_file_support = true,
+}
+
 lspconfig.gopls.setup {
     on_attach = on_attach,
     capabilities = capabilities,

@@ -23,6 +23,7 @@ local M = {
     "golines",
     "goimports-reviser",
     "delve",
+    "taplo",
 }
 
 local os = utils.get_os()
