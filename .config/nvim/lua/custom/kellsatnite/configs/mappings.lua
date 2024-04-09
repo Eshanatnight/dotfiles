@@ -69,7 +69,7 @@ M.general = {
             "Move to start of line",
         },
         ["<leader>cd"] = {
-            "<cmd> :lua vim.diagnostic.show_float() <CR>",
+            "<cmd> :lua vim.diagnostic.open_float() <CR>",
             "Open Floating Diagnostics Popup",
         },
         ["<leader>cq"] = {
