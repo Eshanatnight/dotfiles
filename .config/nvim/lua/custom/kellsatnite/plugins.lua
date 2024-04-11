@@ -170,21 +170,31 @@ local plugins = {
         end,
     },
 
+    -- {
+    --     "zbirenbaum/copilot.lua",
+    --     lazy = false,
+    --     opts = function()
+    --         return require "custom.kellsatnite.configs.copilot"
+    --     end,
+    --     config = function(_, opts)
+    --         require("copilot").setup(opts)
+    --     end,
+    -- },
 
     {
         "sourcegraph/sg.nvim",
-        dependencies = { "nvim-lua/plenary.nvim",
-            "nvim-telescope/telescope.nvim"
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope.nvim",
         },
+        lazy = false,
+        -- If you have a recent version of lazy.nvim, you don't need to add this!
+        build = "nvim -l build/init.lua",
 
-         -- If you have a recent version of lazy.nvim, you don't need to add this!
-          build = "nvim -l build/init.lua",
-
-        config = function ()
+        config = function()
             require("sg").setup()
-        end
-        },
-
+        end,
+    },
 
     -- pretty fold
     {
