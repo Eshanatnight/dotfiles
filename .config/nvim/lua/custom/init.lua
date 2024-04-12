@@ -1,6 +1,6 @@
 vim.wo.number = true
 vim.wo.relativenumber = true
-vim.wo.colorcolumn = "80"
+vim.wo.colorcolumn = "100"
 
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
