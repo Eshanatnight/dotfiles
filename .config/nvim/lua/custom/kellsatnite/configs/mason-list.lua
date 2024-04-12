@@ -7,7 +7,6 @@ local M = {
     "clang-format",
     "codelldb",
     "black",
-    "pyright",
     "checkmate",
     "cmake-language-server",
     "isort",
