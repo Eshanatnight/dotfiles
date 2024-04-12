@@ -159,16 +159,16 @@ local plugins = {
     },
 
     -- copilot ? may switch
-    {
-        "zbirenbaum/copilot.lua",
-        lazy = false,
-        opts = function()
-            return require "custom.kellsatnite.configs.copilot"
-        end,
-        config = function(_, opts)
-            require("copilot").setup(opts)
-        end,
-    },
+    -- {
+    --     "zbirenbaum/copilot.lua",
+    --     lazy = false,
+    --     opts = function()
+    --         return require "custom.kellsatnite.configs.copilot"
+    --     end,
+    --     config = function(_, opts)
+    --         require("copilot").setup(opts)
+    --     end,
+    -- },
 
     -- {
     --     "zbirenbaum/copilot.lua",
