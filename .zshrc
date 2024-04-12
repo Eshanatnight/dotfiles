@@ -207,6 +207,8 @@ function ex () {
 	fi
 }
 
+## luajit shorthand
+alias lua=luajit
 
 alias q=". /home/kellsatnite/dev/work/env.bash 1"
 alias i1=". /home/kellsatnite/dev/work/env.bash 2"
