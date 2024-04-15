@@ -77,3 +77,8 @@ lspconfig.gopls.setup {
         },
     },
 }
+
+lspconfig.powershell_es.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
