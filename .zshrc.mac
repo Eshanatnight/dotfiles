@@ -24,6 +24,11 @@ alias x="find ~ -type d -maxdepth 2 | fzf | xargs -o zed"
 alias c="find ~ -type d -maxdepth 2 | fzf | xargs -o code"
 alias v="find ~ -type d -maxdepth 2 | fzf | xargs -o nvim"
 
+# use bat for help output
+alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
+alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
+# alias for cat to bat
+alias cat=bat
 ## alias for python scripts
 ## internet speedtest
 alias spt=spt.py
@@ -40,11 +45,14 @@ export WASMER_DIR="/Users/kellsatnite/.wasmer"
 export PATH=/Users/kellsatnite/tools/scripts:$PATH
 export PATH=/Users/kellsatnite/tools/vcpkg:$PATH
 
-
 # Functions
 ## shorthand to jump into a directory
 function z () {
     cd "$(find ~ -type d -maxdepth 2 | fzf)"
+}
+
+function bd() {
+    git diff --name-only --relative --diff-filter=d | xargs bat --diff
 }
 
 ## shorthand to create a directory and jump into it
@@ -75,6 +83,7 @@ function ex () {
     else
         echo "'$1' is not a valid file"
 	fi
+
 }
 
 # starship prompt
@@ -120,3 +129,4 @@ export FZF_DEFAULT_OPTS=" \
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
