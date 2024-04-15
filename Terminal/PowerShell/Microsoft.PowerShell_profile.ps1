@@ -1,8 +1,7 @@
 using namespace System.Management.Automation
 using namespace System.Management.Automation.Language
 
-if ($host.Name -eq 'ConsoleHost')
-{
+if ($host.Name -eq 'ConsoleHost') {
     Import-Module PSReadLine
 }
 
@@ -160,15 +159,19 @@ Set-PSReadLineOption -PredictionSource History
 Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadLineOption -EditMode Windows
 
-
-
 # Source the profile
 function s {
     . ${PROFILE}
 }
 
+# reload $PATH for current env
 function rfenv {
     $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+}
+
+# Update all installed packages
+function update {
+    sudo winget upgrade --include-unknown;
 }
 
 
