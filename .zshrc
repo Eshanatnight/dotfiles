@@ -107,7 +107,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-source  ~/ .oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
+source  ~/.oh-my-zsh/custom/themes/powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -120,8 +120,9 @@ case ":$PATH:" in
 esac
 # pnpm end
 
+# linuxbrew
 export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
-
+# custom tools
 export PATH="$PATH:/home/kellsatnite/tools"
 
 # Wasmer
@@ -147,6 +148,11 @@ export P_S3_REGION=us-east-1
 export P_RECORDS_PER_REQUEST=102400
 export P_PARQUET_COMPRESSION_ALGO="gzip"
 
+# Parseable Dev Env
+alias q=". /home/kellsatnite/dev/work/env.bash 1"
+alias i1=". /home/kellsatnite/dev/work/env.bash 2"
+alias i2=". /home/kellsatnite/dev/work/env.bash 3"
+
 # zoxide
 eval "$(zoxide init --cmd cd zsh)"
 
@@ -169,9 +175,13 @@ function z () {
     cd "$(find ~ -maxdepth 2 -type d | fzf)"
 }
 
+# custom aliases
 alias cls=clear
+## speedtest from cli
 alias spt=/home/kellsatnite/tools/spt.py
-## nvim -> vim keymapping
+## cheat sheet for nvim
+alias cs=/home/kellsatnite/dotfiles/scripts/python/cs.py
+## vim -> nvim
 alias vim="nvim"
 ## source the zshrc
 alias s="source ~/.zshrc"
@@ -179,10 +189,16 @@ alias s="source ~/.zshrc"
 alias ls="eza --icons --group-directories-first"
 ## list all files in the current directory
 alias la="eza --icons --group-directories-first -al"
-
+## open any folder in vscode using fzf
 alias co="find ~ -type d -maxdepth 2 | fzf | xargs -o code"
+## open any folder in nvim using fzf
 alias v="find ~ -type d -maxdepth 2 | fzf | xargs -o nvim"
+## luajit shorthand
+alias lua=luajit
+## clone a reo recursively
+alias gcr="git clone --recursive"
 
+# extract any compressed file
 function ex () {
 
     if [ -f $1 ] ; then
@@ -207,9 +223,11 @@ function ex () {
 	fi
 }
 
-## luajit shorthand
-alias lua=luajit
+# update all packages, even if they are breaking
+function update () {
+    apt update;
+    apt upgrade -y;
+    brew update;
+    brew upgrade;
+}
 
-alias q=". /home/kellsatnite/dev/work/env.bash 1"
-alias i1=". /home/kellsatnite/dev/work/env.bash 2"
-alias i2=". /home/kellsatnite/dev/work/env.bash 3"
