@@ -5,6 +5,7 @@ local capabilities = base.capabilities
 local lspconfig = require "lspconfig"
 local util = require "lspconfig.util"
 
+-- clangd language server
 lspconfig.clangd.setup {
     on_attach = function(client, bufnr)
         client.server_capabilities.signatureHelpProvider = false
@@ -13,6 +14,7 @@ lspconfig.clangd.setup {
     capabilities = capabilities,
 }
 
+-- typescript language server
 lspconfig.tsserver.setup {
     on_attach = on_attach,
     capabilities = capabilities,
@@ -34,18 +36,21 @@ lspconfig.efm.setup {
     },
 }
 
+-- python language server
 lspconfig.pyright.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     filetypes = { "python" },
 }
 
+-- taplo language server(toml)
 lspconfig.taplo.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     filetypes = { "toml" },
 }
 
+-- cmake language server
 lspconfig.cmake.setup {
     on_attach = on_attach,
     capabilities = capabilities,
@@ -57,6 +62,7 @@ lspconfig.cmake.setup {
     single_file_support = true,
 }
 
+-- go language server
 lspconfig.gopls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
@@ -78,7 +84,15 @@ lspconfig.gopls.setup {
     },
 }
 
+-- powershell language server
 lspconfig.powershell_es.setup {
     on_attach = on_attach,
     capabilities = capabilities,
+}
+
+-- bash lsp
+lspconfig.bashls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = { "sh", "bash", "zsh" },
 }
