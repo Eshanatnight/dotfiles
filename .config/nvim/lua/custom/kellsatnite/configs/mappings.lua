@@ -68,6 +68,10 @@ M.general = {
             "0",
             "Move to start of line",
         },
+        ["M-<Left>"] = {
+            "C-o",
+            "Go Back",
+        },
         ["<leader>cd"] = {
             "<cmd> :lua vim.diagnostic.open_float() <CR>",
             "Open Floating Diagnostics Popup",
