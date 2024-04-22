@@ -190,15 +190,15 @@ alias ls="eza --icons --group-directories-first"
 ## list all files in the current directory
 alias la="eza --icons --group-directories-first -al"
 ## open any folder in vscode using fzf
-alias co="find ~ -type d -maxdepth 2 | fzf | xargs -o code"
+alias co="find ~ -maxdepth 2 -type d | fzf | xargs -o code"
 ## open any folder in nvim using fzf
-alias v="find ~ -type d -maxdepth 2 | fzf | xargs -o nvim"
+alias v="find ~ -maxdepth 2 -type d  | fzf | xargs -o nvim"
 ## luajit shorthand
 alias lua=luajit
 ## clone a reo recursively
 alias gcr="git clone --recursive"
-## bat to cat
-alias cat=bat
+## alias for tree
+alias tree="exa --tree --level=3"
 
 # extract any compressed file
 function ex () {
@@ -240,4 +240,14 @@ function bd() {
 # use bat for help output
 # alias -g -- -h='-h 2&>1 | bat --language=help --style=plain'
 # alias -g -- --help='--help 2&>1 | bat --language=help --style=plain'
+
+
+# bun completions
+[ -s "/home/kellsatnite/.bun/_bun" ] && source "/home/kellsatnite/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+
 
