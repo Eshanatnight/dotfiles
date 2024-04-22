@@ -88,6 +88,8 @@ local plugins = {
         opts = function()
             local M = require "plugins.configs.cmp"
             table.insert(M.sources, { name = "crates" })
+            -- add cody to sources
+            table.insert(M.sources, { name = "cody" })
             return M
         end,
     },
