@@ -114,9 +114,12 @@ export P_S3_SECRET_KEY=minioadmin
 export P_S3_REGION=us-east-1
 export P_RECORDS_PER_REQUEST=102400
 export P_PARQUET_COMPRESSION_ALGO="gzip"
+export P_QUERY_MEMORY_LIMIT=2
 
+# for auto completions
 autoload -Uz compinit && compinit
 
+# FZF Colors
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
 --color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
