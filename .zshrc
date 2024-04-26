@@ -261,3 +261,12 @@ function gco() {
   fi
 }
 
+function gs() {
+  echo "running gs func"
+  if [ $# -eq 0 ]
+  then
+  git branch -a | grep 'remotes/origin/' | sed 's#remotes/origin/##' | fzf | xargs git switch
+  else
+    git switch $*
+  fi
+}
