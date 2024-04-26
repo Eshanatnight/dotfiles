@@ -249,5 +249,15 @@ function bd() {
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
-
+function gco() {
+  echo "running gco func"
+  if [ $# -eq 0 ]
+  then
+    # search for a branch w/ fuzzy finder and then check it out
+    git branch | fzf | xargs git checkout
+  else
+    # pass the args to git checkout
+    git checkout $*
+  fi
+}
 
