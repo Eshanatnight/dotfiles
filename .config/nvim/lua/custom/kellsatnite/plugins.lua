@@ -44,16 +44,82 @@ local plugins = {
         end,
     },
 
-    -- rust-tools.nvim
     {
-        "simrat39/rust-tools.nvim",
-        ft = "rust",
+        "mrcjkb/rustaceanvim",
+        version = "^4",
+        ft = { "rust" },
         dependencies = "neovim/nvim-lspconfig",
-        opts = function()
-            return require "custom.kellsatnite.configs.rust-tools"
+        config = function()
+            require "custom.kellsatnite.configs.rustaceanvim"
+
+            local dap = require "dap"
+            local UDap = require "custom.kellsatnite.utils.dap"
+            dap.configurations.rust = {
+                {
+                    type = "codelldb",
+                    request = "launch",
+                    name = "Launch file",
+                    program = function()
+                        return UDap.find_program(dap)
+                    end,
+                    args = UDap.get_args,
+                    cwd = "${workspaceFolder}",
+                    stopOnEntry = false,
+                },
+                --     {
+                --         type = "codelldb",
+                --         request = "launch",
+                --         name = "Launch file (cargo build)",
+                --         preLaunchTask = "cargo build",
+                --         -- ~/.cargo/config.toml: build.target-dir
+                --         program = "~/.target/debug/${workspaceFolderBasename}",
+                --         args = {},
+                --         cwd = "${workspaceFolder}",
+                --         stopOnEntry = false,
+                --     },
+                --     {
+                --         type = "codelldb",
+                --         request = "launch",
+                --         name = "Launch file with arguments",
+                --         program = "~/.target/debug/${workspaceFolderBasename}",
+                --         args = UDap.get_args,
+                --         cwd = "${workspaceFolder}",
+                --         stopOnEntry = false,
+                --     },
+                --     {
+                --         type = "codelldb",
+                --         request = "launch",
+                --         name = "Launch file with arguments (cargo build)",
+                --         preLaunchTask = "cargo build",
+                --         program = "~/.target/debug/${workspaceFolderBasename}",
+                --         args = UDap.get_args,
+                --         cwd = "${workspaceFolder}",
+                --         stopOnEntry = false,
+                --     },
+            }
+            -- a nil path defaults to .vscode/launch.json
+            require("dap.ext.vscode").load_launchjs(nil, { codelldb = { "rust" } })
         end,
+    },
+    {
+        "nvim-neotest/neotest",
+        optional = true,
+        opts = function(_, opts)
+            opts.adapters = opts.adapters or {}
+            vim.list_extend(opts.adapters, {
+                require "rustaceanvim.neotest",
+            })
+        end,
+    },
+    -- crates.nvim
+    {
+        "saecki/crates.nvim",
+        dependencies = "hrsh7th/nvim-cmp",
+        ft = { "rust", "toml" },
         config = function(_, opts)
-            require("rust-tools").setup(opts)
+            local crates = require "crates"
+            crates.setup(opts)
+            crates.show()
         end,
     },
 

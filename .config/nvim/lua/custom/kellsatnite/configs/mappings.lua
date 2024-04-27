@@ -42,6 +42,13 @@ M.dap_go = {
 
 M.crates = {
     n = {
+        ["<leader>cu"] = {
+            function()
+                require("crates").upgrade_crate()
+            end,
+            "Upgrade Crates",
+        },
+
         ["<leader>rcu"] = {
             function()
                 require("crates").upgrade_all_crates()
@@ -123,6 +130,16 @@ M.telescope = {
         ["<leader>fe"] = {
             "<cmd> Telescope lsp_workspace_symbols <CR>",
             "Find Diagnostics",
+        },
+
+        ["<leader>ff"] = {
+            "<cmd> Telescope git_files <CR>",
+            "Find All(Git) Files",
+        },
+
+        ["<leader>fF"] = {
+            "<cmd> Telescope find_files <CR>",
+            "Find Files",
         },
 
         ["<leader>q"] = {
