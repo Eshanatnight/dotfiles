@@ -149,4 +149,16 @@ M.telescope = {
     },
 }
 
+M.nvim_lint = {
+    n = {
+        ["<leader>l"] = {
+            function()
+                local lint = require "lint"
+                lint.try_lint()
+            end,
+            "Try Lint Current File",
+        },
+    },
+}
+
 return M

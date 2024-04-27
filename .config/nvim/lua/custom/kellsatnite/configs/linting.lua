@@ -1,12 +1,20 @@
 local config = function()
     local lint = require "lint"
-
-    lint.linters_by_ft = {
+    local linters = {
         python = { "pylint", "mypy" },
         cmake = { "cmakelint" },
-        cpp = { "clangtidy" },
+        -- cpp = { "clangtidy" },
         markdown = { "markdownlint" },
     }
+
+    local ct = require("custom.kellsatnite.utils").has_clang_tidy()
+    if ct == 1 then
+        linters.cpp = {
+            "clangtidy",
+        }
+    end
+
+    lint.linters_by_ft = linters
 
     local lint_augroup = vim.api.nvim_create_augroup("lint", {
         clear = true,
@@ -20,12 +28,6 @@ local config = function()
         callback = function()
             lint.try_lint()
         end,
-    })
-
-    vim.keymap.set("n", "<leader>l", function()
-        lint.try_lint()
-    end, {
-        desc = "Trigger Linting",
     })
 end
 

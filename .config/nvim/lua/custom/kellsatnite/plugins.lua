@@ -244,6 +244,7 @@ local plugins = {
         lazy = false,
 
         config = function()
+            require("core.utils").load_mappings "nvim_lint"
             require("custom.kellsatnite.configs.linting").config()
         end,
     },
