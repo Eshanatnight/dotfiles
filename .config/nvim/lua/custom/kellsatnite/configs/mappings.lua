@@ -161,4 +161,60 @@ M.nvim_lint = {
     },
 }
 
+M.harpoon = {
+    n = {
+        ["<C-e>"] = {
+            function()
+                local harpoon = require "custom.kellsatnite.configs.harpoon"
+
+                harpoon.toggle_telescope(harpoon.harpoon:list())
+            end,
+            "Open Harpoon Window",
+        },
+        ["<leader>a"] = {
+            function()
+                local harpoon = require "custom.kellsatnite.configs.harpoon"
+
+                harpoon.harpoon:list():add()
+            end,
+            "Add new Harpoon Marker",
+        },
+        ["<leader>d"] = {
+            function()
+                local harpoon = require "custom.kellsatnite.configs.harpoon"
+
+                harpoon.harpoon:list():remove()
+            end,
+            "Remove a Harpoon Marker",
+        },
+
+        ["<leader>c"] = {
+            function()
+                local harpoon = require "custom.kellsatnite.configs.harpoon"
+
+                harpoon.harpoon:list():clear()
+            end,
+            "Remove all Harpoon Markers",
+        },
+
+        ["<C-a>"] = {
+            function()
+                local harpoon = require "custom.kellsatnite.configs.harpoon"
+
+                harpoon.harpoon:list():prev()
+            end,
+            "Toggle the previous Harpoon Markers",
+        },
+
+        ["<C-q>"] = {
+            function()
+                local harpoon = require "custom.kellsatnite.configs.harpoon"
+
+                harpoon.harpoon:list():next()
+            end,
+            "Toggle the next Harpoon Marker",
+        },
+    },
+}
+
 return M
