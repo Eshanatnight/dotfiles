@@ -158,17 +158,6 @@ local plugins = {
 
     -- dap-ui
     {
-        -- check
-        -- ".local/share/nvim/lazy/mason-nvim-dap.nvim/lua/mason-nvim-dap/mappings/configurations.lua"
-        --M.codelldb = {
-        -- 	{
-        -- 	...
-        -- 		args = function()
-        -- 			return vim.split(vim.fn.input('Arguments: ', '', 'file'), ' ', {})
-        -- 		end,
-        -- 	},
-        -- }
-
         "rcarriga/nvim-dap-ui",
         event = "VeryLazy",
         dependencies = {
@@ -199,25 +188,23 @@ local plugins = {
             "williamboman/mason.nvim",
             "mfussenegger/nvim-dap",
         },
-        -- i need to pass the config for nvim dap
-        -- but this is not the right place
-        -- maybe it is in rust-tools
         opts = {
+            -- use default handlers for dap
             handlers = {},
         },
     },
 
     -- copilot ? may switch
-    {
-        "zbirenbaum/copilot.lua",
-        lazy = false,
-        opts = function()
-            return require "custom.kellsatnite.configs.copilot"
-        end,
-        config = function(_, opts)
-            require("copilot").setup(opts)
-        end,
-    },
+    -- {
+    --     "zbirenbaum/copilot.lua",
+    --     lazy = false,
+    --     opts = function()
+    --         return require "custom.kellsatnite.configs.copilot"
+    --     end,
+    --     config = function(_, opts)
+    --         require("copilot").setup(opts)
+    --     end,
+    -- },
 
     {
         "sourcegraph/sg.nvim",
@@ -226,9 +213,6 @@ local plugins = {
             "nvim-telescope/telescope.nvim",
         },
         lazy = false,
-        -- If you have a recent version of lazy.nvim, you don't need to add this!
-        build = "nvim -l build/init.lua",
-
         config = function()
             require("sg").setup()
         end,
@@ -247,8 +231,7 @@ local plugins = {
     {
         "stevearc/conform.nvim",
         lazy = false,
-        -- need to test this out
-        -- event = { "BufReadPre", "BufNewFile" },
+        event = { "BufReadPre", "BufNewFile" },
         config = function()
             require "custom.kellsatnite.configs.formatting"
         end,
