@@ -23,6 +23,18 @@ local plugins = {
         end,
     },
 
+    -- nvim-cmp
+    {
+        "hrsh7th/nvim-cmp",
+        opts = function()
+            local M = require "plugins.configs.cmp"
+            table.insert(M.sources, { name = "crates" })
+            -- add cody to sources
+            table.insert(M.sources, { name = "cody" })
+            return M
+        end,
+    },
+
     -- rust.vim
     {
         "rust-lang/rust.vim",
@@ -31,12 +43,6 @@ local plugins = {
             vim.g.rustfmt_autosave = 1
         end,
     },
-
-    -- rustaceanvim
-    -- {
-    --     "mrcjkb/rustaceanvim",
-    --     ft = "rust",
-    -- },
 
     -- rust-tools.nvim
     {
@@ -69,31 +75,6 @@ local plugins = {
             require("core.utils").load_mappings "dap_go"
         end,
     },
-
-    -- crates.nvim
-    {
-        "saecki/crates.nvim",
-        dependencies = "hrsh7th/nvim-cmp",
-        ft = { "rust", "toml" },
-        config = function(_, opts)
-            local crates = require "crates"
-            crates.setup(opts)
-            crates.show()
-        end,
-    },
-
-    -- nvim-cmp
-    {
-        "hrsh7th/nvim-cmp",
-        opts = function()
-            local M = require "plugins.configs.cmp"
-            table.insert(M.sources, { name = "crates" })
-            -- add cody to sources
-            table.insert(M.sources, { name = "cody" })
-            return M
-        end,
-    },
-
     -- none-ls
     {
         "nvimtools/none-ls.nvim",
@@ -255,20 +236,6 @@ local plugins = {
         end,
     },
 
-    -- vim-visual-multi
-    -- causing an imap overwrite
-    -- {
-    --     "mg979/vim-visual-multi",
-    --     event = "VeryLazy",
-    --     opts = {},
-    --     init = function()
-    --         print "Inside Init of vim-visual-multi"
-    --     end,
-    --     config = function()
-    --         print "Inside config of vim-visual-multi"
-    --   end,
-    -- },
-
     -- todo-comments.nvim
     {
         "folke/todo-comments.nvim",
@@ -293,29 +260,6 @@ local plugins = {
             require "custom.kellsatnite.configs.harpoon"
         end,
     },
-
-    -- trouble
-    -- {
-    --     "folke/trouble.nvim",
-    --     config = function()
-    --         require("trouble").setup({
-    --             icons = false,
-    --         })
-    --
-    --         vim.keymap.set("n", "<leader>tt", function()
-    --             require("trouble").toggle()
-    --         end)
-    --
-    --         vim.keymap.set("n", "[t", function()
-    --             require("trouble").next({skip_groups = true, jump = true});
-    --         end)
-    --
-    --         vim.keymap.set("n", "]t", function()
-    --             require("trouble").previous({skip_groups = true, jump = true});
-    --         end)
-    --
-    --     end
-    -- },
 }
 
 return plugins
