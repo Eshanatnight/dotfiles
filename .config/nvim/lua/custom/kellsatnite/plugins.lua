@@ -66,36 +66,6 @@ local plugins = {
                     cwd = "${workspaceFolder}",
                     stopOnEntry = false,
                 },
-                --     {
-                --         type = "codelldb",
-                --         request = "launch",
-                --         name = "Launch file (cargo build)",
-                --         preLaunchTask = "cargo build",
-                --         -- ~/.cargo/config.toml: build.target-dir
-                --         program = "~/.target/debug/${workspaceFolderBasename}",
-                --         args = {},
-                --         cwd = "${workspaceFolder}",
-                --         stopOnEntry = false,
-                --     },
-                --     {
-                --         type = "codelldb",
-                --         request = "launch",
-                --         name = "Launch file with arguments",
-                --         program = "~/.target/debug/${workspaceFolderBasename}",
-                --         args = UDap.get_args,
-                --         cwd = "${workspaceFolder}",
-                --         stopOnEntry = false,
-                --     },
-                --     {
-                --         type = "codelldb",
-                --         request = "launch",
-                --         name = "Launch file with arguments (cargo build)",
-                --         preLaunchTask = "cargo build",
-                --         program = "~/.target/debug/${workspaceFolderBasename}",
-                --         args = UDap.get_args,
-                --         cwd = "${workspaceFolder}",
-                --         stopOnEntry = false,
-                --     },
             }
             -- a nil path defaults to .vscode/launch.json
             require("dap.ext.vscode").load_launchjs(nil, { codelldb = { "rust" } })
@@ -128,6 +98,7 @@ local plugins = {
         "mfussenegger/nvim-dap",
         config = function(_, _)
             require("core.utils").load_mappings "dap"
+            require("dap.ext.vscode").load_launchjs(nil, { codelldb = { "cpp" } })
         end,
     },
 
