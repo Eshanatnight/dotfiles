@@ -53,7 +53,7 @@ local plugins = {
             require "custom.kellsatnite.configs.rustaceanvim"
 
             local dap = require "dap"
-            local UDap = require "custom.kellsatnite.utils.dap"
+            local UDap = require "custom.kellsatnite.utils"
             dap.configurations.rust = {
                 {
                     type = "codelldb",
