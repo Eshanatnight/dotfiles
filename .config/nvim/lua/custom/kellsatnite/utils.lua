@@ -45,4 +45,9 @@ M.find_program = function(dap)
     return dap.ABORT
 end
 
+-- @return number
+M.has_clang_tidy = function()
+    return vim.fn.executable "clang-tidy"
+end
+
 return M

@@ -1,6 +1,6 @@
 local options = {
     panel = {
-        enabled = true,
+        enabled = false,
         auto_refresh = false, -- if set to true, panel will be refreshed as as you type
         keymap = {
             jump_prev = "[[",
