@@ -27,7 +27,7 @@ local M = {
 
 local os = utils.get_os()
 
-if os == "Linux" then
+if os == "Linux" or os == "Darwin" then
     table.insert(M, "lua-language-server")
 else
     table.insert(M, "lua-ls")

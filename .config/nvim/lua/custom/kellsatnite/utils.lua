@@ -37,8 +37,7 @@ end
 
 M.find_program = function(dap)
     local workspaceFolderBasename = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-    -- ~/.cargo/config.toml: build.target-dir
-    local debug_bin = vim.fn.expand("~/.target/debug/" .. workspaceFolderBasename)
+    local debug_bin = vim.fn.expand("./target/debug/" .. workspaceFolderBasename)
     if vim.fn.executable(debug_bin) == 1 then
         return debug_bin
     end
