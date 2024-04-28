@@ -22,9 +22,9 @@ M.get_os = function()
     return osname or "Windows"
 end
 
-M.get_os()
-
--- https://github.com/leoluz/nvim-dap-go/blob/a5cc8dcad43f0732585d4793deb02a25c4afb766/lua/dap-go.lua#L25
+--- a couroutine to get the arguments for the dap run command.
+--- https://github.com/leoluz/nvim-dap-go/blob/a5cc8dcad43f0732585d4793deb02a25c4afb766/lua/dap-go.lua#L25
+--- @return thread
 function M.get_args()
     return coroutine.create(function(dap_run_co)
         local args = {}
@@ -35,6 +35,10 @@ function M.get_args()
     end)
 end
 
+--- Find the executable for the current workspace. (only for rust)
+---
+--- @param dap any
+--- @return string | {}  (signals an operation should be aborted).
 M.find_program = function(dap)
     local workspaceFolderBasename = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
     local debug_bin = vim.fn.expand("./target/debug/" .. workspaceFolderBasename)
@@ -45,7 +49,10 @@ M.find_program = function(dap)
     return dap.ABORT
 end
 
--- @return number
+
+--- Check if the current system has clang-tidy installed.
+---
+--- @return number
 M.has_clang_tidy = function()
     return vim.fn.executable "clang-tidy"
 end

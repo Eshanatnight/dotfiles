@@ -1,3 +1,4 @@
+---@type barbecue.Config? Table of of configurations to override the default behavior.
 local options = {
     theme = {
         -- this highlight is used to override other highlights
