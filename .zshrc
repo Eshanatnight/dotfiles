@@ -237,18 +237,6 @@ function bd() {
     git diff --name-only --relative --diff-filter=d | xargs bat --diff
 }
 
-# use bat for help output
-# alias -g -- -h='-h 2&>1 | bat --language=help --style=plain'
-# alias -g -- --help='--help 2&>1 | bat --language=help --style=plain'
-
-
-# bun completions
-[ -s "/home/kellsatnite/.bun/_bun" ] && source "/home/kellsatnite/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
 function gco() {
   echo "running gco func"
   if [ $# -eq 0 ]
@@ -270,3 +258,17 @@ function gs() {
     git switch $*
   fi
 }
+
+# use bat for help output
+# alias -g -- -h='-h 2&>1 | bat --language=help --style=plain'
+# alias -g -- --help='--help 2&>1 | bat --language=help --style=plain'
+
+
+# bun completions
+[ -s "/home/kellsatnite/.bun/_bun" ] && source "/home/kellsatnite/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+

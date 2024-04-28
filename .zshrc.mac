@@ -61,8 +61,8 @@ function take {
     cd $1
 }
 
+## shorthand to extract a zip
 function ex () {
-
     if [ -f $1 ] ; then
         case $1 in
             *.tar.bz2) tar xjf $1 ;;
@@ -83,7 +83,34 @@ function ex () {
     else
         echo "'$1' is not a valid file"
 	fi
+}
 
+## use fzf to checkout a git branch
+function gc() {
+  echo "running gco func"
+  if [ $# -eq 0 ]
+  then
+    git branch | fzf | xargs git checkout
+  else
+    # pass the args to git checkout
+    git checkout $*
+  fi
+}
+
+## use fzf to switch to a remote git branch
+function gs() {
+  echo "running gs func"
+  if [ $# -eq 0 ]
+  then
+  git branch -a | grep 'remotes/origin/' | sed 's#remotes/origin/##' | fzf | xargs git switch
+  else
+    git switch $*
+  fi
+}
+
+# bat diff
+function bd() {
+    git diff --name-only --relative --diff-filter=d | xargs bat --diff
 }
 
 # starship prompt
@@ -101,6 +128,8 @@ export RUST_BACKTRACE=1
 export RUST_LOG=debug
 # export CARGO_TARGET_DIR="/home/kellsatnite/.rustlang/target/"
 
+## cmake config
+export CMAKE_EXPORT_COMPILE_COMMANDS=1
 
 # Parseable Config
 export P_STAGING_DIR=~/dev/parseable/staging
@@ -134,28 +163,3 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
-export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
-
-function gco() {
-  echo "running gco func"
-  if [ $# -eq 0 ]
-  then
-    # search for a branch w/ fuzzy finder and then check it out
-    git branch | fzf | xargs git checkout
-  else
-    # pass the args to git checkout
-    git checkout $*
-  fi
-}
-
-function gs() {
-  echo "running gs func"
-  if [ $# -eq 0 ]
-  then
-  git branch -a | grep 'remotes/origin/' | sed 's#remotes/origin/##' | fzf | xargs git switch
-  else
-    git switch $*
-  fi
-}
-
