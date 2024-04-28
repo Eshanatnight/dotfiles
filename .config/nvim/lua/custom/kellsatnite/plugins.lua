@@ -23,6 +23,21 @@ local plugins = {
         end,
     },
 
+    -- none-ls
+    {
+        "nvimtools/none-ls.nvim",
+        event = "VeryLazy",
+        ft = { "go", "lua", "json" },
+        requires = {
+            "neovim/nvim-lspconfig",
+            "nvim-lua/plenary.nvim",
+        },
+        config = function(_, _)
+            local opt = require "custom.kellsatnite.configs.null-ls"
+            require("null-ls").setup(opt)
+        end,
+    },
+
     -- nvim-cmp
     {
         "hrsh7th/nvim-cmp",
@@ -35,6 +50,24 @@ local plugins = {
         end,
     },
 
+    -- inlay hints
+    {
+        "simrat39/inlay-hints.nvim",
+        config = function()
+            require("inlay-hints").setup {
+                hints = {
+                    parameter = {
+                        show = false,
+                    },
+                    type = {
+                        show = true,
+                        highlight = "Comment",
+                    },
+                },
+            }
+        end,
+    },
+
     -- rust.vim
     {
         "rust-lang/rust.vim",
@@ -44,6 +77,7 @@ local plugins = {
         end,
     },
 
+    -- rustaceanvim
     {
         "mrcjkb/rustaceanvim",
         version = "^4",
@@ -71,6 +105,8 @@ local plugins = {
             require("dap.ext.vscode").load_launchjs(nil, { codelldb = { "rust" } })
         end,
     },
+
+    -- neotest
     {
         "nvim-neotest/neotest",
         optional = true,
@@ -81,6 +117,7 @@ local plugins = {
             })
         end,
     },
+
     -- crates.nvim
     {
         "saecki/crates.nvim",
@@ -110,20 +147,6 @@ local plugins = {
         config = function(_, opts)
             require("dap-go").setup(opts)
             require("core.utils").load_mappings "dap_go"
-        end,
-    },
-    -- none-ls
-    {
-        "nvimtools/none-ls.nvim",
-        event = "VeryLazy",
-        ft = { "go", "lua", "json" },
-        requires = {
-            "neovim/nvim-lspconfig",
-            "nvim-lua/plenary.nvim",
-        },
-        config = function(_, _)
-            local opt = require "custom.kellsatnite.configs.null-ls"
-            require("null-ls").setup(opt)
         end,
     },
 
@@ -177,6 +200,7 @@ local plugins = {
     --     end,
     -- },
 
+    -- sourcegraph
     {
         "sourcegraph/sg.nvim",
         dependencies = {
@@ -220,6 +244,7 @@ local plugins = {
         end,
     },
 
+    -- cmake tools
     {
         "Civitasv/cmake-tools.nvim",
         config = function()
@@ -247,7 +272,7 @@ local plugins = {
         lazy = false,
         dependencies = {
             "SmiteshP/nvim-navic",
-            "nvim-tree/nvim-web-devicons", -- optional dependency
+            "nvim-tree/nvim-web-devicons",
         },
         opts = function()
             return require "custom.kellsatnite.configs.bbq"

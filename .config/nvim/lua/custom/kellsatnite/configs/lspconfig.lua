@@ -5,10 +5,13 @@ local capabilities = base.capabilities
 local lspconfig = require "lspconfig"
 local util = require "lspconfig.util"
 
+local inlay_hints = require "inlay-hints"
+
 -- clangd language server
 lspconfig.clangd.setup {
     on_attach = function(client, bufnr)
         client.server_capabilities.signatureHelpProvider = false
+        inlay_hints.on_attach(client, bufnr)
         on_attach(client, bufnr)
     end,
     capabilities = capabilities,
@@ -16,8 +19,35 @@ lspconfig.clangd.setup {
 
 -- typescript language server
 lspconfig.tsserver.setup {
-    on_attach = on_attach,
+    on_attach = function(client, bufnr)
+        inlay_hints.on_attach(client, bufnr)
+        on_attach(client, bufnr)
+    end,
     capabilities = capabilities,
+    settings = {
+        javascript = {
+            inlayHints = {
+                includeInlayEnumMemberValueHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayVariableTypeHints = true,
+            },
+        },
+        typescript = {
+            inlayHints = {
+                includeInlayEnumMemberValueHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayVariableTypeHints = true,
+            },
+        },
+    },
 }
 
 lspconfig.efm.setup {
@@ -64,7 +94,10 @@ lspconfig.cmake.setup {
 
 -- go language server
 lspconfig.gopls.setup {
-    on_attach = on_attach,
+    on_attach = function(client, bufnr)
+        inlay_hints.on_attach(client, bufnr)
+        on_attach(client, bufnr)
+    end,
     capabilities = capabilities,
     cmd = { "gopls" },
     filetypes = { "go", "gomod", "gowork", "gotmpl" },
@@ -79,6 +112,15 @@ lspconfig.gopls.setup {
                 fieldalignment = true,
                 unusedvariables = true,
                 unusedwrite = true,
+            },
+            hints = {
+                assignVariableTypes = true,
+                compositeLiteralFields = true,
+                compositeLiteralTypes = true,
+                constantValues = true,
+                functionTypeParameters = true,
+                parameterNames = true,
+                rangeVariableTypes = true,
             },
         },
     },

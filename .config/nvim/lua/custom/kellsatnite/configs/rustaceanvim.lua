@@ -1,9 +1,14 @@
 local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 
+local inlay_hints = require "inlay-hints"
+
 vim.g.rustaceanvim = {
     server = {
-        on_attach = on_attach,
+        on_attach = function(client, bufnr)
+            inlay_hints.on_attach(client, bufnr)
+            on_attach(client, bufnr)
+        end,
         capabilities = capabilities,
         default_settings = {
             -- rust-analyzer language server configuration
@@ -14,7 +19,4 @@ vim.g.rustaceanvim = {
             },
         },
     },
-
-    -- DAP configuration
-    -- dap = {},
 }
