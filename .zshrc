@@ -133,6 +133,7 @@ export WASMER_DIR="/home/kellsatnite/.wasmer"
 # Rust Config
 export RUST_BACKTRACE=1
 export RUST_LOG=debug
+export CARGO_HOME=/home/kellsatnite/.cargo
 # export CARGO_TARGET_DIR="/home/kellsatnite/.rustlang/target/"
 
 # Parseable Config
