@@ -126,6 +126,7 @@ eval "$(fzf --zsh)"
 # Rust Config
 export RUST_BACKTRACE=1
 export RUST_LOG=debug
+export CARGO_HOME="/Users/kellsatnite/.cargo"
 # export CARGO_TARGET_DIR="/home/kellsatnite/.rustlang/target/"
 
 ## cmake config
