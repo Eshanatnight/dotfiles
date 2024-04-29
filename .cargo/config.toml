@@ -1,0 +1,35 @@
+# .cargo/config.toml
+
+[target.aarch64-apple-darwin]
+linker = "/usr/bin/clang" # path to linker
+rustflags = [
+    "-C", "link-arg=-undefined",
+    "-C", "link-arg=dynamic_lookup",
+    "-Clink-arg=-fuse-ld=/opt/homebrew/opt/llvm/bin/ld64.lld", # mold does not work on macos, LLD is the next best thing
+    "-Zshare-generics=y",
+    "-Zthreads=0",   # let linker decide threads
+    "-Ctarget-cpu=apple-m1"
+]
+
+[target.x86_64-pc-windows-msvc]
+linker = "rust-lld.exe"
+rustflags = ["-Zshare-generics=y"]
+
+[target.x86_64-apple-darwin]
+rustflags = [
+    "-Zshare-generics=y",
+    "-Clink-arg=-fuse-ld=/opt/homebrew/opt/llvm/bin/ld64.lld", # Use LLD Linker
+    "-Zrun-dsymutil=no",
+]
+
+[target.wasm32-unknown-unknown]
+rustflags = ["-C", "target-feature=+atomics,+bulk-memory,+mutable-globals"]
+
+[target.x86_64-unknown-linux-gnu]
+linker = "clang"
+rustflags = [
+    "-C", "link-arg=-fuse-ld=/home/linuxbrew/.linuxbrew/bin/mold",
+    # "-Clink-arg=-fuse-ld=lld", # Use LLD Linker
+    "-Zshare-generics=y",      # (Nightly) Make the current crate share its generic instantiations
+    "-Zthreads=0",             # (Nightly) Use improved multithreading with the recommended amount of threads.
+]
