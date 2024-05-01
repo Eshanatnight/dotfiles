@@ -23,6 +23,12 @@ alias clip="pbcopy"
 alias x="find ~ -type d -maxdepth 2 | fzf | xargs -o zed"
 alias c="find ~ -type d -maxdepth 2 | fzf | xargs -o code"
 alias v="find . -type f -not -path '*/target/*' -not -path '*/helm*/*' -not -path '*/build/*' | fzf | xargs -o nvim"
+## bat diff
+alias bd="git diff --name-only --relative --diff-filter=d | xargs bat --diff"
+## git aliases
+alias pull="git pull"
+alias f="git fetch"
+alias lg="git lg"
 
 
 # use bat for help output
@@ -36,47 +42,40 @@ alias cs=cs.py
 ## luajit shorthand
 alias lua=luajit
 
-# Wasmer
-export WASMER_DIR="/Users/kellsatnite/.wasmer"
-[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
-
-# path to my scripts and tools
+# path to scripts and tools
+export PATH="$BUN_INSTALL/bin:$PATH"
 export PATH=/Users/kellsatnite/tools/scripts:$PATH
 export PATH=/Users/kellsatnite/tools/vcpkg:$PATH
 
 # Functions
 ## shorthand to jump into a directory
 function z () {
-    cd "$(find ~ -type d -maxdepth 2 | fzf)"
-}
-
-function bd() {
-    git diff --name-only --relative --diff-filter=d | xargs bat --diff
+    cd "$(find ~ -type d -maxdepth 2 | fzf)" || exit
 }
 
 ## shorthand to create a directory and jump into it
 function take {
-    mkdir -p $1
-    cd $1
+    mkdir -p "$1"
+    cd "$1" || exit
 }
 
 ## shorthand to extract a zip
 function ex () {
-    if [ -f $1 ] ; then
+    if [ -f "$1" ] ; then
         case $1 in
-            *.tar.bz2) tar xjf $1 ;;
-            *.tar.gz) tar xzf $1 ;;
-            *.bz2) bunzip2 $1 ;;
-            *.rar) unrar x $1 ;;
-            *.gz) gunzip $1 ;;
-            *.tar) tar xf $1 ;;
-            *.tbz2) tar xjf $1 ;;
-            *.tgz) tar xzf $1 ;;
-            *.zip) unzip $1 ;;
-            *.Z) uncompress $1 ;;
-            *.7z) 7z x $1 ;;
-            *.tar.xz) tar -xf $1 ;;
-            *.tar.zst) unzstd $1 ;;
+            *.tar.bz2) tar xjf "$1" ;;
+            *.tar.gz) tar xzf "$1" ;;
+            *.bz2) bunzip2 "$1" ;;
+            *.rar) unrar x "$1" ;;
+            *.gz) gunzip "$1" ;;
+            *.tar) tar xf "$1" ;;
+            *.tbz2) tar xjf "$1" ;;
+            *.tgz) tar xzf "$1" ;;
+            *.zip) unzip "$1" ;;
+            *.Z) uncompress "$1" ;;
+            *.7z) 7z x "$1" ;;
+            *.tar.xz) tar -xf "$1" ;;
+            *.tar.zst) unzstd "$1" ;;
             *) echo "'$1' cannot be extracted via ex()" ;;
         esac
     else
@@ -92,7 +91,7 @@ function gc() {
     git branch | fzf | xargs git checkout
   else
     # pass the args to git checkout
-    git checkout $*
+    git checkout "$*"
   fi
 }
 
@@ -103,13 +102,12 @@ function gs() {
   then
   git branch -a | grep 'remotes/origin/' | sed 's#remotes/origin/##' | fzf | xargs git switch
   else
-    git switch $*
+    git switch "$*"
   fi
 }
 
-# bat diff
-function bd() {
-    git diff --name-only --relative --diff-filter=d | xargs bat --diff
+function get() {
+    git checkout "$1" -- "$2"
 }
 
 # starship prompt
@@ -121,7 +119,6 @@ eval "$(zoxide init --cmd cd zsh)"
 # fzf
 eval "$(fzf --zsh)"
 
-
 # Rust Config
 export RUST_BACKTRACE=1
 export RUST_LOG=debug
@@ -132,7 +129,6 @@ export CARGO_HOME="/Users/kellsatnite/.cargo"
 export CMAKE_EXPORT_COMPILE_COMMANDS=1
 
 # Parseable Config
-export P_STAGING_DIR=~/dev/parseable/staging
 export P_ADDR=0.0.0.0:8000
 export P_USERNAME=admin
 export P_PASSWORD=admin
@@ -158,8 +154,7 @@ export FZF_DEFAULT_OPTS=" \
 # bun completions
 [ -s "/Users/kellsatnite/.bun/_bun" ] && source "/Users/kellsatnite/.bun/_bun"
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+# Wasmer
+export WASMER_DIR="/Users/kellsatnite/.wasmer"
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
 
-export PATH="/opt/homebrew/opt/llvm/bin:$PATH"

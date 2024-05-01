@@ -167,13 +167,13 @@ export FZF_DEFAULT_OPTS=" \
 
 # util functions
 function take {
-    mkdir -p $1
-    cd $1
+    mkdir -p "$1"
+    cd "$1" || exit
 }
 
 # shorthand to jump into a directory
 function z () {
-    cd "$(find ~ -maxdepth 2 -type d | fzf)"
+    cd "$(find ~ -maxdepth 2 -type d | fzf)" || exit
 }
 
 # custom aliases
@@ -200,25 +200,31 @@ alias lua=luajit
 alias gcr="git clone --recursive"
 ## alias for tree
 alias tree="exa --tree --level=3"
+## bat diff
+alias bd="git diff --name-only --relative --diff-filter=d | xargs bat --diff"
+## git aliases
+alias pull="git pull"
+alias f="git fetch"
+alias lg="git lg"
 
 # extract any compressed file
 function ex () {
 
-    if [ -f $1 ] ; then
+    if [ -f "$1" ] ; then
         case $1 in
-            *.tar.bz2) tar xjf $1 ;;
-            *.tar.gz) tar xzf $1 ;;
-            *.bz2) bunzip2 $1 ;;
-            *.rar) unrar x $1 ;;
-            *.gz) gunzip $1 ;;
-            *.tar) tar xf $1 ;;
-            *.tbz2) tar xjf $1 ;;
-            *.tgz) tar xzf $1 ;;
-            *.zip) unzip $1 ;;
-            *.Z) uncompress $1 ;;
-            *.7z) 7z x $1 ;;
-            *.tar.xz) tar -xf $1 ;;
-            *.tar.zst) unzstd $1 ;;
+            *.tar.bz2) tar xjf "$1" ;;
+            *.tar.gz) tar xzf "$1" ;;
+            *.bz2) bunzip2 "$1" ;;
+            *.rar) unrar x "$1" ;;
+            *.gz) gunzip "$1" ;;
+            *.tar) tar xf "$1" ;;
+            *.tbz2) tar xjf "$1" ;;
+            *.tgz) tar xzf "$1" ;;
+            *.zip) unzip "$1" ;;
+            *.Z) uncompress "$1" ;;
+            *.7z) 7z x "$1" ;;
+            *.tar.xz) tar -xf "$1" ;;
+            *.tar.zst) unzstd "$1" ;;
             *) echo "'$1' cannot be extracted via ex()" ;;
         esac
     else
@@ -228,14 +234,10 @@ function ex () {
 
 # update all packages, even if they are breaking
 function update () {
-    apt update;
-    apt upgrade -y;
+    sudo apt update;
+    sudo apt upgrade -y;
     brew update;
     brew upgrade;
-}
-
-function bd() {
-    git diff --name-only --relative --diff-filter=d | xargs bat --diff
 }
 
 function gco() {
@@ -246,7 +248,7 @@ function gco() {
     git branch | fzf | xargs git checkout
   else
     # pass the args to git checkout
-    git checkout $*
+    git checkout "$*"
   fi
 }
 
@@ -256,14 +258,9 @@ function gs() {
   then
   git branch -a | grep 'remotes/origin/' | sed 's#remotes/origin/##' | fzf | xargs git switch
   else
-    git switch $*
+    git switch "$*"
   fi
 }
-
-# use bat for help output
-# alias -g -- -h='-h 2&>1 | bat --language=help --style=plain'
-# alias -g -- --help='--help 2&>1 | bat --language=help --style=plain'
-
 
 # bun completions
 [ -s "/home/kellsatnite/.bun/_bun" ] && source "/home/kellsatnite/.bun/_bun"
@@ -273,5 +270,5 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 function get() {
-    git checkout $1 -- $2
+    git checkout "$1" -- "$2"
 }
