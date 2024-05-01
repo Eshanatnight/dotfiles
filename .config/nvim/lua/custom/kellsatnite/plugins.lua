@@ -94,7 +94,7 @@ local plugins = {
                     request = "launch",
                     name = "Launch file",
                     program = function()
-                        return UDap.find_program(dap)
+                        return UDap.find_rust_program(dap)
                     end,
                     args = UDap.get_args,
                     cwd = "${workspaceFolder}",
@@ -133,8 +133,26 @@ local plugins = {
     -- nvim-dap
     {
         "mfussenegger/nvim-dap",
+        lazy = true,
+        event = { "VeryLazy" },
         config = function(_, _)
             require("core.utils").load_mappings "dap"
+            -- local dap = require "dap"
+            -- local UDap = require "custom.kellsatnite.utils"
+            -- dap.configurations.cpp = {
+            --     {
+            --         type = "codelldb",
+            --         request = "launch",
+            --         name = "Launch file",
+            --         program = function()
+            --             return UDap.find_program(dap)
+            --         end,
+            --         args = UDap.get_args,
+            --         cwd = "${workspaceFolder}",
+            --         stopOnEntry = true,
+            --     },
+            -- }
+            -- dap.configurations.c = dap.configurations.cpp
             require("dap.ext.vscode").load_launchjs(nil, { codelldb = { "cpp" } })
         end,
     },

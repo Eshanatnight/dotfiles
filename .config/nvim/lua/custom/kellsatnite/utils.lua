@@ -35,11 +35,11 @@ function M.get_args()
     end)
 end
 
---- Find the executable for the current workspace. (only for rust)
+--- Find the executable for the current cargo workspace. (only for rust)
 ---
 --- @param dap any
 --- @return string | {}  (signals an operation should be aborted).
-M.find_program = function(dap)
+M.find_rust_program = function(dap)
     local workspaceFolderBasename = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
     local debug_bin = vim.fn.expand("./target/debug/" .. workspaceFolderBasename)
     if vim.fn.executable(debug_bin) == 1 then
@@ -49,6 +49,20 @@ M.find_program = function(dap)
     return dap.ABORT
 end
 
+--- Find the executable for the current workspace. (only for rust)
+---
+--- @param dap any
+--- @return string | {}  (signals an operation should be aborted).
+M.find_program = function(dap)
+    local debug_bin = vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+
+    if vim.fn.executable(debug_bin) == 1 then
+        return debug_bin
+    end
+
+    vim.print("Unable to find executable for '" .. debug_bin .. "'")
+    return dap.ABORT
+end
 
 --- Check if the current system has clang-tidy installed.
 ---
