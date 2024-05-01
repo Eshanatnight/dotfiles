@@ -98,7 +98,7 @@ local plugins = {
                     end,
                     args = UDap.get_args,
                     cwd = "${workspaceFolder}",
-                    stopOnEntry = false,
+                    stopOnEntry = true,
                 },
             }
             -- a nil path defaults to .vscode/launch.json
