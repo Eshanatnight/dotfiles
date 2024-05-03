@@ -193,7 +193,7 @@ alias la="eza --icons --group-directories-first -al"
 ## open any folder in vscode using fzf
 alias co="find ~ -maxdepth 2 -type d | fzf | xargs -o code"
 ## open any folder in nvim using fzf
-alias v="find . -type f -not -path '*/target/*' -not -path '*/helm*/*' -not -path '*/build/*' | fzf | xargs -o nvim"
+alias v="find . -type f -not -path '*/target/*' -not -path '*/helm*/*' -not -path '*/build/*' -not -path '*/\.git/*' -not -path '*/venv/*' | fzf --reverse | xargs -o nvim"
 ## luajit shorthand
 alias lua=luajit
 ## clone a reo recursively

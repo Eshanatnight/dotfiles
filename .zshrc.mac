@@ -22,7 +22,7 @@ alias clip="pbcopy"
 ## fzf to code editors
 alias x="find ~ -type d -maxdepth 2 | fzf | xargs -o zed"
 alias c="find ~ -type d -maxdepth 2 | fzf | xargs -o code"
-alias v="find . -type f -not -path '*/target/*' -not -path '*/helm*/*' -not -path '*/build/*' | fzf | xargs -o nvim"
+alias v="find . -type f -not -path '*/target/*' -not -path '*/helm*/*' -not -path '*/build/*' -not -path '*/\.git/*' -not -path '*/venv/*' | fzf --reverse | xargs -o nvim"
 ## bat diff
 alias bd="git diff --name-only --relative --diff-filter=d | xargs bat --diff"
 ## git aliases
@@ -106,9 +106,6 @@ function gs() {
   fi
 }
 
-function get() {
-    git checkout "$1" -- "$2"
-}
 
 # starship prompt
 eval "$(starship init zsh)"
@@ -118,6 +115,7 @@ eval "$(zoxide init --cmd cd zsh)"
 
 # fzf
 eval "$(fzf --zsh)"
+
 
 # Rust Config
 export RUST_BACKTRACE=1
