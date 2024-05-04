@@ -173,7 +173,7 @@ function take {
 
 # shorthand to jump into a directory
 function z () {
-    cd "$(find ~ -maxdepth 2 -type d | fzf)" || exit
+    cd "$(find ~ -maxdepth 2 -type d | fzf --reverse)" || exit
 }
 
 # custom aliases
@@ -191,7 +191,7 @@ alias ls="eza --icons --group-directories-first"
 ## list all files in the current directory
 alias la="eza --icons --group-directories-first -al"
 ## open any folder in vscode using fzf
-alias co="find ~ -maxdepth 2 -type d | fzf | xargs -o code"
+alias co="find ~ -maxdepth 2 -type d | fzf --reverse | xargs -o code"
 ## open any folder in nvim using fzf
 alias v="find . -type f -not -path '*/target/*' -not -path '*/helm*/*' -not -path '*/build/*' -not -path '*/\.git/*' -not -path '*/venv/*' | fzf --reverse | xargs -o nvim"
 ## luajit shorthand
@@ -245,7 +245,7 @@ function gco() {
   if [ $# -eq 0 ]
   then
     # search for a branch w/ fuzzy finder and then check it out
-    git branch | fzf | xargs git checkout
+    git branch | fzf --reverse | xargs git checkout
   else
     # pass the args to git checkout
     git checkout "$*"
@@ -256,7 +256,7 @@ function gs() {
   echo "running gs func"
   if [ $# -eq 0 ]
   then
-  git branch -a | grep 'remotes/origin/' | sed 's#remotes/origin/##' | fzf | xargs git switch
+  git branch -a | grep 'remotes/origin/' | sed 's#remotes/origin/##' | fzf --reverse | xargs git switch
   else
     git switch "$*"
   fi

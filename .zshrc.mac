@@ -17,11 +17,13 @@ alias gcr="git clone --recursive"
 alias rm=trash
 ## format json from clipboard and copy back to clipboard
 alias j="pbpaste | jq . | pbcopy"
+## alias for tree
+alias tree="exa --tree --level=3"
 ## clip -> pbcopy
 alias clip="pbcopy"
 ## fzf to code editors
-alias x="find ~ -type d -maxdepth 2 | fzf | xargs -o zed"
-alias c="find ~ -type d -maxdepth 2 | fzf | xargs -o code"
+alias x="find ~ -type d -not -path '*/\.Trash/*' -maxdepth 2 | fzf --reverse | xargs -o zed"
+alias c="find ~ -type d -maxdepth 2 | fzf --reverse | xargs -o code"
 alias v="find . -type f -not -path '*/target/*' -not -path '*/helm*/*' -not -path '*/build/*' -not -path '*/\.git/*' -not -path '*/venv/*' | fzf --reverse | xargs -o nvim"
 ## bat diff
 alias bd="git diff --name-only --relative --diff-filter=d | xargs bat --diff"
@@ -50,7 +52,7 @@ export PATH=/Users/kellsatnite/tools/vcpkg:$PATH
 # Functions
 ## shorthand to jump into a directory
 function z () {
-    cd "$(find ~ -type d -maxdepth 2 | fzf)" || exit
+    cd "$(find ~ -type d -maxdepth 2 | fzf --reverse)" || exit
 }
 
 ## shorthand to create a directory and jump into it
@@ -88,7 +90,7 @@ function gc() {
   echo "running gco func"
   if [ $# -eq 0 ]
   then
-    git branch | fzf | xargs git checkout
+    git branch | fzf --reverse | xargs git checkout
   else
     # pass the args to git checkout
     git checkout "$*"
@@ -100,7 +102,7 @@ function gs() {
   echo "running gs func"
   if [ $# -eq 0 ]
   then
-  git branch -a | grep 'remotes/origin/' | sed 's#remotes/origin/##' | fzf | xargs git switch
+  git branch -a | grep 'remotes/origin/' | sed 's#remotes/origin/##' | fzf --reverse | xargs git switch
   else
     git switch "$*"
   fi
