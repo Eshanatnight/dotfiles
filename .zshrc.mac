@@ -128,19 +128,6 @@ export CARGO_HOME="/Users/kellsatnite/.cargo"
 ## cmake config
 export CMAKE_EXPORT_COMPILE_COMMANDS=1
 
-# Parseable Config
-export P_ADDR=0.0.0.0:8000
-export P_USERNAME=admin
-export P_PASSWORD=admin
-export P_S3_URL=http://127.0.0.1:9000
-export P_S3_BUCKET=somebucket
-export P_S3_ACCESS_KEY=minioadmin
-export P_S3_SECRET_KEY=minioadmin
-export P_S3_REGION=us-east-1
-export P_RECORDS_PER_REQUEST=102400
-export P_PARQUET_COMPRESSION_ALGO="gzip"
-export P_QUERY_MEMORY_LIMIT=2
-
 # for auto completions
 autoload -Uz compinit && compinit
 
