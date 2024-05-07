@@ -136,6 +136,8 @@ export RUST_LOG=debug
 export CARGO_HOME=/home/kellsatnite/.cargo
 # export CARGO_TARGET_DIR="/home/kellsatnite/.rustlang/target/"
 
+export CMAKE_EXPORT_COMPILE_COMMANDS=1
+
 # Parseable Config
 export P_STAGING_DIR=~/dev/parseable/staging
 export P_ADDR=0.0.0.0:8000
@@ -240,9 +242,10 @@ function update () {
     brew upgrade;
 }
 
+unalias gc
 unalias gco
 
-function gco() {
+function gc() {
   echo "running gco func"
   if [ $# -eq 0 ]
   then
