@@ -8,10 +8,15 @@ local config = function()
     }
 
     local ct = require("custom.kellsatnite.utils").has_clang_tidy()
+    local compile_commands_path = vim.fn.getcwd() .. "/build/compile_commands.json"
     if ct == 1 then
         linters.cpp = {
             "clangtidy",
         }
+        linters.c = {
+            "clangtidy",
+        }
+        table.insert(lint.linters.clangtidy.args, compile_commands_path)
     end
 
     lint.linters_by_ft = linters
