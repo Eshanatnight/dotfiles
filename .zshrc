@@ -240,6 +240,8 @@ function update () {
     brew upgrade;
 }
 
+unalias gco
+
 function gco() {
   echo "running gco func"
   if [ $# -eq 0 ]
