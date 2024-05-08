@@ -7,7 +7,8 @@ if ($host.Name -eq 'ConsoleHost') {
 
 # Invoke Terminal Icons
 Import-Module -Name Terminal-Icons
-
+# git suggestions
+Import-Module posh-git
 # Invoke Oh My Posh
 C:\Users\acer\AppData\Local\Programs\oh-my-posh\bin\oh-my-posh.exe --init `
         --shell pwsh `
@@ -183,6 +184,7 @@ function export($name, $value) {
 
 Set-Alias -Name make -Value mingw32-make
 Set-Alias -Name la -Value ls
+
 
 $Env:CMAKE_TOOLCHAIN_FILE="C:/Users/acer/tools/vcpkg/scripts/buildsystems/vcpkg.cmake"
 
