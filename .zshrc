@@ -193,15 +193,15 @@ alias ls="eza --icons --group-directories-first"
 ## list all files in the current directory
 alias la="eza --icons --group-directories-first -al"
 ## open any folder in vscode using fzf
-alias co="find ~ -maxdepth 2 -type d | fzf --reverse | xargs -o code"
+alias co="find ~ -maxdepth 2 -type d | fzf --reverse --header='Open A File In VsCode' --header-first | xargs -o code"
 ## open any folder in nvim using fzf
-alias v="find . -type f -not -path '*/target/*' -not -path '*/helm*/*' -not -path '*/build/*' -not -path '*/\.git/*' -not -path '*/venv/*' | fzf --reverse | xargs -o nvim"
+alias v="find . -type f -not -path '*/target/*' -not -path '*/helm*/*' -not -path '*/build/*' -not -path '*/\.git/*' -not -path '*/venv/*' -not -path '*/.mypy*' | fzf --reverse --header='Open A File In NeoVim(Default Current Dir)' --header-first --preview 'bat --color=always --style=numbers --line-range=:500 {}' | xargs -o nvim"
 ## luajit shorthand
 alias lua=luajit
 ## clone a reo recursively
 alias gcr="git clone --recursive"
 ## alias for tree
-alias tree="exa --tree --level=3"
+alias tree="eza --tree --level=3"
 ## bat diff
 alias bd="git diff --name-only --relative --diff-filter=d | xargs bat --diff"
 ## git aliases
@@ -250,7 +250,7 @@ function gc() {
   if [ $# -eq 0 ]
   then
     # search for a branch w/ fuzzy finder and then check it out
-    git branch | fzf --reverse | xargs git checkout
+    git branch | fzf --reverse --header='Checkout a git branch' --header-first | xargs git checkout
   else
     # pass the args to git checkout
     git checkout "$*"
@@ -261,7 +261,7 @@ function gs() {
   echo "running gs func"
   if [ $# -eq 0 ]
   then
-  git branch -a | grep 'remotes/origin/' | sed 's#remotes/origin/##' | fzf --reverse | xargs git switch
+  git branch -a | grep 'remotes/origin/' | sed 's#remotes/origin/##' | fzf --reverse --header='Switch to a remote git branch' --header-first | xargs git switch
   else
     git switch "$*"
   fi

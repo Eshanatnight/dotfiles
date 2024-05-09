@@ -18,13 +18,13 @@ alias rm=trash
 ## format json from clipboard and copy back to clipboard
 alias j="pbpaste | jq . | pbcopy"
 ## alias for tree
-alias tree="exa --tree --level=3"
+alias tree="eza --tree --level=3"
 ## clip -> pbcopy
 alias clip="pbcopy"
 ## fzf to code editors
-alias x="find ~ -type d -not -path '*/\.Trash/*' -maxdepth 2 | fzf --reverse | xargs -o zed"
-alias c="find ~ -type d -maxdepth 2 | fzf --reverse | xargs -o code"
-alias v="find . -type f -not -path '*/target/*' -not -path '*/helm*/*' -not -path '*/build/*' -not -path '*/\.git/*' -not -path '*/venv/*' | fzf --reverse | xargs -o nvim"
+alias x="find ~ -type d -not -path '*/\.Trash/*' -maxdepth 2 | fzf --reverse --header='Open A File In Zed' --header-first | xargs -o zed"
+alias c="find ~ -type d -not -path '*/\.Trash/*' -maxdepth 2  | fzf --reverse --header='Open A File In VsCode' --header-first | xargs -o code"
+alias v="find . -type f -not -path '*/target/*' -not -path '*/helm*/*' -not -path '*/build/*' -not -path '*/\.git/*' -not -path '*/venv/*' -not -path '*/.mypy*' | fzf --reverse --header='Open A File In NeoVim(Default Current Dir)' --header-first --preview 'bat --color=always --style=numbers --line-range=:500 {}' | xargs -o nvim"
 ## bat diff
 alias bd="git diff --name-only --relative --diff-filter=d | xargs bat --diff"
 ## git aliases
@@ -90,7 +90,7 @@ function gc() {
   echo "running gco func"
   if [ $# -eq 0 ]
   then
-    git branch | fzf --reverse | xargs git checkout
+    git branch | fzf --reverse --header='Checkout a git branch' --header-first | xargs git checkout
   else
     # pass the args to git checkout
     git checkout "$*"
@@ -102,7 +102,7 @@ function gs() {
   echo "running gs func"
   if [ $# -eq 0 ]
   then
-  git branch -a | grep 'remotes/origin/' | sed 's#remotes/origin/##' | fzf --reverse | xargs git switch
+  git branch -a | grep 'remotes/origin/' | sed 's#remotes/origin/##' | fzf --reverse --header='Switch to a remote git branch' --header-first | xargs git switch
   else
     git switch "$*"
   fi
