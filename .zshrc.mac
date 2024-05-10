@@ -5,8 +5,6 @@ alias cls=clear
 alias ls="eza --icons --group-directories-first"
 ## list all files in the current directory
 alias la="eza --icons --group-directories-first -al"
-## clear the terminal
-alias cls="clear"
 ## nvim -> vim keymapping
 alias vim="nvim"
 ## source the zshrc
