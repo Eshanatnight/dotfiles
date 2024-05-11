@@ -125,6 +125,9 @@ export CARGO_HOME="/Users/kellsatnite/.cargo"
 
 ## cmake config
 export CMAKE_EXPORT_COMPILE_COMMANDS=1
+export CMAKE_EXE_LINKER_FLAGS="-fuse-ld=/usr/local/bin/ld64.sold"
+CMAKE_SHARED_LINKER_FLAGS="-fuse-ld=/usr/local/bin/ld64.sold"
+
 
 # for auto completions
 autoload -Uz compinit && compinit
