@@ -5,7 +5,7 @@ linker = "/usr/bin/clang" # path to linker
 rustflags = [
     "-C", "link-arg=-undefined",
     "-C", "link-arg=dynamic_lookup",
-    "-Clink-arg=-fuse-ld=/opt/homebrew/opt/llvm/bin/ld64.lld", # mold does not work on macos, LLD is the next best thing
+    "-Clink-arg=-fuse-ld=/usr/local/bin/ld64.sold", 
     "-Zshare-generics=y",
     "-Zthreads=0",   # let linker decide threads
     "-Ctarget-cpu=apple-m1"
@@ -18,8 +18,9 @@ rustflags = ["-Zshare-generics=y"]
 [target.x86_64-apple-darwin]
 rustflags = [
     "-Zshare-generics=y",
-    "-Clink-arg=-fuse-ld=/opt/homebrew/opt/llvm/bin/ld64.lld", # Use LLD Linker
+    "-Clink-arg=-fuse-ld=/usr/local/bin/ld64.sold",
     "-Zrun-dsymutil=no",
+    "-Zthreads=0",   # let linker decide threads
 ]
 
 [target.wasm32-unknown-unknown]
