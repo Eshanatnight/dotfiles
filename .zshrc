@@ -277,3 +277,7 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 function get() {
     git checkout "$1" -- "$2"
 }
+
+# warp on wsl thing
+export WARP_ENABLE_WAYLAND=1 
+export MESA_D3D12_DEFAULT_ADAPTER_NAME=NVIDIA
