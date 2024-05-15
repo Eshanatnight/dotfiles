@@ -95,7 +95,7 @@ function take {
 
 # Update all installed packages
 function update {
-    sudo winget upgrade --include-unknown;
+    sudo winget upgrade --all --include-unknown;
     sudo choco upgrade all -y
 }
 
@@ -186,6 +186,7 @@ function unzip {
 Set-Alias -Name make -Value mingw32-make
 Set-Alias -Name la -Value ls
 Set-Alias -Name df -Value Get-Volume
+Set-Alias -Name wh -Value where.exe
 
 # env vars
 $Env:CMAKE_TOOLCHAIN_FILE = "C:/Users/acer/tools/vcpkg/scripts/buildsystems/vcpkg.cmake"
