@@ -106,6 +106,18 @@ function gs() {
   fi
 }
 
+unalias gd
+
+function gd() {
+    branch=$(git branch | fzf --reverse --header='Checkout a git branch' --header-first --disabled | sed 's/^\* //;s/^  //')
+    header="Are You Sure You want to Delete $branch"
+    response=$(echo "Yes\n No" | fzf --reverse --header="$header" --header-first)
+    if [[ "$response" == "Yes" ]]
+    then
+        git branch -D $branch;
+    fi
+}
+
 
 # starship prompt
 eval "$(starship init zsh)"

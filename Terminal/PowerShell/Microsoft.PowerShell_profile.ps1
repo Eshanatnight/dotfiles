@@ -150,6 +150,16 @@ function gco() {
     }
 }
 
+function gd {
+    $branch=$(git branch | fzf --reverse --header='Checkout a git branch' --header-first --disabled | sed 's/^\* //;s/^  //')
+    $header="Are You Sure You want to Delete $branch"
+    $response=$(echo "Yes\n No" | fzf --reverse --header="$header" --header-first)
+    if($response -eq "Yes") {
+        git branch -D $branch;
+    }
+}
+
+
 # git switch with fzf
 function gs {
     param(
