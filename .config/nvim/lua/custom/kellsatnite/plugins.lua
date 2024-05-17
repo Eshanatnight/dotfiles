@@ -324,6 +324,18 @@ local plugins = {
             require "custom.kellsatnite.configs.harpoon"
         end,
     },
+
+    -- searchbox
+    {
+        "VonHeikemen/searchbox.nvim",
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+        },
+        event = "VeryLazy",
+        config = function()
+            require("core.utils").load_mappings "searchbox"
+        end,
+    },
 }
 
 return plugins

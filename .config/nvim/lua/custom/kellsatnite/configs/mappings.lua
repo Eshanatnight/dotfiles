@@ -217,4 +217,21 @@ M.harpoon = {
     },
 }
 
+M.searchbox = {
+    n = {
+        ["<leader>s"] = {
+            "<cmd>SearchBoxMatchAll clear_matches=false<CR>",
+            "Enter Search Box",
+        },
+        ["<leader>ss"] = {
+            "<cmd>SearchBoxIncSearch<CR>",
+            "Enter Search Box",
+        },
+        ["<leader>r"] = {
+            "<cmd>SearchBoxReplace<CR>",
+            "Enter Replace Search Box",
+        },
+    },
+}
+
 return M
