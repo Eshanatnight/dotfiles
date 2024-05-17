@@ -1,0 +1,139 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run the `open default settings` command
+// from the command palette or from `Zed` application menu.
+{
+    "theme": "Catppuccin Macchiato",
+    // The name of a base set of key bindings to use.
+    // This setting can take four values, each named after another
+    // text editor:
+    //
+    // 1. "VSCode"
+    // 2. "JetBrains"
+    // 3. "SublimeText"
+    // 4. "Atom"
+    "base_keymap": "VSCode",
+    // The name of a font to use for rendering text in the editor
+    "buffer_font_family": "FiraCode Nerd Font",
+    // may change
+    "buffer_font_features": {
+        "liga": true,
+        "calt": true
+    },
+    "buffer_font_size": 16,
+    "buffer_line_height": "comfortable",
+    "ui_font_family": "FiraCode Nerd Font",
+    "ui_font_size": 16,
+    // The factor to grow the active pane by. Defaults to 1.0
+    // which gives the same size as all other panes.
+    "active_pane_magnification": 1.0,
+    // Whether to enable vim modes and key bindings
+    "vim_mode": false,
+    // Whether to show the informational hover box when moving the mouse
+    // over symbols in the editor.
+    "hover_popover_enabled": true,
+    // Whether to confirm before quitting Zed.
+    "confirm_quit": false,
+    // Whether the cursor blinks in the editor.
+    "cursor_blink": true,
+    // Whether to pop the completions menu while typing in an editor without
+    // explicitly requesting it.
+    "show_completions_on_input": true,
+    // Whether to display inline and alongside documentation for items in the
+    // completions menu
+    "show_completion_documentation": true,
+    // The debounce delay before re-querying the language server for completion
+    // documentation when not included in original completion list.
+    // 100 is possibly a bad idea
+    "completion_documentation_secondary_query_debounce": 100,
+    // Whether to show wrap guides in the editor. Setting this to true will
+    // show a guide at the 'preferred_line_length' value if softwrap is set to
+    // 'preferred_line_length', and will show any additional guides as specified
+    // by the 'wrap_guides' setting.
+    "show_wrap_guides": true,
+    "preferred_line_length": 100,
+    // Whether to use additional LSP queries to format (and amend) the code after
+    // every "trigger" symbol input, defined by LSP server capabilities.
+    "use_on_type_format": true,
+    // Whether to automatically type closing characters for you. For example,
+    // when you type (, Zed will automatically add a closing ) at the correct position.
+    "use_autoclose": true,
+    // Controls whether copilot provides suggestion immediately
+    // or waits for a `copilot::Toggle`
+    "show_copilot_suggestions": true,
+    // Whether to show tabs and spaces in the editor.
+    // This setting can take three values:
+    //
+    // 1. Draw tabs and spaces only for the selected text (default):
+    //    "selection"
+    // 2. Do not draw any tabs or spaces:
+    //   "none"
+    // 3. Draw all invisible symbols:
+    //   "all"
+    "show_whitespaces": "selection",
+    // When to populate a new search's query based on the text under the cursor.
+    // This setting can take the following three values:
+    //
+    // 1. Always populate the search query with the word under the cursor (default).
+    //    "always"
+    // 2. Only populate the search query when there is text selected
+    //    "selection"
+    // 3. Never populate the search query
+    //    "never"
+    "seed_search_query_from_cursor": "always",
+    // Inlay hint related settings
+    "inlay_hints": {
+        // Global switch to toggle hints on and off, switched off by default.
+        "enabled": true,
+        // Toggle certain types of hints on and off, all switched on by default.
+        "show_type_hints": true,
+        "show_parameter_hints": true,
+        // Corresponds to null/None LSP hint type value.
+        "show_other_hints": true
+    },
+    // Whether to use language servers to provide code intelligence.
+    "enable_language_server": true,
+    // When to automatically save edited buffers. This setting can
+    // take four values.
+    //
+    // 1. Never automatically save:
+    //     "autosave": "off",
+    // 2. Save when changing focus away from the Zed window:
+    //     "autosave": "on_window_change",
+    // 3. Save when changing focus away from a specific buffer:
+    //     "autosave": "on_focus_change",
+    // 4. Save when idle for a certain amount of time:
+    //     "autosave": { "after_delay": {"milliseconds": 500} },
+    "autosave": "off",
+    // "autosave": {
+    //     "after_delay": {
+    //         "milliseconds": 999
+    //     }
+    // },
+    // Whether or not to remove any trailing whitespace from lines of a buffer
+    // before saving it.
+    "remove_trailing_whitespace_on_save": true,
+    // Whether to start a new line with a comment when a previous line is a comment as well.
+    "extend_comment_on_newline": true,
+    // Whether or not to perform a buffer format before saving
+    "format_on_save": "on",
+    // Whether to indent lines using tab characters, as opposed to multiple
+    // spaces.
+    "hard_tabs": true,
+    // How many columns a tab should occupy.
+    "tab_size": 4,
+    // Settings specific to journaling
+    "journal": {
+        // The path of the directory where journal entries are stored
+        "path": "~",
+        // What format to display the hours in
+        // May take 2 values:
+        // 1. hour12
+        // 2. hour24
+        "hour_format": "hour12"
+    }
+}
