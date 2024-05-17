@@ -25,4 +25,5 @@ setup.ps1
 
 .config/btop/btop.*
 
-Brewfile
+Brewfile.linux
+Brewfile.macos
