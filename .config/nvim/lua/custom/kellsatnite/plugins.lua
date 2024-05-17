@@ -234,7 +234,7 @@ local plugins = {
     -- pretty fold
     {
         "anuvyklack/pretty-fold.nvim",
-        lazy = false,
+        event = "VeryLazy",
         config = function()
             require("pretty-fold").setup()
         end,
@@ -243,7 +243,7 @@ local plugins = {
     -- conform.nvim
     {
         "stevearc/conform.nvim",
-        lazy = false,
+        lazy = true,
         event = { "BufReadPre", "BufNewFile" },
         config = function()
             require "custom.kellsatnite.configs.formatting"
@@ -274,7 +274,7 @@ local plugins = {
     -- cloak.nvim
     {
         "laytan/cloak.nvim",
-        lazy = false,
+        lazy = true,
         opts = function()
             return require "custom.kellsatnite.configs.kcloak"
         end,
@@ -304,7 +304,7 @@ local plugins = {
     {
         "folke/todo-comments.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
-        lazy = false,
+        lazy = true,
         opts = function()
             return require "custom.kellsatnite.configs.redditcomments"
         end,
@@ -319,7 +319,7 @@ local plugins = {
         branch = "harpoon2",
         dependencies = { "nvim-lua/plenary.nvim" },
 
-        lazy = false,
+        lazy = true,
         config = function()
             require "custom.kellsatnite.configs.harpoon"
         end,
