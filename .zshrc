@@ -133,7 +133,7 @@ function take {
 
 # shorthand to jump into a directory
 function z () {
-    cd "$(find ~ -maxdepth 2 -type d | fzf --reverse)" || exit
+    cd "$(find ~ -maxdepth 2 -type d | fzf --reverse --cycle)" || exit
 }
 
 # custom aliases
@@ -151,9 +151,9 @@ alias ls="eza --icons --group-directories-first"
 ## list all files in the current directory
 alias la="eza --icons --group-directories-first -al"
 ## open any folder in vscode using fzf
-alias co="find ~ -maxdepth 2 -type d | fzf --reverse --header='Open A File In VsCode' --header-first | xargs -o code"
+alias co="find ~ -maxdepth 2 -type d | fzf --reverse --header='Open A File In VsCode' --header-first --cycle | xargs -o code"
 ## open any folder in nvim using fzf
-alias v="find . -type f -not -path '*/target/*' -not -path '*/helm*/*' -not -path '*/build/*' -not -path '*/\.git/*' -not -path '*/venv/*' -not -path '*/.mypy*' | fzf --reverse --header='Open A File In NeoVim(Default Current Dir)' --header-first --preview 'bat --color=always --style=numbers --line-range=:500 {}' | xargs -o nvim"
+alias v="find . -type f -not -path '*/target/*' -not -path '*/helm*/*' -not -path '*/build/*' -not -path '*/\.git/*' -not -path '*/venv/*' -not -path '*/.mypy*' | fzf --reverse --header='Open A File In NeoVim(Default Current Dir)' --header-first --cycle --preview 'bat --color=always --style=numbers --line-range=:500 {}' | xargs -o nvim"
 ## luajit shorthand
 alias lua=luajit
 ## clone a reo recursively
@@ -208,7 +208,7 @@ function gc() {
   if [ $# -eq 0 ]
   then
     # search for a branch w/ fuzzy finder and then check it out
-    git branch | fzf --reverse --header='Checkout a git branch' --header-first | xargs git checkout
+    git branch | fzf --reverse --header='Checkout a git branch' --header-first --cycle | xargs git checkout
   else
     # pass the args to git checkout
     git checkout "$*"
@@ -219,7 +219,7 @@ function gs() {
   echo "running gs func"
   if [ $# -eq 0 ]
   then
-  git branch -a | grep 'remotes/origin/' | sed 's#remotes/origin/##' | fzf --reverse --header='Switch to a remote git branch' --header-first | xargs git switch
+  git branch -a | grep 'remotes/origin/' | sed 's#remotes/origin/##' | fzf --reverse --header='Switch to a remote git branch' --header-first --cycle | xargs git switch
   else
     git switch "$*"
   fi
@@ -228,9 +228,9 @@ function gs() {
 unalias gd
 
 function gd() {
-    branch=$(git branch | fzf --reverse --header='Checkout a git branch' --header-first --disabled | sed 's/^\* //;s/^  //')
+    branch=$(git branch | fzf --reverse --header='Checkout a git branch' --header-first --disabled --cycle | sed 's/^\* //;s/^  //')
     header="Are You Sure You want to Delete $branch"
-    response=$(echo "Yes\n No" | fzf --reverse --header="$header" --header-first)
+    response=$(echo "Yes\n No" | fzf --reverse --header="$header" --header-first --cycle)
     if [[ "$response" == "Yes" ]]
     then
         git branch -D $branch;
@@ -250,6 +250,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 
 # warp on wsl thing
-export WARP_ENABLE_WAYLAND=1 
+export WARP_ENABLE_WAYLAND=1
 export MESA_D3D12_DEFAULT_ADAPTER_NAME=NVIDIA
 

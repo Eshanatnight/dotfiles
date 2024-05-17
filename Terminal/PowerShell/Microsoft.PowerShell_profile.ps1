@@ -75,6 +75,7 @@ Set-PSReadLineOption -EditMode Windows
 # Source the profile
 function s {
     & ${PROFILE}
+    . ${PROFILE}
 }
 
 # reload $PATH for current env
@@ -125,7 +126,7 @@ function pull {
 
 # git fetch
 function f {
-    git fetch
+    git fetch --prune
 }
 
 # git log with graph
@@ -146,14 +147,22 @@ function gco() {
     }
     else {
         # search for a branch w/ fuzzy finder and then check it out
-        git branch | fzf --reverse --header='Checkout a git branch' --header-first | xargs git checkout
+        git branch | fzf --reverse --header='Checkout a git branch' --header-first --cycle | xargs git checkout
     }
 }
 
+# git branch delete with fzf
 function gd {
-    $branch=$(git branch | fzf --reverse --header='Checkout a git branch' --header-first --disabled | sed 's/^\* //;s/^  //')
+    $branch=$(git branch | fzf --reverse --header='Checkout a git branch' --header-first --cycle | sed 's/^\* //;s/^  //')
+    if (-not $?) {
+        return
+    }
+
     $header="Are You Sure You want to Delete $branch"
-    $response=$(echo "Yes\n No" | fzf --reverse --header="$header" --header-first)
+    $response=$(Write-Output "Yes`nNo" | fzf --reverse --header="$header" --header-first --cycle)
+    if (-not $?) {
+        return
+    }
     if($response -eq "Yes") {
         git branch -D $branch;
     }
@@ -170,7 +179,7 @@ function gs {
         git switch $branch
     }
     else {
-        git branch -a | grep 'remotes/origin/' | sed 's#remotes/origin/##' | fzf --reverse --header='Switch to a remote git branch' --header-first | xargs git switch
+        git branch -a | grep 'remotes/origin/' | sed 's#remotes/origin/##' | fzf --reverse --header='Switch to a remote git branch' --header-first --cycle | xargs git switch
     }
 }
 
@@ -191,6 +200,18 @@ function unzip {
     Write-Output("Extracting", $file, "to", $pwd)
     $fullFile = Get-ChildItem -Path $pwd -Filter $file | ForEach-Object { $_.FullName }
     Expand-Archive -Path $fullFile -DestinationPath $pwd
+}
+
+# util function to make symlinks
+function mklink {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$link,
+        [Parameter(Mandatory = $true)]
+        [string]$target
+    )
+
+    New-Item -Path $link -ItemType SymbolicLink -Value $target
 }
 
 Set-Alias -Name make -Value mingw32-make
