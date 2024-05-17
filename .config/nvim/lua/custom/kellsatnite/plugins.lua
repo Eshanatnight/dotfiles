@@ -53,6 +53,7 @@ local plugins = {
     -- inlay hints
     {
         "simrat39/inlay-hints.nvim",
+        lazy = false,
         config = function()
             require("inlay-hints").setup {
                 hints = {
@@ -331,7 +332,7 @@ local plugins = {
         dependencies = {
             "MunifTanjim/nui.nvim",
         },
-        event = "VeryLazy",
+        lazy = true,
         config = function()
             require("core.utils").load_mappings "searchbox"
         end,

@@ -137,7 +137,7 @@ M.telescope = {
             "Find All(Git) Files",
         },
 
-        ["<leader>fF"] = {
+        ["<leader>fg"] = {
             "<cmd> Telescope find_files <CR>",
             "Find Files",
         },
@@ -222,6 +222,10 @@ M.searchbox = {
         ["<leader>s"] = {
             "<cmd>SearchBoxMatchAll clear_matches=false<CR>",
             "Enter Search Box",
+        },
+        ["<leader>c"] = {
+            "<cmd>SearchBoxClear<CR>",
+            "Clear Search Matches",
         },
         ["<leader>ss"] = {
             "<cmd>SearchBoxIncSearch<CR>",
