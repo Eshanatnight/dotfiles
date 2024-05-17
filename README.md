@@ -1,12 +1,10 @@
-.dotfiles
-===================
+# .dotfiles
 
 ![prompt](./banner.png)
 
 Check out the book version of this README [here](https://dots-eshanatnight.vercel.app)
 
-Install
--------
+## Install
 
 Clone onto your laptop:
 
@@ -14,6 +12,12 @@ Clone onto your laptop:
 
     code dotfiles
 
->
-> Now Stow able
->
+> Now Stowable
+
+## How to do it
+
+If you are on windows
+    .\setup.ps1
+
+If you are on a Mac or Linux
+    ./setup.sh
