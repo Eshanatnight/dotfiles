@@ -21,7 +21,7 @@ C:\Users\acer\AppData\Local\Programs\oh-my-posh\bin\oh-my-posh.exe --init `
     --shell pwsh `
     --config C:\Users\acer\Tweaks\oh-my-posh\ohmyposhv3-v2.json | Invoke-Expression
 
-Invoke-Expression (& { (zoxide init powershell | Out-String) })
+Invoke-Expression (& { (zoxide init powershell --cmd cd | Out-String) })
 
 Set-PSReadLineOption -Colors @{
     Command   = 'Yellow'
