@@ -4,6 +4,7 @@
 .gitattributes
 .gitmodules
 
+.mypy_cache
 
 README.md
 LICENSE
@@ -20,3 +21,5 @@ fresh-setup
 wallpapers
 .p10k.zsh
 run_stow.sh
+
+.config/btop/btop.*

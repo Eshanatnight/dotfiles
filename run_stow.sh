@@ -16,7 +16,7 @@ if [[ $name == "Linux" ]]; then
     sudo apt-get install build-essential procps curl file git cmake ninja jq ripgrep zsh
     printf "Installing stow\n"
     brew bundle install
-    stow -d . -t /home/kellsatnite/ .
+    stow -d . -t $HOME .
     source ~/.zshrc
     local WARP_ROOT=${XDG_DATA_HOME:-$HOME/.local/share}/warp-terminal
     mkdir -p $WARP_ROOT
@@ -24,8 +24,8 @@ if [[ $name == "Linux" ]]; then
     printf "Warp terminal config was installed\n"
     printf "Install Warp terminal manually\n"
 else
-    printf "Installing stow\n"
+    printf "Installing Stuff\n"
     brew bundle install
-    stow -d . -t /Users/kellsatnite/ .
+    stow -d . -t $HOME .
     source ~/.zshrc
 fi
