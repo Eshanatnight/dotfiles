@@ -1,12 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-# sync clipboard
-# cat /etc/resolv.conf | clip.exe
 # Set the directory we want to store zinit and plugins
 export ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
@@ -16,11 +7,15 @@ if [ ! -d "$ZINIT_HOME" ]; then
    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
 
+VCPKG_LOCATION="$HOME/tools/vcpkg"
+# Download vcpkg, if it's not there yet
+if [ ! -d "$VCPKG_LOCATION" ]; then
+   mkdir -p "$(dirname $VCPKG_LOCATION)"
+   git clone https://github.com/microsoft/vcpkg.git "$VCPKG_LOCATION"
+fi
+
 # Source/Load zinit
 source "${ZINIT_HOME}/zinit.zsh"
-
-# Add in Powerlevel10k
-# zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 # Add in zsh plugins
 zinit light zsh-users/zsh-syntax-highlighting
@@ -38,12 +33,14 @@ zinit snippet OMZP::command-not-found
 autoload -Uz compinit && compinit
 zinit cdreplay -q
 
-# # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
 # starship prompt
 eval "$(starship init zsh)"
 
+# zoxide
+eval "$(zoxide init --cmd cd zsh)"
+
+# fzf
+eval "$(fzf --zsh)"
 
 # Keybindings
 source ~/.zsh_keys
@@ -67,73 +64,38 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu nozstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
-# pnpm
-export PNPM_HOME="/home/kellsatnite/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
-# linuxbrew
-export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
-export HOMEBREW_AUTO_UPDATE_SECS=86400
-
-# custom tools
-export PATH="$PATH:/home/kellsatnite/tools"
-
-# Wasmer
-export WASMER_DIR="/home/kellsatnite/.wasmer"
-[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
-
-
-# Rust Config
-export RUST_BACKTRACE=1
-export RUST_LOG=debug
-export CARGO_HOME=/home/kellsatnite/.cargo
-# export CARGO_TARGET_DIR="/home/kellsatnite/.rustlang/target/"
-
-# cmake config
-export CMAKE_EXPORT_COMPILE_COMMANDS=1
-
-# Parseable Config
-export P_STAGING_DIR=~/dev/parseable/staging
-export P_ADDR=0.0.0.0:8000
-export P_USERNAME=admin
-export P_PASSWORD=admin
-export P_S3_URL=http://127.0.0.1:9000
-export P_S3_BUCKET=somebucket
-export P_S3_ACCESS_KEY=minioadmin
-export P_S3_SECRET_KEY=minioadmin
-export P_S3_REGION=us-east-1
-export P_RECORDS_PER_REQUEST=102400
-export P_PARQUET_COMPRESSION_ALGO="gzip"
-
-# Parseable Dev Env
-alias q=". /home/kellsatnite/dev/work/env.bash 1"
-alias i1=". /home/kellsatnite/dev/work/env.bash 2"
-alias i2=". /home/kellsatnite/dev/work/env.bash 3"
-
-# zoxide
-eval "$(zoxide init --cmd cd zsh)"
-
-# fzf
-eval "$(fzf --zsh)"
-
+# FZF Colors
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
 --color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
 --color=marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796"
 
+export HOMEBREW_AUTO_UPDATE_SECS=86400
+# custom tools
+export PATH="$PATH:$HOME/tools"
+
+# source .zsh.linux | .zsh.macos
+name=$(uname)
+
+if [[ $name == "Linux" ]]; then
+    source ~/.zsh.linux
+else
+    source ~/.zsh.macos
+fi
+
+# Rust Config
+export RUST_BACKTRACE=1
+export RUST_LOG=debug
+export CARGO_HOME="$HOME/.cargo"
+# export CARGO_TARGET_DIR="$HOME/.rustlang/target/"
+
+# cmake config
+export CMAKE_EXPORT_COMPILE_COMMANDS=1
+
 # util functions
 function take {
     mkdir -p "$1"
     cd "$1" || exit
-}
-
-# shorthand to jump into a directory
-function z () {
-    cd "$(find ~ -maxdepth 2 -type d | fzf --reverse --cycle)" || exit
 }
 
 # custom aliases
@@ -150,13 +112,10 @@ alias s="source ~/.zshrc"
 alias ls="eza --icons --group-directories-first"
 ## list all files in the current directory
 alias la="eza --icons --group-directories-first -al"
-## open any folder in vscode using fzf
-alias co="find ~ -maxdepth 2 -type d | fzf --reverse --header='Open A File In VsCode' --header-first --cycle | xargs -o code"
-## open any folder in nvim using fzf
-alias v="find . -type f -not -path '*/target/*' -not -path '*/helm*/*' -not -path '*/build/*' -not -path '*/\.git/*' -not -path '*/venv/*' -not -path '*/.mypy*' | fzf --reverse --header='Open A File In NeoVim(Default Current Dir)' --header-first --cycle --preview 'bat --color=always --style=numbers --line-range=:500 {}' | xargs -o nvim"
+
 ## luajit shorthand
 alias lua=luajit
-## clone a reo recursively
+## clone a repo recursively
 alias gcr="git clone --recursive"
 ## alias for tree
 alias tree="eza --tree --level=3"
@@ -167,7 +126,13 @@ alias pull="git pull"
 alias f="git fetch"
 alias lg="git lg"
 
-# extract any compressed file
+
+# path to scripts and tools
+export PATH="$HOME/tools/vcpkg":$PATH
+export PATH="$HOME/go/bin":$PATH
+
+
+## shorthand to extract a zip
 function ex () {
 
     if [ -f "$1" ] ; then
@@ -192,17 +157,7 @@ function ex () {
 	fi
 }
 
-# update all packages, even if they are breaking
-function update () {
-    sudo apt update;
-    sudo apt upgrade -y;
-    brew update;
-    brew upgrade;
-}
-
-unalias gc
-unalias gco
-
+## use fzf to checkout a git branch
 function gc() {
   echo "running gco func"
   if [ $# -eq 0 ]
@@ -215,6 +170,7 @@ function gc() {
   fi
 }
 
+## use fzf to switch to a remote git branch
 function gs() {
   echo "running gs func"
   if [ $# -eq 0 ]
@@ -241,15 +197,9 @@ function get() {
     git checkout "$1" -- "$2"
 }
 
-# bun completions
-[ -s "/home/kellsatnite/.bun/_bun" ] && source "/home/kellsatnite/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
 
 
-# warp on wsl thing
-export WARP_ENABLE_WAYLAND=1
-export MESA_D3D12_DEFAULT_ADAPTER_NAME=NVIDIA
+
+
+
 

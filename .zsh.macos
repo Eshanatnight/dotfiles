@@ -1,0 +1,27 @@
+# Wasmer
+export WASMER_DIR="/Users/kellsatnite/.wasmer"
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
+
+## fzf to code editors
+alias c="find ~ -type d -not -path '*/\.Trash/*' -maxdepth 2  | fzf --reverse --header='Open A File In VsCode' --header-first --cycle | xargs -o code"
+alias x="find ~ -type d -not -path '*/\.Trash/*' -maxdepth 2 | fzf --reverse --header='Open A File In Zed' --header-first --cycle | xargs -o zed"
+alias v="find . -type f -not -path '*/target/*' -not -path '*/helm*/*' -not -path '*/build/*' -not -path '*/\.git/*' -not -path '*/venv/*' -not -path '*/.mypy*' | fzf --reverse --header='Open A File In NeoVim(Default Current Dir)' --header-first --cycle --preview 'bat --color=always --style=numbers --line-range=:500 {}' | xargs -o nvim"
+
+## use trash instead of rm
+alias rm=trash
+## format json from clipboard and copy back to clipboard
+alias j="pbpaste | jq . | pbcopy"
+## clip -> pbcopy
+alias clip="pbcopy"
+
+# use bat for help output
+alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
+alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
+
+# bun completions
+[ -s "/Users/kellsatnite/.bun/_bun" ] && source "/Users/kellsatnite/.bun/_bun"
+
+# shorthand to jump into a directory
+function z () {
+    cd "$(find ~ -type d -maxdepth 2 | fzf --reverse --cycle)" || exit
+}
