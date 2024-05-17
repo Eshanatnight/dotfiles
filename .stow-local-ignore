@@ -20,6 +20,9 @@ fresh-setup
 
 wallpapers
 .p10k.zsh
-run_stow.sh
+setup.sh
+setup.ps1
 
 .config/btop/btop.*
+
+Brewfile
