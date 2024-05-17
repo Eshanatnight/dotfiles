@@ -76,6 +76,88 @@ Set-PSReadLineOption -PredictionSource History
 Set-PSReadLineOption -PredictionViewStyle ListView
 Set-PSReadLineOption -EditMode Windows
 
+function Get-Env {
+    param(
+        [Parameter(Mandatory = $true)]
+        [String] $Key
+    )
+
+    $RegisterKey = Get-Item -Path 'HKCU:'
+    $EnvRegisterKey = $RegisterKey.OpenSubKey('Environment')
+    $EnvRegisterKey.GetValue($Key, $null, [Microsoft.Win32.RegistryValueOptions]::DoNotExpandEnvironmentNames)
+}
+
+# These three environment functions are roughly copied from https://github.com/prefix-dev/pixi/pull/692
+# They are used instead of `SetEnvironmentVariable` because of unwanted variable expansions.
+function Publish-Env {
+    if (-not ("Win32.NativeMethods" -as [Type])) {
+        <# dllimport should not be needed but still#>
+        Add-Type -Namespace Win32 -Name NativeMethods -MemberDefinition @"
+[DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
+public static extern IntPtr SendMessageTimeout(
+    IntPtr hWnd, uint Msg, UIntPtr wParam, string lParam,
+    uint fuFlags, uint uTimeout, out UIntPtr lpdwResult);
+"@
+    }
+    $HWND_BROADCAST = [IntPtr] 0xffff
+    $WM_SETTINGCHANGE = 0x1a
+    $result = [UIntPtr]::Zero
+    [Win32.NativeMethods]::SendMessageTimeout($HWND_BROADCAST,
+        $WM_SETTINGCHANGE,
+        [UIntPtr]::Zero,
+        "Environment",
+        2,
+        5000,
+        [ref] $result
+    ) | Out-Null
+}
+
+
+function Write-Env {
+    param(
+        [Parameter(Mandatory = $true)]
+        [String]$Key, 
+        [String]$Value
+    )
+
+    [Microsoft.Win32.RegistryKey]$RegisterKey = Get-Item -Path 'HKCU:'
+
+
+    [Microsoft.Win32.RegistryKey]$EnvRegisterKey = $RegisterKey.OpenSubKey('Environment', $true)
+    if ($null -eq $Value) {
+        $EnvRegisterKey.DeleteValue($Key)
+    }
+    else {
+        $RegistryValueKind = if ($Value.Contains('%')) {
+            [Microsoft.Win32.RegistryValueKind]::ExpandString
+        }
+        elseif ($EnvRegisterKey.GetValue($Key)) {
+            $EnvRegisterKey.GetValueKind($Key)
+        }
+        else {
+            [Microsoft.Win32.RegistryValueKind]::String
+        }
+        $EnvRegisterKey.SetValue($Key, $Value, $RegistryValueKind)
+    }
+
+    Publish-Env
+}
+
+
+function Update-Path {
+    param (
+        [Parameter(Mandatory = $true)]
+        [string]$NEW_PATH
+    )
+   $PATH = (Get-Env -Key "Path") -split ';'
+    if ($Path -notcontains $NEW_PATH) {
+        $Path += $NEW_PATH
+        Write-Env -Key 'Path' -Value ($Path -join ';')
+        $env:PATH = $Path;
+    }
+
+}
+
 # Source the profile
 function s {
     & ${PROFILE}
