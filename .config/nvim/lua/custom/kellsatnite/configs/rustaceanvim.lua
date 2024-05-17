@@ -14,7 +14,7 @@ vim.g.rustaceanvim = {
             -- rust-analyzer language server configuration
             ["rust-analyzer"] = {
                 check = {
-                    command = "clippy", -- update clippy to be annoying
+                    command = "clippy",
                 },
             },
         },
