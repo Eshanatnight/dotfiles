@@ -14,7 +14,11 @@ Import-Module -Name Terminal-Icons
 Import-Module posh-git
 
 # vcpkg
-Import-Module 'C:\Users\acer\tools\vcpkg\scripts\posh-vcpkg'
+$VCPKG_PROFILE = "C:\Users\acer\tools\vcpkg\scripts\posh-vcpkg"
+if (Test-Path($VCPKG_PROFILE)) {
+    Import-Module "$VCPKG_PROFILE"
+}
+
 
 # Invoke Oh My Posh
 C:\Users\acer\AppData\Local\Programs\oh-my-posh\bin\oh-my-posh.exe --init `
@@ -101,7 +105,12 @@ function update {
 }
 
 # export env variable
-function export($name, $value) {
+function export {
+    param(
+        [Parameter(Mandatory = $true)]
+        [string]$name,
+        [Parameter(Mandatory = $true)]
+        [string]$value)
     set-item -force -path "env:$name" -value $value;
 }
 

@@ -49,3 +49,8 @@ if ($INSTALL_OPTIONAL_PACKAGES -eq "Y") {
         winget install --id $package
     }
 }
+
+if (!(Test-Path $HOME + "\tools\vcpkg")) {
+    Write-Output "Installing VCPkg"
+    git clone "https://github.com/microsoft/vcpkg.git" ($HOME + "\tools\vcpkg")
+}
