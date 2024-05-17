@@ -139,9 +139,9 @@ function z () {
 # custom aliases
 alias cls=clear
 ## speedtest from cli
-alias spt=/home/kellsatnite/tools/spt.py
+alias spt=$HOME/dotfiles/scripts/python/spt.py
 ## cheat sheet for nvim
-alias cs=/home/kellsatnite/dotfiles/scripts/python/cs.py
+alias cs=$HOME/dotfiles/scripts/python/cs.py
 ## vim -> nvim
 alias vim="nvim"
 ## source the zshrc
