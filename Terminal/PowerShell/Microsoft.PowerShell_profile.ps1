@@ -1,5 +1,10 @@
 if ($host.Name -eq 'ConsoleHost') {
-    Import-Module PSReadLine
+    if (Get-Module -ListAvailable -Name PSReadLine) {
+        Import-Module PSReadLine
+    } else {
+        Install-Module -Name PSReadLine -Scope CurrentUser -Force -SkipPublisherCheck
+        Import-Module PSReadLine
+    }
 }
 
 # chocolatey profile
@@ -9,9 +14,20 @@ if (Test-Path($ChocolateyProfile)) {
 }
 
 # Invoke Terminal Icons
-Import-Module -Name Terminal-Icons
+if (Get-Module -ListAvailable -Name Terminal-Icons) {
+    Import-Module -Name Terminal-Icons
+} else {
+    Install-Module -Name Terminal-Icons -Scope CurrentUser -Force -SkipPublisherCheck
+    Import-Module -Name Terminal-Icons
+
+}
 # git suggestions
-Import-Module posh-git
+if (Get-Module -ListAvailable -Name posh-git) {
+    Import-Module -Name posh-git
+} else {
+    Install-Module -Name posh-git -Scope CurrentUser -Force -SkipPublisherCheck
+    Import-Module -Name posh-git
+}
 
 # vcpkg
 $VCPKG_PROFILE = "C:\Users\acer\tools\vcpkg\scripts\posh-vcpkg"
@@ -19,18 +35,29 @@ if (Test-Path($VCPKG_PROFILE)) {
     Import-Module "$VCPKG_PROFILE"
 }
 
-
+<#
 # Invoke Oh My Posh
+# I am not using oh-my-posh anymore, I have switched to starship
+
 C:\Users\acer\AppData\Local\Programs\oh-my-posh\bin\oh-my-posh.exe --init `
     --shell pwsh `
     --config C:\Users\acer\Tweaks\oh-my-posh\ohmyposhv3-v2.json | Invoke-Expression
+#>
 
+Invoke-Expression (&starship init powershell)
 Invoke-Expression (& { (zoxide init powershell --cmd cd | Out-String) })
 
 Set-PSReadLineOption -Colors @{
-    Command   = 'Yellow'
-    Parameter = 'Green'
-    String    = 'DarkCyan'
+    Command            = [ConsoleColor]::Magenta
+    Parameter          = [ConsoleColor]::Green
+    String             = [ConsoleColor]::Cyan
+    Number             = [ConsoleColor]::Green
+    Error              = [ConsoleColor]::DarkRed
+    ContinuationPrompt = [ConsoleColor]::Blue
+    Member             = [ConsoleColor]::White
+    Operator           = [ConsoleColor]::DarkGreen
+    Type               = [ConsoleColor]::DarkGray
+    Variable           = [ConsoleColor]::DarkGreen
 }
 
 Set-PSReadLineKeyHandler -Key UpArrow -Function HistorySearchBackward
@@ -112,11 +139,10 @@ public static extern IntPtr SendMessageTimeout(
     ) | Out-Null
 }
 
-
 function Write-Env {
     param(
         [Parameter(Mandatory = $true)]
-        [String]$Key, 
+        [String]$Key,
         [String]$Value
     )
 
@@ -305,16 +331,24 @@ function mklink {
     New-Item -Path $link -ItemType SymbolicLink -Value $target
 }
 
+function rmrf {
+    param (
+        [Parameter(Mandatory = $true)]
+        [string]$path
+    )
+    Remove-Item -r -Force $path
+}
+
 Set-Alias -Name make -Value mingw32-make
 Set-Alias -Name la -Value ls
 Set-Alias -Name df -Value Get-Volume
 Set-Alias -Name wh -Value where.exe
 
 # env vars
-$Env:CMAKE_TOOLCHAIN_FILE = "C:/Users/acer/tools/vcpkg/scripts/buildsystems/vcpkg.cmake"
+$Env:CMAKE_TOOLCHAIN_FILE = "$HOME/tools/vcpkg/scripts/buildsystems/vcpkg.cmake"
 $Env:CMAKE_EXPORT_COMPILE_COMMANDS = 1
 $Env:FZF_DEFAULT_OPTS = "--color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 --color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 --color=marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796"
-
+$Env:STARSHIP_CONFIG= "$HOME/.config/starship.toml"
 
 # argument completions
 Register-ArgumentCompleter -Native -CommandName winget -ScriptBlock {

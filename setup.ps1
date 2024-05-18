@@ -23,6 +23,9 @@ mklink("$HOME$GIT_IGNORE".ToString()) ("$PWD_PATH$GIT_IGNORE".ToString())
 [string]$CARGO_CONFIG = "\.cargo\config.toml"
 mklink ("$HOME$CARGO_CONFIG".ToString()) ("$PWD_PATH$CARGO_CONFIG".ToString())
 
+[string]$STARSHIP_CONFIG = "\.config\starship.toml"
+mklink("$HOME$STARSHIP_CONFIG".ToString()) ("$PWD_PATH$STARSHIP_CONFIG".ToString())
+
 [string]$PROFILE_CONFIG = "\PowerShell\Microsoft.PowerShell_profile.ps1"
 mklink ("$HOME\OneDrive\Documents$PROFILE_CONFIG".ToString()) ("$PWD_PATH\Terminal$PROFILE_CONFIG".ToString())
 
