@@ -28,6 +28,10 @@ zinit snippet OMZP::git
 zinit snippet OMZP::sudo
 zinit snippet OMZP::archlinux
 zinit snippet OMZP::command-not-found
+zinit snippet OMZP::brew
+zinit snippet OMZP::eza
+zinit snippet OMZP::fzf
+
 
 # Load completions
 autoload -Uz compinit && compinit
@@ -130,6 +134,10 @@ alias f="git fetch"
 alias lg="git lg"
 
 alias dotfiles="$DOTFILES_DIR/bin/dot"
+
+## zinit
+alias zstatus="zinit zstatus"
+alias zupdate="zinit update --parallel 40"
 
 # path to scripts and tools
 export PATH="$HOME/tools/vcpkg":$PATH
