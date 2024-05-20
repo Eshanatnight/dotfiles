@@ -238,4 +238,17 @@ M.searchbox = {
     },
 }
 
+M.markdown_preview = {
+    n = {
+        ["<leader>mp"] = {
+            "<cmd> MarkdownPreview<CR>",
+            "Open Markdown Preview",
+        },
+        ["<leader>mc"] = {
+            "<cmd> MarkdownPreviewStop<CR>",
+            "Stop Markdown Preview",
+        },
+    },
+}
+
 return M

@@ -337,6 +337,17 @@ local plugins = {
             require("core.utils").load_mappings "searchbox"
         end,
     },
+    {
+        "iamcco/markdown-preview.nvim",
+        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+        ft = { "markdown" },
+        build = function()
+            vim.fn["mkdp#util#install"]()
+        end,
+        config = function()
+            require("core.utils").load_mappings "markdown_preview"
+        end,
+    },
 }
 
 return plugins
