@@ -332,7 +332,7 @@ local plugins = {
         dependencies = {
             "MunifTanjim/nui.nvim",
         },
-        lazy = true,
+        lazy = false,
         config = function()
             require("core.utils").load_mappings "searchbox"
         end,
