@@ -2,9 +2,11 @@ local config = function()
     local lint = require "lint"
     local linters = {
         python = { "pylint", "mypy" },
-        cmake = { "cmakelint" },
-        -- cpp = { "clangtidy" },
-        markdown = { "markdownlint" },
+        -- cmake = { "cmakelint" },
+        -- markdown = { "markdownlint" },
+        sh = { "shellcheck" },
+        bash = { "shellcheck" },
+        zsh = { "shellcheck" },
     }
 
     local ct = require("custom.kellsatnite.utils").has_clang_tidy()
@@ -16,6 +18,7 @@ local config = function()
         linters.c = {
             "clangtidy",
         }
+        table.insert(lint.linters.clangtidy.args, "-p")
         table.insert(lint.linters.clangtidy.args, compile_commands_path)
     end
 
