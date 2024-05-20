@@ -21,6 +21,13 @@ local opts = {
                 return { "--python-executable", virtual .. "/bin/python3" }
             end,
         },
+        -- TODO: Maybe add actionlint(github workflows linter)
+        null_ls.builtins.diagnostics.checkmake, -- make files
+        null_ls.builtins.diagnostics.cmake_lint, -- cmake files
+        null_ls.builtins.diagnostics.markdownlint, -- markdown files
+        -------
+        -- null_ls.builtins.diagnostics.cppcheck
+        --------
     },
     on_attach = function(client, bufnr)
         if client.supports_method "textDocument/formatting" then

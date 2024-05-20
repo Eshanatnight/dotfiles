@@ -27,7 +27,7 @@ local plugins = {
     {
         "nvimtools/none-ls.nvim",
         event = "VeryLazy",
-        ft = { "go", "lua", "json" },
+        ft = { "go", "lua", "json", "markdown", "cmake", "jsonc", "make" },
         requires = {
             "neovim/nvim-lspconfig",
             "nvim-lua/plenary.nvim",
