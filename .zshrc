@@ -3,14 +3,14 @@ export ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
 # Download Zinit, if it's not there yet
 if [ ! -d "$ZINIT_HOME" ]; then
-   mkdir -p "$(dirname $ZINIT_HOME)"
+   mkdir -p "$(dirname "$ZINIT_HOME")"
    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
 
 VCPKG_LOCATION="$HOME/tools/vcpkg"
 # Download vcpkg, if it's not there yet
 if [ ! -d "$VCPKG_LOCATION" ]; then
-   mkdir -p "$(dirname $VCPKG_LOCATION)"
+   mkdir -p "$(dirname "$VCPKG_LOCATION")"
    git clone https://github.com/microsoft/vcpkg.git "$VCPKG_LOCATION"
 fi
 
@@ -98,12 +98,15 @@ function take {
     cd "$1" || exit
 }
 
+# things to help manage my dotfiles
+export DOTFILES_DIR="$HOME/dotfiles"
+
 # custom aliases
 alias cls=clear
 ## speedtest from cli
-alias spt=$HOME/dotfiles/scripts/python/spt.py
+alias spt="$HOME"/dotfiles/scripts/python/spt.py
 ## cheat sheet for nvim
-alias cs=$HOME/dotfiles/scripts/python/cs.py
+alias cs="$HOME"/dotfiles/scripts/python/cs.py
 ## vim -> nvim
 alias vim="nvim"
 ## source the zshrc
@@ -126,6 +129,7 @@ alias pull="git pull"
 alias f="git fetch"
 alias lg="git lg"
 
+alias dotfiles="$DOTFILES_DIR/bin/dot"
 
 # path to scripts and tools
 export PATH="$HOME/tools/vcpkg":$PATH

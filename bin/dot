@@ -1,0 +1,26 @@
+#! /bin/zsh
+
+set -e
+
+# change dir to the dotfiles dir
+# dofiles dir should always be `$HOME/dotfiles`
+# this path can be accesed directly from the env var `$DOTFILES_DIR`
+
+cd $DOTFILES_DIR;
+# we need to check if there is anything new to pull down
+git pull
+
+name=$(uname)
+
+if [[ $name == "Linux" ]]; then
+    stow -d . -t $HOME .
+    source ~/.zshrc
+    local WARP_ROOT=${XDG_DATA_HOME:-$HOME/.local/share}/warp-terminal
+    mkdir -p $WARP_ROOT
+    stow -t $WARP_ROOT .warp
+else
+    stow -d . -t $HOME .
+    source ~/.zshrc
+fi
+
+
