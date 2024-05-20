@@ -2,6 +2,7 @@
 # Invoke-RestMethod "https://christitus.com/win" | Invoke-Expression
 
 function mklink {
+    [CmdletBinding()]
     param(
         [Parameter(Mandatory = $true)]
         [string]$link,

@@ -175,6 +175,7 @@ function Write-Env {
 
 
 function Update-Path {
+    [CmdletBinding()]
     param (
         [Parameter(Mandatory = $true)]
         [string]$NEW_PATH
@@ -201,6 +202,7 @@ function rfenv {
 
 # take will create a new directory and change into it
 function take {
+    [CmdletBinding()]
     param(
         [Parameter(Mandatory = $true)]
         [string]$directory
@@ -218,6 +220,7 @@ function update {
 
 # export env variable
 function export {
+    [CmdletBinding()]
     param(
         [Parameter(Mandatory = $true)]
         [string]$name,
@@ -306,6 +309,7 @@ function gs {
 
 # get a file from a different branch
 function get {
+    [CmdletBinding()]
     param(
         [string]$branch,
         [string]$path
@@ -315,6 +319,7 @@ function get {
 
 # unzip a file
 function unzip {
+    [CmdletBinding()]
     param(
         [string]$file
     )
@@ -325,6 +330,7 @@ function unzip {
 
 # util function to make symlinks
 function mklink {
+    [CmdletBinding()]
     param(
         [Parameter(Mandatory = $true)]
         [string]$link,
@@ -336,6 +342,7 @@ function mklink {
 }
 
 function rmrf {
+    [CmdletBinding()]
     param (
         [Parameter(Mandatory = $true)]
         [string]$path
