@@ -33,6 +33,10 @@ if (Get-Module -ListAvailable -Name posh-git) {
 $VCPKG_PROFILE = "C:\Users\acer\tools\vcpkg\scripts\posh-vcpkg"
 if (Test-Path($VCPKG_PROFILE)) {
     Import-Module "$VCPKG_PROFILE"
+} else {
+    Write-Output "vcpkg is not installed"
+    Start-Process -FilePath "git" -ArgumentList "clone", "https://github.com/microsoft/vcpkg.git", "$HOME\tools\vcpkg" -NoNewWindow
+    Import-Module "$VCPKG_PROFILE"
 }
 
 <#
