@@ -8,9 +8,9 @@ local options = {
         c = { "clang_format" },
         lua = { "stylua" },
         python = { "isort", "black" },
-        bash = { "shfmt" },
-        zsh = { "shfmt" },
-        sh = { "shfmt" },
+        -- bash = { "shfmt" },
+        -- zsh = { "shfmt" },
+        -- sh = { "shfmt" },
         -- not doing rustfmt here because it's handled by rust-tools.nvim
     },
 

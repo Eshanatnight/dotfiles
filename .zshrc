@@ -1,6 +1,7 @@
 # Set the directory we want to store zinit and plugins
 export ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
+
 # Download Zinit, if it's not there yet
 if [ ! -d "$ZINIT_HOME" ]; then
    mkdir -p "$(dirname "$ZINIT_HOME")"
@@ -201,7 +202,7 @@ function gd() {
     response=$(echo "Yes\n No" | fzf --reverse --header="$header" --header-first --cycle)
     if [[ "$response" == "Yes" ]]
     then
-        git branch -D $branch;
+        git branch -D "$branch";
     fi
 }
 
