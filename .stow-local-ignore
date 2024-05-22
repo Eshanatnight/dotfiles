@@ -27,3 +27,7 @@ setup.ps1
 
 Brewfile.linux
 Brewfile.macos
+
+bin
+
+.DS_Store
