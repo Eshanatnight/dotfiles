@@ -1,39 +1,13 @@
-# pnpm
-export PNPM_HOME="/home/kellsatnite/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
 # linuxbrew
 export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
 
-# Wasmer
-export WASMER_DIR="/home/kellsatnite/.wasmer"
-[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
-
-# shorthand to jump into a directory
-function z () {
-    cd "$(find ~ -maxdepth 2 -type d | fzf --reverse --cycle)" || exit
-}
-
 # update all packages, even if they are breaking
-function update () {
-    sudo apt update;
-    sudo apt upgrade -y;
-    brew update;
-    brew upgrade;
+function update() {
+	sudo apt update
+	sudo apt upgrade -y
+	brew update
+	brew upgrade
 }
-
-unalias gc
-unalias gco
-
-## open any folder in vscode using fzf
-alias co="find ~ -maxdepth 2 -type d | fzf --reverse --header='Open A File In VsCode' --header-first --cycle | xargs -o code"
-## open any folder in nvim using fzf
-alias v="find . -type f -not -path '*/target/*' -not -path '*/helm*/*' -not -path '*/build/*' -not -path '*/\.git/*' -not -path '*/venv/*' -not -path '*/.mypy*' | fzf --reverse --header='Open A File In NeoVim(Default Current Dir)' --header-first --cycle --preview 'bat --color=always --style=numbers --line-range=:500 {}' | xargs -o nvim"
-
 
 # Parseable Config
 export P_STAGING_DIR=~/dev/parseable/staging
@@ -53,9 +27,7 @@ alias q=". /home/kellsatnite/dev/work/env.bash 1"
 alias i1=". /home/kellsatnite/dev/work/env.bash 2"
 alias i2=". /home/kellsatnite/dev/work/env.bash 3"
 
-# bun completions
-[ -s "/home/kellsatnite/.bun/_bun" ] && source "/home/kellsatnite/.bun/_bun"
-
 # warp on wsl thing
 export WARP_ENABLE_WAYLAND=1
 export MESA_D3D12_DEFAULT_ADAPTER_NAME=NVIDIA
+

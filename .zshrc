@@ -120,29 +120,28 @@ alias s="source ~/.zshrc"
 alias ls="eza --icons --group-directories-first"
 ## list all files in the current directory
 alias la="eza --icons --group-directories-first -al"
-
 ## luajit shorthand
 alias lua=luajit
-## clone a repo recursively
-alias gcr="git clone --recursive"
 ## alias for tree
 alias tree="eza --tree --level=3"
 ## bat diff
 alias bd="git diff --name-only --relative --diff-filter=d | xargs bat --diff"
 ## git aliases
-alias pull="git pull"
-alias f="git fetch"
+alias gpl="gl"
+alias f="gf --prune"
 alias lg="git lg"
+alias gcr="git clone --recursive"
 
+# dotfiles syncing(i dont want to add the script to my path)
 alias dotfiles="$DOTFILES_DIR/bin/dot"
+alias dot="$DOTFILES_DIR/bin/dot"
 
 ## zinit
 alias zstatus="zinit zstatus"
 alias zupdate="zinit update --parallel 40"
 
-# path to scripts and tools
-export PATH="$HOME/tools/vcpkg":$PATH
-export PATH="$HOME/go/bin":$PATH
+## open any folder in nvim using fzf
+alias v="find . -type f -not -path '*/target/*' -not -path '*/helm*/*' -not -path '*/build/*' -not -path '*/\.git/*' -not -path '*/venv/*' -not -path '*/.mypy*' -not -path '*/\.Trash/*' | fzf --reverse --header='Open A File In NeoVim(Default Current Dir)' --header-first --cycle --preview 'bat --color=always --style=numbers --line-range=:500 {}' | xargs -o nvim"
 
 
 ## shorthand to extract a zip
@@ -170,9 +169,10 @@ function ex () {
 	fi
 }
 
+unalias gc
+unalias gd
 ## use fzf to checkout a git branch
 function gc() {
-  echo "running gco func"
   if [ $# -eq 0 ]
   then
     # search for a branch w/ fuzzy finder and then check it out
@@ -194,10 +194,8 @@ function gs() {
   fi
 }
 
-unalias gd
-
 function gd() {
-    branch=$(git branch | fzf --reverse --header='Checkout a git branch' --header-first --disabled --cycle | sed 's/^\* //;s/^  //')
+    branch=$(git branch | fzf --reverse --header='Select branch to Delete' --header-first --disabled --cycle | sed 's#^\* ##;s#^  ##')
     header="Are You Sure You want to Delete $branch"
     response=$(echo "Yes\n No" | fzf --reverse --header="$header" --header-first --cycle)
     if [[ "$response" == "Yes" ]]
@@ -210,9 +208,30 @@ function get() {
     git checkout "$1" -- "$2"
 }
 
+# shorthand to jump into a directory
+function z() {
+	cd "$(find ~ -type d -not -path '*/\.Trash/*' -maxdepth 2 | fzf --reverse --cycle)" || exit
+}
 
+# bun completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
+# path to scripts and tools
+export PATH="$HOME/tools/vcpkg":$PATH
+export PATH="$HOME/go/bin":$PATH
+export PATH="$HOME/.bun/bin":$PATH
 
+# pnpm
+if [[ $(command -v pnpm)  ]]; then
+    export PNPM_HOME="$HOME/.local/share/pnpm"
+    case ":$PATH:" in
+        *":$PNPM_HOME:"*) ;;
+        *) export PATH="$PNPM_HOME:$PATH" ;;
+    esac
+fi
+# pnpm end
 
-
+# Wasmer
+export WASMER_DIR="$HOME/.wasmer"
+[ $(command -v wasmer) ] && [ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
 
