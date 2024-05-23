@@ -50,6 +50,7 @@
                 "colorScheme": "Catppuccin Mocha",
                 "commandline": "\"C:\\Program Files\\PowerShell\\7\\pwsh.exe\"",
                 "cursorShape": "bar",
+                "experimental.retroTerminalEffect": false,
                 "font":
                 {
                     "face": "JetBrainsMono Nerd Font"
@@ -58,7 +59,7 @@
                 "hidden": false,
                 "icon": "ms-appx:///ProfileIcons/pwsh.png",
                 "name": "PowerShell",
-                "opacity": 80,
+                "opacity": 90,
                 "tabTitle": "Powershell",
                 "useAcrylic": true
             },
@@ -72,7 +73,7 @@
                 "guid": "{e5a83caa-4c73-52b3-ae6b-bc438d721ef9}",
                 "hidden": false,
                 "name": "Ubuntu 22.04.3 LTS",
-                "opacity": 95,
+                "opacity": 90,
                 "source": "CanonicalGroupLimited.Ubuntu22.04LTS_79rhkp1fndgsc",
                 "useAcrylic": true
             },
@@ -87,6 +88,16 @@
                 "hidden": false,
                 "name": "Developer PowerShell for VS 2022 [Preview]",
                 "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "hidden": false,
+                "name": "Windows PowerShell"
+            },
+            {
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "hidden": false,
+                "name": "Command Prompt"
             }
         ]
     },
