@@ -84,8 +84,19 @@ name=$(uname)
 
 if [[ $name == "Linux" ]]; then
     source ~/.zsh.linux
+    if [[ ! "$PATH" == */home/linuxbrew/.linuxbrew/opt/fzf/bin* ]]; then
+      PATH="${PATH:+${PATH}:}/home/linuxbrew/.linuxbrew/opt/fzf/bin"
+    fi
+
+    eval "$(fzf --zsh)"
+
 else
     source ~/.zsh.macos
+    if [[ ! "$PATH" == */opt/homebrew/opt/fzf/bin* ]]; then
+        PATH="${PATH:+${PATH}:}/opt/homebrew/opt/fzf/bin"
+    fi
+
+    eval "$(fzf --zsh)"
 fi
 
 # Rust Config
