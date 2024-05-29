@@ -27,6 +27,6 @@ linker = "clang"
 rustflags = [
     "-C", "link-arg=-fuse-ld=/home/linuxbrew/.linuxbrew/bin/mold",
     # "-Clink-arg=-fuse-ld=lld", # Use LLD Linker
-    "-Zshare-generics=y",      # (Nightly) Make the current crate share its generic instantiations
-    "-Zthreads=0",             # (Nightly) Use improved multithreading with the recommended amount of threads.
+    # "-Zshare-generics=y",      # (Nightly) Make the current crate share its generic instantiations
+    # "-Zthreads=0",             # (Nightly) Use improved multithreading with the recommended amount of threads.
 ]
