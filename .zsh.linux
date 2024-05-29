@@ -1,4 +1,6 @@
 # linuxbrew
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
 export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
 
 # update all packages, even if they are breaking
@@ -31,3 +33,8 @@ alias i2=". /home/kellsatnite/dev/work/env.bash 3"
 export WARP_ENABLE_WAYLAND=1
 export MESA_D3D12_DEFAULT_ADAPTER_NAME=NVIDIA
 
+if [[ ! "$PATH" == */home/linuxbrew/.linuxbrew/opt/fzf/bin* ]]; then
+	PATH="${PATH:+${PATH}:}/home/linuxbrew/.linuxbrew/opt/fzf/bin"
+fi
+
+eval "$(fzf --zsh)"

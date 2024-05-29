@@ -1,4 +1,4 @@
-#! /bin/zsh
+#! /bin/sh
 
 # How to stow.
 # while being in the dotfiles directory

@@ -1,3 +1,5 @@
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 ## fzf to code editors
 alias c="find ~ -type d -not -path '*/\.Trash/*' -maxdepth 2  | fzf --reverse --header='Open A File In VsCode' --header-first --cycle | xargs -o code"
 alias x="find ~ -type d -not -path '*/\.Trash/*' -maxdepth 2 | fzf --reverse --header='Open A File In Zed' --header-first --cycle | xargs -o zed"
@@ -12,4 +14,9 @@ alias clip="pbcopy"
 # use bat for help output
 alias -g -- -h='-h 2>&1 | bat --language=help --style=plain'
 alias -g -- --help='--help 2>&1 | bat --language=help --style=plain'
+
+if [[ ! "$PATH" == */opt/homebrew/opt/fzf/bin* ]]; then
+	PATH="${PATH:+${PATH}:}/opt/homebrew/opt/fzf/bin"
+fi
+eval "$(fzf --zsh)"
 

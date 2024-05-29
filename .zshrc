@@ -1,18 +1,10 @@
 # Set the directory we want to store zinit and plugins
 export ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
-
 # Download Zinit, if it's not there yet
 if [ ! -d "$ZINIT_HOME" ]; then
    mkdir -p "$(dirname "$ZINIT_HOME")"
    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-fi
-
-VCPKG_LOCATION="$HOME/tools/vcpkg"
-# Download vcpkg, if it's not there yet
-if [ ! -d "$VCPKG_LOCATION" ]; then
-   mkdir -p "$(dirname "$VCPKG_LOCATION")"
-   git clone https://github.com/microsoft/vcpkg.git "$VCPKG_LOCATION"
 fi
 
 # Source/Load zinit
@@ -69,44 +61,6 @@ zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 zstyle ':completion:*' menu nozstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
-# FZF Colors
-export FZF_DEFAULT_OPTS=" \
---color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
---color=fg:#cad3f5,header:#ed8796,info:#c6a0f6,pointer:#f4dbd6 \
---color=marker:#f4dbd6,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796"
-
-export HOMEBREW_AUTO_UPDATE_SECS=86400
-# custom tools
-export PATH="$PATH:$HOME/tools"
-
-# source .zsh.linux | .zsh.macos
-name=$(uname)
-
-if [[ $name == "Linux" ]]; then
-    source ~/.zsh.linux
-    if [[ ! "$PATH" == */home/linuxbrew/.linuxbrew/opt/fzf/bin* ]]; then
-      PATH="${PATH:+${PATH}:}/home/linuxbrew/.linuxbrew/opt/fzf/bin"
-    fi
-
-    eval "$(fzf --zsh)"
-
-else
-    source ~/.zsh.macos
-    if [[ ! "$PATH" == */opt/homebrew/opt/fzf/bin* ]]; then
-        PATH="${PATH:+${PATH}:}/opt/homebrew/opt/fzf/bin"
-    fi
-
-    eval "$(fzf --zsh)"
-fi
-
-# Rust Config
-export RUST_BACKTRACE=1
-export RUST_LOG=debug
-export CARGO_HOME="$HOME/.cargo"
-# export CARGO_TARGET_DIR="$HOME/.rustlang/target/"
-
-# cmake config
-export CMAKE_EXPORT_COMPILE_COMMANDS=1
 
 # util functions
 function take {
@@ -114,8 +68,6 @@ function take {
     cd "$1" || exit
 }
 
-# things to help manage my dotfiles
-export DOTFILES_DIR="$HOME/dotfiles"
 
 # custom aliases
 alias cls=clear
@@ -157,7 +109,6 @@ alias v="find . -type f -not -path '*/target/*' -not -path '*/helm*/*' -not -pat
 
 ## shorthand to extract a zip
 function ex () {
-
     if [ -f "$1" ] ; then
         case $1 in
             *.tar.bz2) tar xjf "$1" ;;
@@ -208,7 +159,7 @@ function gs() {
 function gd() {
     branch=$(git branch | fzf --reverse --header='Select branch to Delete' --header-first --disabled --cycle | sed 's#^\* ##;s#^  ##')
     header="Are You Sure You want to Delete $branch"
-    response=$(echo "Yes\n No" | fzf --reverse --header="$header" --header-first --cycle)
+    response=$(printf "Yes\n No" | fzf --reverse --header="$header" --header-first --cycle)
     if [[ "$response" == "Yes" ]]
     then
         git branch -D "$branch";
@@ -226,21 +177,6 @@ function z() {
 
 # bun completions
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
-
-# path to scripts and tools
-export PATH="$HOME/tools/vcpkg":$PATH
-export PATH="$HOME/go/bin":$PATH
-export PATH="$HOME/.bun/bin":$PATH
-
-# pnpm
-if [[ $(command -v pnpm)  ]]; then
-    export PNPM_HOME="$HOME/.local/share/pnpm"
-    case ":$PATH:" in
-        *":$PNPM_HOME:"*) ;;
-        *) export PATH="$PNPM_HOME:$PATH" ;;
-    esac
-fi
-# pnpm end
 
 # Wasmer
 export WASMER_DIR="$HOME/.wasmer"
