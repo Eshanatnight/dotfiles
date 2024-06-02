@@ -75,9 +75,13 @@ M.general = {
             "0",
             "Move to start of line",
         },
-        ["M-<Left>"] = {
-            "C-o",
-            "Go Back",
+        ["<M-Right>"] = {
+            "<C-i>",
+            "Go to new cursor jump point",
+        },
+        ["<M-Left>"] = {
+            "<C-o>",
+            "Go to old cursor jump point",
         },
         ["<leader>cd"] = {
             "<cmd> :lua vim.diagnostic.open_float() <CR>",
@@ -106,25 +110,6 @@ M.telescope = {
         ["<leader>fd"] = {
             "<cmd> Telescope lsp_document_symbols <CR>",
             "Find Symbols",
-        },
-
-        ["<leader>td"] = {
-            function()
-                require("todo-comments").jump_next()
-            end,
-            "Jump to Next Todo",
-        },
-
-        ["<leader>tt"] = {
-            function()
-                require("todo-comments").jump_prev()
-            end,
-            "Jump to Previous Todo",
-        },
-
-        ["td"] = {
-            "<cmd> TodoTelescope <CR>",
-            "Find Todos",
         },
 
         ["<leader>fe"] = {
@@ -247,6 +232,29 @@ M.markdown_preview = {
         ["<leader>mc"] = {
             "<cmd> MarkdownPreviewStop<CR>",
             "Stop Markdown Preview",
+        },
+    },
+}
+
+M.todo_comments = {
+    n = {
+        ["<leader>td"] = {
+            function()
+                require("todo-comments").jump_next()
+            end,
+            "Jump to Next Todo",
+        },
+
+        ["<leader>tt"] = {
+            function()
+                require("todo-comments").jump_prev()
+            end,
+            "Jump to Previous Todo",
+        },
+
+        ["td"] = {
+            "<cmd> TodoTelescope <CR>",
+            "Find Todos",
         },
     },
 }
