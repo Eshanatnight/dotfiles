@@ -13,9 +13,9 @@ printf "Installing Homebrew\n"
 name=$(uname)
 
 if [[ $name == "Linux" ]]; then
-	sudo apt-get install build-essential procps curl file git cmake ninja jq ripgrep zsh
+	sudo apt-get install build-essential procps curl file git cmake ninja jq ripgrep zsh mold
 	printf "Installing stow\n"
-	brew bundle --file=./Brewfile.linux
+	brew bundle
 	stow -d . -t $HOME .
 	source ~/.zshrc
 	local WARP_ROOT=${XDG_DATA_HOME:-$HOME/.local/share}/warp-terminal
@@ -25,7 +25,8 @@ if [[ $name == "Linux" ]]; then
 	printf "Install Warp terminal manually\n"
 else
 	printf "Installing Stuff\n"
-	brew bundle --file=./Brewfile.macos
+	brew bundle
+	brew bundle --file=./brew.extra
 	stow -d . -t $HOME .
 	source ~/.zshrc
 fi

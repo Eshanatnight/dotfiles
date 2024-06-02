@@ -11,24 +11,6 @@ function update() {
 	brew upgrade
 }
 
-# Parseable Config
-export P_STAGING_DIR=~/dev/parseable/staging
-export P_ADDR=0.0.0.0:8000
-export P_USERNAME=admin
-export P_PASSWORD=admin
-export P_S3_URL=http://127.0.0.1:9000
-export P_S3_BUCKET=somebucket
-export P_S3_ACCESS_KEY=minioadmin
-export P_S3_SECRET_KEY=minioadmin
-export P_S3_REGION=us-east-1
-export P_RECORDS_PER_REQUEST=102400
-export P_PARQUET_COMPRESSION_ALGO="gzip"
-
-# Parseable Dev Env
-alias q=". /home/kellsatnite/dev/work/env.bash 1"
-alias i1=". /home/kellsatnite/dev/work/env.bash 2"
-alias i2=". /home/kellsatnite/dev/work/env.bash 3"
-
 # warp on wsl thing
 export WARP_ENABLE_WAYLAND=1
 export MESA_D3D12_DEFAULT_ADAPTER_NAME=NVIDIA
