@@ -305,7 +305,7 @@ local plugins = {
     {
         "folke/todo-comments.nvim",
         dependencies = { "nvim-lua/plenary.nvim" },
-        lazy = true,
+        lazy = false,
         opts = function()
             return require "custom.kellsatnite.configs.redditcomments"
         end,
