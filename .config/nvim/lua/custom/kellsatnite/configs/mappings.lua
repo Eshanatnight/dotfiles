@@ -31,42 +31,6 @@ M.dap = {
     },
 }
 
-M.dap_go = {
-    plugin = true,
-    n = {
-        ["<leader>dgt"] = {
-            function()
-                require("dap-go").debug_test()
-            end,
-            "Debug Go Test",
-        },
-        ["<leader>dgl"] = {
-            function()
-                require("dap-go").debug_last()
-            end,
-            "Debug Last Test",
-        },
-    },
-}
-
-M.crates = {
-    n = {
-        ["<leader>cu"] = {
-            function()
-                require("crates").upgrade_crate()
-            end,
-            "Upgrade Crates",
-        },
-
-        ["<leader>rcu"] = {
-            function()
-                require("crates").upgrade_all_crates()
-            end,
-            "Upgrade Crates",
-        },
-    },
-}
-
 M.general = {
     i = {
         ["jk"] = {
@@ -126,13 +90,15 @@ M.telescope = {
             "Find Diagnostics",
         },
 
-        ["<leader>ff"] = {
+        ["<leader>fg"] = {
             "<cmd> Telescope git_files <CR>",
             "Find All(Git) Files",
         },
 
-        ["<leader>fg"] = {
-            "<cmd> Telescope find_files <CR>",
+        ["<leader>ff"] = {
+            function()
+                require("telescope.builtin").find_files { hidden = true }
+            end,
             "Find Files",
         },
 
@@ -232,19 +198,6 @@ M.searchbox = {
     },
 }
 
-M.markdown_preview = {
-    n = {
-        ["<leader>mp"] = {
-            "<cmd> MarkdownPreview<CR>",
-            "Open Markdown Preview",
-        },
-        ["<leader>mc"] = {
-            "<cmd> MarkdownPreviewStop<CR>",
-            "Stop Markdown Preview",
-        },
-    },
-}
-
 M.todo_comments = {
     n = {
         ["<leader>td"] = {
@@ -264,6 +217,19 @@ M.todo_comments = {
         ["td"] = {
             "<cmd> TodoTelescope <CR>",
             "Find Todos",
+        },
+    },
+}
+
+M.trouble = {
+    n = {
+        ["<leader>q"] = {
+            "<cmd>Trouble diagnostics toggle<cr>",
+            "Trouble Diagnostics",
+        },
+        ["<leader>qb"] = {
+            "<cmd> Trouble diagnostics toggle filter.buf=0<CR>",
+            "Trouble Diagnostics Current Buffer",
         },
     },
 }

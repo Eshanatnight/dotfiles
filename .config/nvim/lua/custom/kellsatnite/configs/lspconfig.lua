@@ -48,13 +48,6 @@ lspconfig.pyright.setup {
     filetypes = { "python" },
 }
 
--- taplo language server(toml)
-lspconfig.taplo.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    filetypes = { "toml" },
-}
-
 -- cmake language server
 lspconfig.cmake.setup {
     on_attach = on_attach,

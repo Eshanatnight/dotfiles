@@ -120,7 +120,10 @@ local default_plugins = {
         "williamboman/mason.nvim",
         cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
         opts = function()
-            return require "plugins.configs.mason"
+            local s = require "plugins.configs.mason"
+
+            -- print(s)
+            return s
         end,
         config = function(_, opts)
             dofile(vim.g.base46_cache .. "mason")

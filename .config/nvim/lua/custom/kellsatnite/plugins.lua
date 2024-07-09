@@ -7,13 +7,14 @@ local plugins = {
             "WhoIsSethDaniel/mason-tool-installer.nvim",
         },
         -- options
-        opts = function()
-            local packages = require "custom.kellsatnite.configs.mason-list"
-            local M = {
-                ensure_installed = packages,
-            }
-            return M
-        end,
+        opts = {
+            ensure_installed = {
+                "clangd",
+                "codelldb",
+                "stylua",
+                "lua-language-server",
+            },
+        },
     },
 
     -- neovin lspcofig
@@ -29,7 +30,7 @@ local plugins = {
     {
         "nvimtools/none-ls.nvim",
         event = "VeryLazy",
-        ft = { "go", "lua", "json", "markdown", "cmake", "jsonc", "make" },
+        ft = {"lua" },
         requires = {
             "neovim/nvim-lspconfig",
             "nvim-lua/plenary.nvim",
@@ -45,9 +46,6 @@ local plugins = {
         "hrsh7th/nvim-cmp",
         opts = function()
             local M = require "plugins.configs.cmp"
-            table.insert(M.sources, { name = "crates" })
-            -- add cody to sources
-            table.insert(M.sources, { name = "cody" })
             return M
         end,
     },
@@ -71,68 +69,6 @@ local plugins = {
         end,
     },
 
-    -- rust.vim
-    {
-        "rust-lang/rust.vim",
-        ft = "rust",
-        init = function()
-            vim.g.rustfmt_autosave = 1
-        end,
-    },
-
-    -- rustaceanvim
-    {
-        "mrcjkb/rustaceanvim",
-        version = "^4",
-        ft = { "rust" },
-        dependencies = "neovim/nvim-lspconfig",
-        config = function()
-            require "custom.kellsatnite.configs.rustaceanvim"
-
-            local dap = require "dap"
-            local UDap = require "custom.kellsatnite.utils"
-            dap.configurations.rust = {
-                {
-                    type = "codelldb",
-                    request = "launch",
-                    name = "Launch file",
-                    program = function()
-                        return UDap.find_rust_program(dap)
-                    end,
-                    args = UDap.get_args,
-                    cwd = "${workspaceFolder}",
-                    stopOnEntry = true,
-                },
-            }
-            -- a nil path defaults to .vscode/launch.json
-            require("dap.ext.vscode").load_launchjs(nil, { codelldb = { "rust" } })
-        end,
-    },
-
-    -- neotest
-    {
-        "nvim-neotest/neotest",
-        optional = true,
-        opts = function(_, opts)
-            opts.adapters = opts.adapters or {}
-            vim.list_extend(opts.adapters, {
-                require "rustaceanvim.neotest",
-            })
-        end,
-    },
-
-    -- crates.nvim
-    {
-        "saecki/crates.nvim",
-        dependencies = "hrsh7th/nvim-cmp",
-        ft = { "rust", "toml" },
-        config = function(_, opts)
-            local crates = require "crates"
-            crates.setup(opts)
-            crates.show()
-        end,
-    },
-
     -- nvim-dap
     {
         "mfussenegger/nvim-dap",
@@ -140,13 +76,36 @@ local plugins = {
         event = { "VeryLazy" },
         config = function(_, _)
             require("core.utils").load_mappings "dap"
-            -- local dap = require "dap"
+            local dap = require "dap"
             -- local UDap = require "custom.kellsatnite.utils"
+            -- require("dap.ext.vscode").load_launchjs(nil, { codelldb = { "cpp" } })
+
+            require("dap.ext.vscode").load_launchjs(nil, { cppdbg = { "cpp" } })
+
+            -- dap.configurations.cpp = {
+            --     {
+            --         type = "cppdbg",
+            --         name = "cppdbg-dap",
+            --         program = function()
+            --             return UDap.find_program(dap)
+            --         end,
+            --         args = UDap.get_args,
+            --         cwd = "${workspaceFolder}",
+            --         stopOnEntry = true,
+            --         setupCommands = {
+            --             {
+            --                 text = "-enable-pretty-printing",
+            --                 description = "enable pretty printing",
+            --                 ignoreFailures = false,
+            --             },
+            --         },
+            --     },
+            -- }
             -- dap.configurations.cpp = {
             --     {
             --         type = "codelldb",
             --         request = "launch",
-            --         name = "Launch file",
+            --         name = "Default",
             --         program = function()
             --             return UDap.find_program(dap)
             --         end,
@@ -155,19 +114,7 @@ local plugins = {
             --         stopOnEntry = true,
             --     },
             -- }
-            -- dap.configurations.c = dap.configurations.cpp
-            require("dap.ext.vscode").load_launchjs(nil, { codelldb = { "cpp" } })
-        end,
-    },
-
-    -- nvim dap go
-    {
-        "leoluz/nvim-dap-go",
-        ft = "go",
-        dependencies = "mfussenegger/nvim-dap",
-        config = function(_, opts)
-            require("dap-go").setup(opts)
-            require("core.utils").load_mappings "dap_go"
+            dap.configurations.c = dap.configurations.cpp
         end,
     },
 
@@ -209,47 +156,12 @@ local plugins = {
         },
     },
 
-    -- copilot ? may switch
-    -- {
-    --     "zbirenbaum/copilot.lua",
-    --     lazy = false,
-    --     opts = function()
-    --         return require "custom.kellsatnite.configs.copilot"
-    --     end,
-    --     config = function(_, opts)
-    --         require("copilot").setup(opts)
-    --     end,
-    -- },
-
-    -- sourcegraph
-    {
-        "sourcegraph/sg.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-telescope/telescope.nvim",
-        },
-        lazy = false,
-        config = function()
-            require("sg").setup()
-        end,
-    },
-
     -- pretty fold
     {
         "anuvyklack/pretty-fold.nvim",
         event = "VeryLazy",
         config = function()
             require("pretty-fold").setup()
-        end,
-    },
-
-    -- conform.nvim
-    {
-        "stevearc/conform.nvim",
-        lazy = true,
-        event = { "BufReadPre", "BufNewFile" },
-        config = function()
-            require "custom.kellsatnite.configs.formatting"
         end,
     },
 
@@ -262,28 +174,6 @@ local plugins = {
         config = function()
             require("core.utils").load_mappings "nvim_lint"
             require("custom.kellsatnite.configs.linting").config()
-        end,
-    },
-
-    -- cmake tools
-    {
-        "Civitasv/cmake-tools.nvim",
-        config = function()
-            local opts = require "lua.custom.kellsatnite.configs.cmake-tools"
-            require("cmake-tools").setup(opts)
-        end,
-    },
-
-    -- cloak.nvim
-    {
-        "laytan/cloak.nvim",
-        lazy = true,
-        opts = function()
-            return require "custom.kellsatnite.configs.kcloak"
-        end,
-
-        config = function(_, opts)
-            require("cloak").setup { opts }
         end,
     },
 
@@ -339,15 +229,15 @@ local plugins = {
             require("core.utils").load_mappings "searchbox"
         end,
     },
+
+    -- trouble
     {
-        "iamcco/markdown-preview.nvim",
-        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-        ft = { "markdown" },
-        build = function()
-            vim.fn["mkdp#util#install"]()
-        end,
+        "folke/trouble.nvim",
+        opts = {}, -- for default options, refer to the configuration section for custom setup.
+        cmd = "Trouble",
         config = function()
-            require("core.utils").load_mappings "markdown_preview"
+            require("core.utils").load_mappings "trouble"
+            require("custom.kellsatnite.trouble").config()
         end,
     },
 }
