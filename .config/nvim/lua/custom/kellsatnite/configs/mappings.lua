@@ -11,6 +11,15 @@ M.dap = {
             "<cmd> DapContinue <CR>",
             "Start or continue the debugger",
         },
+        ["<leader>i"] = {
+            "<cmd> DapStepInto <CR>",
+            "Step into the current function",
+        },
+        ["<leader>o"] = {
+            "<cmd> DapStepOut <CR>",
+            "Step out of the current function",
+        },
+
         ["<leader>dus"] = {
             function()
                 local widgets = require "dap.ui.widgets"
