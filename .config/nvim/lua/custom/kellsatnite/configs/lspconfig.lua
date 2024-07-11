@@ -3,7 +3,9 @@ local on_attach = base.on_attach
 local capabilities = base.capabilities
 
 local lspconfig = require "lspconfig"
-local util = require "lspconfig.util"
+local lsputil = require "lspconfig.util"
+
+local utils = require "custom.kellsatnite.utils"
 
 local inlay_hints = require "inlay-hints"
 
@@ -14,55 +16,28 @@ lspconfig.clangd.setup {
         inlay_hints.on_attach(client, bufnr)
         on_attach(client, bufnr)
     end,
-    capabilities = capabilities,
-}
+    capabilities = vim.tbl_deep_extend(
+        "keep",
+        { offsetEncoding = { "utf-16", "utf-8" } },
+        capabilities
+    ),
+    single_file_support = true,
 
--- typescript language server
-lspconfig.tsserver.setup {
-    on_attach = function(client, bufnr)
-        inlay_hints.on_attach(client, bufnr)
-        on_attach(client, bufnr)
-    end,
-    capabilities = capabilities,
-    settings = {
-        javascript = {
-            inlayHints = {
-                includeInlayEnumMemberValueHints = true,
-                includeInlayFunctionLikeReturnTypeHints = true,
-                includeInlayFunctionParameterTypeHints = true,
-                includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-                includeInlayPropertyDeclarationTypeHints = true,
-                includeInlayVariableTypeHints = true,
-            },
-        },
-        typescript = {
-            inlayHints = {
-                includeInlayEnumMemberValueHints = true,
-                includeInlayFunctionLikeReturnTypeHints = true,
-                includeInlayFunctionParameterTypeHints = true,
-                includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-                includeInlayPropertyDeclarationTypeHints = true,
-                includeInlayVariableTypeHints = true,
-            },
-        },
-    },
-}
-
-lspconfig.efm.setup {
-    init_options = { documentFormatting = true },
-    filetypes = { "typescript", "typescriptreact" },
-    settings = {
-        rootMarkers = { ".git/" },
-        languages = {
-            typescript = {
-                {
-                    formatCommand = "prettier --stdin-filepath ${INPUT}",
-                    formatStdin = true,
-                },
-            },
-        },
+    cmd = {
+        "clangd",
+        "-j=12",
+        "--enable-config",
+        "--background-index",
+        "--pch-storage=memory",
+        -- You MUST set this arg ↓ to your c/cpp compiler location (if not included)!
+        "--query-driver=" .. utils.get_binary_paths { "clang++", "clang", "gcc", "g++" },
+        "--clang-tidy",
+        "--all-scopes-completion",
+        "--completion-style=detailed",
+        "--header-insertion-decorators",
+        "--header-insertion=iwyu",
+        "--limit-references=3000",
+        "--limit-results=350",
     },
 }
 
@@ -88,7 +63,13 @@ lspconfig.cmake.setup {
     init_options = {
         buildDirectory = "build",
     },
-    root_dir = util.root_pattern("CMakePresets.json", "CTestConfig.cmake", ".git", "build", "cmake"),
+    root_dir = lsputil.root_pattern(
+        "CMakePresets.json",
+        "CTestConfig.cmake",
+        ".git",
+        "build",
+        "cmake"
+    ),
     single_file_support = true,
 }
 
@@ -101,7 +82,7 @@ lspconfig.gopls.setup {
     capabilities = capabilities,
     cmd = { "gopls" },
     filetypes = { "go", "gomod", "gowork", "gotmpl" },
-    root_dir = util.root_pattern("go.mod", "go.work", ".git"),
+    root_dir = lsputil.root_pattern("go.mod", "go.work", ".git"),
     settings = {
         gopls = {
             completeUnimported = true,
@@ -137,4 +118,53 @@ lspconfig.bashls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     filetypes = { "sh", "bash", "zsh" },
+}
+
+lspconfig.efm.setup {
+    init_options = { documentFormatting = true },
+    filetypes = { "typescript", "typescriptreact" },
+    settings = {
+        rootMarkers = { ".git/" },
+        languages = {
+            typescript = {
+                {
+                    formatCommand = "prettier --stdin-filepath ${INPUT}",
+                    formatStdin = true,
+                },
+            },
+        },
+    },
+}
+
+-- typescript language server
+lspconfig.tsserver.setup {
+    on_attach = function(client, bufnr)
+        inlay_hints.on_attach(client, bufnr)
+        on_attach(client, bufnr)
+    end,
+    capabilities = capabilities,
+    settings = {
+        javascript = {
+            inlayHints = {
+                includeInlayEnumMemberValueHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayVariableTypeHints = true,
+            },
+        },
+        typescript = {
+            inlayHints = {
+                includeInlayEnumMemberValueHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
+                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayVariableTypeHints = true,
+            },
+        },
+    },
 }
