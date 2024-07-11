@@ -7,11 +7,13 @@ local plugins = {
             "WhoIsSethDaniel/mason-tool-installer.nvim",
         },
         -- options
-        opts = {
-            ensure_installed = function()
-                return require "kellsatnite.configs.mason-list"
-            end,
-        },
+        opts = function()
+            local packages = require "custom.kellsatnite.configs.mason-list"
+            local M = {
+                ensure_installed = packages,
+            }
+            return M
+        end,
     },
 
     -- neovin lspcofig

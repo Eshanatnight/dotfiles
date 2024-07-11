@@ -9,13 +9,16 @@ local M = {}
 M.get_os = function()
     -- ask LuaJIT first
 
+    ---@diagnostic disable-next-line: undefined-global
     if jit then
+        ---@diagnostic disable-next-line: undefined-global
         return jit.os
     end
 
     -- Unix, Linux variants
     local fh, err = assert(io.popen("uname -o 2>/dev/null", "r"))
     if fh then
+        ---@diagnostic disable-next-line: lowercase-global
         osname = fh:read()
     end
 
