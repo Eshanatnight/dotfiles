@@ -1,5 +1,6 @@
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 local null_ls = require "null-ls"
+local utils = require "custom.kellsatnite.utils"
 
 local opts = {
     sources = {
@@ -14,11 +15,8 @@ local opts = {
         -- diagnostics sources
         null_ls.builtins.diagnostics.mypy.with {
             extra_args = function()
-                -- use VIRTUAL_ENV or if conda use conda or default back to homebrew install
-                -- need to update it for my linux machine
-                -- Hard code it to "cwd/.venv/bin/python3" ??
-                local virtual = os.getenv "VIRTUAL_ENV" or os.getenv "CONDA_PREFIX" or "/opt/homebrew"
-                return { "--python-executable", virtual .. "/bin/python3" }
+                local py_path = utils.get_python_path()
+                return { "--python-executable", py_path }
             end,
         },
         -- TODO: Maybe add actionlint(github workflows linter)

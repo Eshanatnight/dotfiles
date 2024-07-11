@@ -9,13 +9,16 @@ local M = {}
 M.get_os = function()
     -- ask LuaJIT first
 
+    ---@diagnostic disable-next-line: undefined-global
     if jit then
+        ---@diagnostic disable-next-line: undefined-global
         return jit.os
     end
 
     -- Unix, Linux variants
     local fh, err = assert(io.popen("uname -o 2>/dev/null", "r"))
     if fh then
+        ---@diagnostic disable-next-line: lowercase-global
         osname = fh:read()
     end
 
@@ -69,6 +72,40 @@ end
 --- @return number
 M.has_clang_tidy = function()
     return vim.fn.executable "clang-tidy"
+end
+
+--- Get the binary path for the given binary names.
+---
+--- @param binary_names table
+--- @return string  binary path
+M.get_binary_paths = function(binary_names)
+    for _, elem in ipairs(binary_names) do
+        local path = vim.fn.exepath(elem)
+        if path ~= "" then
+            return path
+        end
+    end
+    return ""
+end
+
+M.get_python_path = function()
+    local virtual = os.getenv "VIRTUAL_ENV" or os.getenv "CONDA_PREFIX"
+
+    if virtual then
+        if M.get_os() == "Windows" then
+            return virtual .. "/bin/python"
+        else
+            return virtual .. "/bin/python3"
+        end
+    end
+
+    local py_path = vim.fn.exepath "python"
+
+    if py_path == "" then
+        return py_path
+    else
+        return vim.fn.exepath "python3"
+    end
 end
 
 return M
