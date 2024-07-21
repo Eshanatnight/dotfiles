@@ -88,24 +88,7 @@ local plugins = {
         dependencies = "neovim/nvim-lspconfig",
         config = function()
             require "custom.kellsatnite.configs.rustaceanvim"
-
-            local dap = require "dap"
-            local UDap = require "custom.kellsatnite.utils"
-            dap.configurations.rust = {
-                {
-                    type = "codelldb",
-                    request = "launch",
-                    name = "Launch file",
-                    program = function()
-                        return UDap.find_rust_program(dap)
-                    end,
-                    args = UDap.get_args,
-                    cwd = "${workspaceFolder}",
-                    stopOnEntry = true,
-                },
-            }
-            -- a nil path defaults to .vscode/launch.json
-            require("dap.ext.vscode").load_launchjs(nil, { codelldb = { "rust" } })
+            require("custom.kellsatnite.configs.dap").rust()
         end,
     },
 
@@ -140,23 +123,8 @@ local plugins = {
         event = { "VeryLazy" },
         config = function(_, _)
             require("core.utils").load_mappings "dap"
-            -- local dap = require "dap"
-            -- local UDap = require "custom.kellsatnite.utils"
-            -- dap.configurations.cpp = {
-            --     {
-            --         type = "codelldb",
-            --         request = "launch",
-            --         name = "Launch file",
-            --         program = function()
-            --             return UDap.find_program(dap)
-            --         end,
-            --         args = UDap.get_args,
-            --         cwd = "${workspaceFolder}",
-            --         stopOnEntry = true,
-            --     },
-            -- }
-            -- dap.configurations.c = dap.configurations.cpp
-            require("dap.ext.vscode").load_launchjs(nil, { codelldb = { "cpp" } })
+
+            return require("custom.kellsatnite.configs.dap").cpp()
         end,
     },
 
@@ -196,6 +164,7 @@ local plugins = {
     },
 
     -- mason-nvim-dap
+    -- need it to easily setup dap
     {
         "jay-babu/mason-nvim-dap.nvim",
         event = "VeryLazy",
