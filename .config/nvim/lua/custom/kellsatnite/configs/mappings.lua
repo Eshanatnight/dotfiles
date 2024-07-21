@@ -126,13 +126,15 @@ M.telescope = {
             "Find Diagnostics",
         },
 
-        ["<leader>ff"] = {
+        ["<leader>fg"] = {
             "<cmd> Telescope git_files <CR>",
             "Find All(Git) Files",
         },
 
-        ["<leader>fg"] = {
-            "<cmd> Telescope find_files <CR>",
+        ["<leader>ff"] = {
+            function()
+                require("telescope.builtin").find_files { hidden = true }
+            end,
             "Find Files",
         },
 

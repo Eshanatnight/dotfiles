@@ -191,17 +191,17 @@ local plugins = {
     -- },
 
     -- sourcegraph
-    {
-        "sourcegraph/sg.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-telescope/telescope.nvim",
-        },
-        lazy = false,
-        config = function()
-            require("sg").setup()
-        end,
-    },
+    -- {
+    --     "sourcegraph/sg.nvim",
+    --     dependencies = {
+    --         "nvim-lua/plenary.nvim",
+    --         "nvim-telescope/telescope.nvim",
+    --     },
+    --     lazy = false,
+    --     config = function()
+    --         require("sg").setup()
+    --     end,
+    -- },
 
     -- pretty fold
     {
@@ -308,6 +308,8 @@ local plugins = {
             require("core.utils").load_mappings "searchbox"
         end,
     },
+
+    -- markdown_preview
     {
         "iamcco/markdown-preview.nvim",
         cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
