@@ -321,6 +321,17 @@ local plugins = {
             require("core.utils").load_mappings "markdown_preview"
         end,
     },
+
+    -- trouble
+    {
+        "folke/trouble.nvim",
+        opts = {}, -- for default options, refer to the configuration section for custom setup.
+        cmd = "Trouble",
+        config = function()
+            require("core.utils").load_mappings "trouble"
+            require("trouble").setup()
+        end,
+    },
 }
 
 return plugins

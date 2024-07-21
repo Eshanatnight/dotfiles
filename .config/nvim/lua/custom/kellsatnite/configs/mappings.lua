@@ -137,11 +137,6 @@ M.telescope = {
             end,
             "Find Files",
         },
-
-        ["<leader>q"] = {
-            "<cmd> Telescope diagnostics <CR>",
-            "Find Diagnostics",
-        },
     },
 }
 
@@ -266,6 +261,20 @@ M.todo_comments = {
         ["td"] = {
             "<cmd> TodoTelescope <CR>",
             "Find Todos",
+        },
+    },
+}
+
+M.trouble = {
+
+    n = {
+        ["<leader>q"] = {
+            "<cmd>Trouble diagnostics toggle<CR>",
+            "Trouble Diagnostics",
+        },
+        ["<leader>qb"] = {
+            "<cmd>TSearchBoxClear<CR>",
+            "Trouble Diagnostics Current Buffer",
         },
     },
 }
