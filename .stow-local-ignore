@@ -26,8 +26,11 @@ setup.ps1
 .config/btop/btop.*
 
 Brewfile.linux
+Brewfile
 Brewfile.macos
+brew.extra
 
 bin
+rainmeter
 
 .DS_Store
