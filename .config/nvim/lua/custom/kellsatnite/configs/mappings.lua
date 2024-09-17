@@ -273,7 +273,7 @@ M.trouble = {
             "Trouble Diagnostics",
         },
         ["<leader>qb"] = {
-            "<cmd>TSearchBoxClear<CR>",
+            "<cmd>Trouble diagnostics toggle filter.buf=0<CR>",
             "Trouble Diagnostics Current Buffer",
         },
     },
