@@ -136,6 +136,12 @@ lspconfig.efm.setup {
     },
 }
 
+-- yaml language server
+lspconfig.yamlls.setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+}
+
 -- typescript language server
 lspconfig.tsserver.setup {
     on_attach = function(client, bufnr)

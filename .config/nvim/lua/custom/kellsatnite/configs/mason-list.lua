@@ -27,6 +27,8 @@ local M = {
     "stylua",
     "taplo",
     "typescript-language-server",
+    "yamlfix",
+    "yamllint",
 }
 
 local os = utils.get_os()

@@ -11,6 +11,7 @@ local opts = {
         null_ls.builtins.formatting.stylua, -- lua
         null_ls.builtins.formatting.prettier, -- javascript
         null_ls.builtins.formatting.black, -- python
+        null_ls.builtins.formatting.yamlfmt, -- yaml
 
         -- diagnostics sources
         null_ls.builtins.diagnostics.mypy.with {
@@ -23,9 +24,7 @@ local opts = {
         null_ls.builtins.diagnostics.checkmake, -- make files
         null_ls.builtins.diagnostics.cmake_lint, -- cmake files
         null_ls.builtins.diagnostics.markdownlint, -- markdown files
-        -------
-        -- null_ls.builtins.diagnostics.cppcheck
-        --------
+        null_ls.builtins.diagnostics.yamllint, -- yaml files
     },
     on_attach = function(client, bufnr)
         if client.supports_method "textDocument/formatting" then
