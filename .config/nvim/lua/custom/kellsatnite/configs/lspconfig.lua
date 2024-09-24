@@ -143,7 +143,7 @@ lspconfig.yamlls.setup {
 }
 
 -- typescript language server
-lspconfig.tsserver.setup {
+lspconfig.ts_ls.setup {
     on_attach = function(client, bufnr)
         inlay_hints.on_attach(client, bufnr)
         on_attach(client, bufnr)
