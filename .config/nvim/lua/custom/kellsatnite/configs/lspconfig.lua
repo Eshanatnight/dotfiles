@@ -37,7 +37,7 @@ lspconfig.clangd.setup {
         "--header-insertion-decorators",
         "--header-insertion=iwyu",
         "--limit-references=3000",
-        "--limit-results=350",
+        "--limit-results=500",
     },
 }
 

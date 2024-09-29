@@ -11,7 +11,7 @@ local opts = {
         null_ls.builtins.formatting.stylua, -- lua
         null_ls.builtins.formatting.prettier, -- javascript
         null_ls.builtins.formatting.black, -- python
-        null_ls.builtins.formatting.yamlfmt, -- yaml
+        -- null_ls.builtins.formatting.yamlfmt, -- yaml
 
         -- diagnostics sources
         null_ls.builtins.diagnostics.mypy.with {
