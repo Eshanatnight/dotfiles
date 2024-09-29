@@ -8,7 +8,11 @@ set -e
 
 cd "$DOTFILES_DIR"
 # we need to check if there is anything new to pull down
-git pull
+
+if [[ $# -gt 0 ]]; then
+    printf "Pulling down latest changes\n"
+    git pull
+fi
 
 TOOL_HOME="$HOME/tools"
 [ ! -d "$TOOL_HOME" ] && mkdir -p "$TOOL_HOME"
