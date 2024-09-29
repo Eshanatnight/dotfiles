@@ -17,7 +17,7 @@ CMAKE_LINT_PATH="$HOME/.local/share/nvim/mason/packages/cmakelint/venv/bin/cmake
 CMAKE_LINT_LINK="$HOME/tools/cmake-lint"
 
 if [ -e "$CMAKE_LINT_PATH" ] && [ ! -e "$CMAKE_LINT_LINK" ]; then
-	ln -s "$CMAKE_LINT_PATH" "$CMAKE_LINT_LINK"
+    ln -s "$CMAKE_LINT_PATH" "$CMAKE_LINT_LINK"
 fi
 
 VCPKG_LOCATION="$TOOL_HOME/vcpkg"
@@ -27,12 +27,12 @@ VCPKG_LOCATION="$TOOL_HOME/vcpkg"
 name=$(uname)
 
 if [[ $name == "Linux" ]]; then
-	stow -d . -t "$HOME" .
-	source ~/.zshrc
-	WARP_ROOT=${XDG_DATA_HOME:-$HOME/.local/share}/warp-terminal
-	mkdir -p "$WARP_ROOT"
-	stow -t "$WARP_ROOT" .warp
+    stow -d . -t "$HOME" .
+    source "${HOME}/.zshrc"
+    WARP_ROOT=${XDG_DATA_HOME:-$HOME/.local/share}/warp-terminal
+    mkdir -p "$WARP_ROOT"
+    stow -t "$WARP_ROOT" .warp
 else
-	stow -d . -t "$HOME" .
-	source ~/.zshrc
+    stow -d . -t "$HOME" .
+    source "${HOME}/.zshrc"
 fi
