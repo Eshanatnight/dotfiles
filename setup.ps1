@@ -53,6 +53,9 @@ mklink -link "$HOME\Tweaks$OH_MY_POSH_CONFIG".ToString() -target "$PWD_PATH\Term
 [string]$WALLPAPERS = "\wallpapers"
 mklink -link "$HOME\OneDrive$WALLPAPERS".ToString() -target "$PWD_PATH\wallpapers$WALLPAPERS".ToString()
 
+[string]$CLANGD_CONFIG="\clangd\config.yaml"
+mklink -link "$HOME\AppData\local$CLANGD_CONFIG" -target "$PWD_PATH\.config\$CLANGD_CONFIG"
+
 [string]$SCRIPTS_DIR="$HOME\tools\scripts".ToString()
 mkdir $SCRIPTS_DIR
 Get-ChildItem -Path ($PWD_PATH + "\scripts\pwsh") -File | ForEach-Object {
