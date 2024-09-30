@@ -29,7 +29,20 @@ local plugins = {
     {
         "nvimtools/none-ls.nvim",
         event = "VeryLazy",
-        ft = { "go", "lua", "json", "markdown", "cmake", "jsonc", "make" },
+        ft = {
+            "go",
+            "lua",
+            "json",
+            "markdown",
+            "cmake",
+            "jsonc",
+            "make",
+            "cpp",
+            "c",
+            "zsh",
+            "bash",
+            "sh",
+        },
         requires = {
             "neovim/nvim-lspconfig",
             "nvim-lua/plenary.nvim",
@@ -213,14 +226,14 @@ local plugins = {
     },
 
     -- conform.nvim
-    {
-        "stevearc/conform.nvim",
-        lazy = true,
-        event = { "BufReadPre", "BufNewFile" },
-        config = function()
-            require "custom.kellsatnite.configs.formatting"
-        end,
-    },
+    -- {
+    --     "stevearc/conform.nvim",
+    --     lazy = true,
+    --     event = { "BufReadPre", "BufNewFile" },
+    --     config = function()
+    --         require "custom.kellsatnite.configs.formatting"
+    --     end,
+    -- },
 
     -- nvim-lint
     {

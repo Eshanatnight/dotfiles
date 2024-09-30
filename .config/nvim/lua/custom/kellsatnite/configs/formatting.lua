@@ -4,13 +4,13 @@
 local options = {
     ---@type table<string, conform.FiletypeFormatter>
     formatters_by_ft = {
-        cpp = { "clang_format" },
-        c = { "clang_format" },
-        lua = { "stylua" },
-        python = { "isort", "black" },
-        bash = { "shfmt" },
-        zsh = { "shfmt" },
-        sh = { "shfmt" },
+        -- cpp = { "clang_format" },
+        -- c = { "clang_format" },
+        -- lua = { "stylua" },
+        -- python = { "isort", "black" },
+        -- bash = { "shfmt" },
+        -- zsh = { "shfmt" },
+        -- sh = { "shfmt" },
         -- not doing rustfmt here because it's handled by rust-tools.nvim
         -- now rustaceanvim
     },
@@ -22,4 +22,4 @@ local options = {
     },
 }
 
-require("conform").setup(options)
+-- require("conform").setup(options)
