@@ -10,6 +10,7 @@
     wtl = worktree list
     wtp = worktree prune
     wtr = worktree remove
+    stat = status
 
 [core]
 	excludesFile = ~/.ignore
