@@ -184,3 +184,5 @@ export WASMER_DIR="$HOME/.wasmer"
 [ $(command -v wasmer) ] && [ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
 
 export BAT_THEME="Catppuccin Mocha"
+
+export MANPAGER='nvim +Man!'
