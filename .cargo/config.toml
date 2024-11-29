@@ -13,10 +13,10 @@ rustflags = [
 
 [target.x86_64-apple-darwin]
 rustflags = [
-    "-Zshare-generics=y",
-    "-Clink-arg=-fuse-ld=/usr/local/bin/ld64.sold",
-    "-Zrun-dsymutil=no",
-    "-Zthreads=0",   # let linker decide threads
+    # "-Zshare-generics=y",
+    # "-Clink-arg=-fuse-ld=/usr/local/bin/ld64.sold",
+    # "-Zrun-dsymutil=no",
+    # "-Zthreads=0",   # let linker decide threads
 ]
 
 [target.wasm32-unknown-unknown]
