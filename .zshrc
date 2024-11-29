@@ -37,9 +37,6 @@ eval "$(starship init zsh)"
 # zoxide
 eval "$(zoxide init --cmd cd zsh)"
 
-# fzf
-eval "$(fzf --zsh)"
-
 # Keybindings
 source ~/.zsh_keys
 
@@ -186,3 +183,12 @@ export WASMER_DIR="$HOME/.wasmer"
 export BAT_THEME="Catppuccin Mocha"
 
 export MANPAGER='nvim +Man!'
+
+name=$(uname)
+# eval homebrew and source .zsh.linux | .zsh.macos
+if [[ $name == "Linux" ]]; then
+	source ~/.zsh.linux
+else
+	source ~/.zsh.macos
+fi
+
