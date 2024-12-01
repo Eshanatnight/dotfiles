@@ -345,6 +345,13 @@ local plugins = {
             require("trouble").setup()
         end,
     },
+
+    -- transparent
+    {
+        "xiyaowong/transparent.nvim",
+        lazy = false,
+        -- calling setup is optional
+    },
 }
 
 return plugins
