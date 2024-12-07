@@ -32,6 +32,7 @@ lspconfig.clangd.setup {
         -- You MUST set this arg ↓ to your c/cpp compiler location (if not included)!
         "--query-driver=" .. utils.get_binary_paths { "clang++", "clang", "gcc", "g++" },
         "--clang-tidy",
+        "--inlay-hints",
         "--all-scopes-completion",
         "--completion-style=detailed",
         "--header-insertion-decorators",
