@@ -347,11 +347,11 @@ local plugins = {
     },
 
     -- transparent
-    {
-        "xiyaowong/transparent.nvim",
-        lazy = false,
-        -- calling setup is optional
-    },
+    -- {
+    --     "xiyaowong/transparent.nvim",
+    --     lazy = false,
+    -- calling setup is optional
+    -- },
 }
 
 return plugins
