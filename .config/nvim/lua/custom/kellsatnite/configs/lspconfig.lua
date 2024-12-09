@@ -75,38 +75,38 @@ lspconfig.cmake.setup {
 }
 
 -- go language server
-lspconfig.gopls.setup {
-    on_attach = function(client, bufnr)
-        inlay_hints.on_attach(client, bufnr)
-        on_attach(client, bufnr)
-    end,
-    capabilities = capabilities,
-    cmd = { "gopls" },
-    filetypes = { "go", "gomod", "gowork", "gotmpl" },
-    root_dir = lsputil.root_pattern("go.mod", "go.work", ".git"),
-    settings = {
-        gopls = {
-            completeUnimported = true,
-            usePlaceholders = true,
-            analyses = {
-                unusedparams = true,
-                shadow = true,
-                fieldalignment = true,
-                unusedvariables = true,
-                unusedwrite = true,
-            },
-            hints = {
-                assignVariableTypes = true,
-                compositeLiteralFields = true,
-                compositeLiteralTypes = true,
-                constantValues = true,
-                functionTypeParameters = true,
-                parameterNames = true,
-                rangeVariableTypes = true,
-            },
-        },
-    },
-}
+-- lspconfig.gopls.setup {
+--     on_attach = function(client, bufnr)
+--         inlay_hints.on_attach(client, bufnr)
+--         on_attach(client, bufnr)
+--     end,
+--     capabilities = capabilities,
+--     cmd = { "gopls" },
+--     filetypes = { "go", "gomod", "gowork", "gotmpl" },
+--     root_dir = lsputil.root_pattern("go.mod", "go.work", ".git"),
+--     settings = {
+--         gopls = {
+--             completeUnimported = true,
+--             usePlaceholders = true,
+--             analyses = {
+--                 unusedparams = true,
+--                 shadow = true,
+--                 fieldalignment = true,
+--                 unusedvariables = true,
+--                 unusedwrite = true,
+--             },
+--             hints = {
+--                 assignVariableTypes = true,
+--                 compositeLiteralFields = true,
+--                 compositeLiteralTypes = true,
+--                 constantValues = true,
+--                 functionTypeParameters = true,
+--                 parameterNames = true,
+--                 rangeVariableTypes = true,
+--             },
+--         },
+--     },
+-- }
 
 -- powershell language server
 lspconfig.powershell_es.setup {

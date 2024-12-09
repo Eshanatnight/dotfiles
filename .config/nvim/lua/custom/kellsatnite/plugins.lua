@@ -30,7 +30,7 @@ local plugins = {
         "nvimtools/none-ls.nvim",
         event = "VeryLazy",
         ft = {
-            "go",
+            -- "go",
             "lua",
             "json",
             "markdown",
@@ -142,15 +142,15 @@ local plugins = {
     },
 
     -- nvim dap go
-    {
-        "leoluz/nvim-dap-go",
-        ft = "go",
-        dependencies = "mfussenegger/nvim-dap",
-        config = function(_, opts)
-            require("dap-go").setup(opts)
-            require("core.utils").load_mappings "dap_go"
-        end,
-    },
+    -- {
+    --     "leoluz/nvim-dap-go",
+    --     ft = "go",
+    --     dependencies = "mfussenegger/nvim-dap",
+    --     config = function(_, opts)
+    --         require("dap-go").setup(opts)
+    --         require("core.utils").load_mappings "dap_go"
+    --     end,
+    -- },
 
     -- dap-ui
     {
