@@ -8,7 +8,6 @@ local M = {
     "cmake-language-server",
     "cmakelint",
     "codelldb",
-    "checkmate",
     "delve",
     "gofumpt",
     "goimports-reviser",
@@ -29,11 +28,12 @@ local M = {
     "typescript-language-server",
     "yamlfix",
     "yamllint",
+    "shellcheck",
 }
 
 local os = utils.get_os()
 
-if os == "Linux" or os == "Darwin" then
+if os == "Linux" or os == "Darwin" or os == "OSX" then
     table.insert(M, "lua-language-server")
 else
     table.insert(M, "lua-ls")
