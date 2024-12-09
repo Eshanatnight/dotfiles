@@ -192,3 +192,5 @@ else
 	source ~/.zsh.macos
 fi
 
+eval "$(fzf --zsh)"
+
