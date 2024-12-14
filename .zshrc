@@ -2,11 +2,21 @@
 export ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 export XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-${HOME}/.config}"
 
+TPM_HOME="${HOME}/.tmux/plugins/tpm"
+
 # Download Zinit, if it's not there yet
 if [ ! -d "$ZINIT_HOME" ]; then
    mkdir -p "$(dirname "$ZINIT_HOME")"
    git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
+
+
+# download tpm if its not there
+if [ ! -d "$TPM_HOME" ]; then
+   mkdir -p "$(dirname "$TPM_HOME")"
+   git clone https://github.com/tmux-plugins/tpm "$TPM_HOME"
+fi
+
 
 # Source/Load zinit
 source "${ZINIT_HOME}/zinit.zsh"
@@ -38,7 +48,7 @@ eval "$(starship init zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 
 # Keybindings
-source ~/.zsh_keys
+source "$HOME"/.zsh_keys
 
 # History
 export HISTSIZE=5000
