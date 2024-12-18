@@ -1,4 +1,9 @@
-#! /bin/sh
+#! /bin/bash
+
+if [[ -d $HOME/dotfiles ]]; then
+	printf "dotfiles needs to be cloned in to '%s'\n" "$HOME"/dotfiles
+	exit 1
+fi
 
 # How to stow.
 # while being in the dotfiles directory
@@ -13,20 +18,22 @@ printf "Installing Homebrew\n"
 name=$(uname)
 
 if [[ $name == "Linux" ]]; then
-	sudo apt-get install build-essential procps curl file git cmake ninja jq ripgrep zsh mold
+	sudo apt-get install build-essential procps
+	source "$HOME"/dotfiles/.zprofile
 	printf "Installing stow\n"
 	brew bundle
-	stow -d . -t $HOME .
-	source ~/.zshrc
-	local WARP_ROOT=${XDG_DATA_HOME:-$HOME/.local/share}/warp-terminal
-	mkdir -p $WARP_ROOT
-	stow -t $WARP_ROOT .warp
+	stow -d . -t "$HOME" .
+	source "$HOME"/.zshrc
+	WARP_ROOT="${XDG_DATA_HOME:-$HOME/.local/share}"/warp-terminal
+	mkdir -p "$WARP_ROOT"
+	stow -t "$WARP_ROOT" .warp
 	printf "Warp terminal config was installed\n"
 	printf "Install Warp terminal manually\n"
 else
 	printf "Installing Stuff\n"
+	source "$HOME"/dotfiles/.zprofile
 	brew bundle
-	brew bundle --file=./brew.extra
-	stow -d . -t $HOME .
-	source ~/.zshrc
+	brew bundle --file="$HOME"/dotfiles/brew.extra
+	stow -d . -t "$HOME" .
+	source "$HOME"/.zshrc
 fi
