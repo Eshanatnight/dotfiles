@@ -1,6 +1,5 @@
-local on_attach = require("plugins.configs.lspconfig").on_attach
-local capabilities = require("plugins.configs.lspconfig").capabilities
-
+local on_attach = require("nvchad.configs.lspconfig").on_attach
+local capabilities = require("nvchad.configs.lspconfig").capabilities
 local inlay_hints = require "inlay-hints"
 
 vim.g.rustaceanvim = {
@@ -11,12 +10,12 @@ vim.g.rustaceanvim = {
         end,
         capabilities = capabilities,
         default_settings = {
-            -- rust-analyzer language server configuration
+            --rust - analyzer language server
             ["rust-analyzer"] = {
                 check = {
                     command = "clippy",
                 },
             },
         },
-    },
+    }
 }

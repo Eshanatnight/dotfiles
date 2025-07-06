@@ -1,4 +1,4 @@
-local utils = require "custom.kellsatnite.utils"
+local utils = require "utils"
 
 local M = {
     "bash-language-server",

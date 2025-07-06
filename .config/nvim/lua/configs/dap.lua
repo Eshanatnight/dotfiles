@@ -1,5 +1,5 @@
 local dap = require "dap"
-local UDap = require "custom.kellsatnite.utils"
+local UDap = require "utils"
 
 local M = {}
 

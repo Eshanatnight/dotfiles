@@ -5,7 +5,7 @@ linker = "/usr/bin/clang" # path to linker
 rustflags = [
     "-C", "link-arg=-undefined",
     "-C", "link-arg=dynamic_lookup",
-    "-Clink-arg=-fuse-ld=/usr/local/bin/ld64.sold",
+    # "-Clink-arg=-fuse-ld=/usr/local/bin/ld64.sold",
     # "-Zshare-generics=y",
     # "-Zthreads=0",   # let linker decide threads
     "-Ctarget-cpu=apple-m1"

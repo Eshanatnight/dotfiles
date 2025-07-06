@@ -56,6 +56,10 @@ mklink -link "$HOME\OneDrive$WALLPAPERS".ToString() -target "$PWD_PATH\wallpaper
 [string]$CLANGD_CONFIG="\clangd\config.yaml"
 mklink -link "$HOME\AppData\local$CLANGD_CONFIG" -target "$PWD_PATH\.config\$CLANGD_CONFIG"
 
+[string]$ALACRITTY_CONFIG = "\.config\alacritty"
+mklink -link "$HOME\AppData\Roaming$ALACRITTY_CONFIG".ToString() -target "$PWD_PATH$ALACRITTY_CONFIG".ToString()
+
+
 [string]$SCRIPTS_DIR="$HOME\tools\scripts".ToString()
 mkdir $SCRIPTS_DIR
 Get-ChildItem -Path ($PWD_PATH + "\scripts\pwsh") -File | ForEach-Object {
