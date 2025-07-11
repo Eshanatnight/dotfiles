@@ -8,10 +8,30 @@ map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
 -- Dap mappings
-map("n", "<leader>db", "<cmd> DapToggleBreakpoint <CR>", { desc = "Dap Toggle Breakpoint" })
-map("n", "<leader>dr", "<cmd> DapContinue <CR>", { desc = "Dap Start or continue the debugger" })
-map("n", "<leader>i", "<cmd> DapStepInto <CR>", { desc = "Dap Step into the current function" })
-map("n", "<leader>o", "<cmd> DapStepOut <CR>", { desc = "Dap Step out the current function" })
+map(
+    "n",
+    "<leader>db",
+    "<cmd> DapToggleBreakpoint <CR>",
+    { desc = "Dap Toggle Breakpoint" }
+)
+map(
+    "n",
+    "<leader>dr",
+    "<cmd> DapContinue <CR>",
+    { desc = "Dap Start or continue the debugger" }
+)
+map(
+    "n",
+    "<leader>i",
+    "<cmd> DapStepInto <CR>",
+    { desc = "Dap Step into the current function" }
+)
+map(
+    "n",
+    "<leader>o",
+    "<cmd> DapStepOut <CR>",
+    { desc = "Dap Step out the current function" }
+)
 map("n", "<leader>dus", function()
     local widgets = require "dap.ui.widgets"
     local sidebar = widgets.sidebar(widgets.scopes)
@@ -68,7 +88,12 @@ map(
     { desc = "Telescope Workspace Symbols" }
 )
 
-map("n", "<leader>fg", "<cmd> Telescope git_files <CR>", { desc = "Telescope Find All(Git) Files" })
+map(
+    "n",
+    "<leader>fg",
+    "<cmd> Telescope git_files <CR>",
+    { desc = "Telescope Find All(Git) Files" }
+)
 
 map("n", "<leader>ff", function()
     require("telescope.builtin").find_files { hidden = true }
@@ -124,9 +149,24 @@ map(
     "<cmd>SearchBoxMatchAll clear_matches=false<CR>",
     { desc = "Searchbox Enter Search Box" }
 )
-map("n", "<leader>c", "<cmd>SearchBoxClear<CR>", { desc = "Searchbox Clear Search Matches" })
-map("n", "<leader>ss", "<cmd>SearchBoxIncSearch<CR>", { desc = "Searchbox Enter Search Box" })
-map("n", "<leader>r", "<cmd>SearchBoxReplace<CR>", { desc = "Searchbox Enter Replace Search Box" })
+map(
+    "n",
+    "<leader>c",
+    "<cmd>SearchBoxClear<CR>",
+    { desc = "Searchbox Clear Search Matches" }
+)
+map(
+    "n",
+    "<leader>ss",
+    "<cmd>SearchBoxIncSearch<CR>",
+    { desc = "Searchbox Enter Search Box" }
+)
+map(
+    "n",
+    "<leader>r",
+    "<cmd>SearchBoxReplace<CR>",
+    { desc = "Searchbox Enter Replace Search Box" }
+)
 
 -- markdown preview
 map(
@@ -154,10 +194,23 @@ end, { desc = "Todo Jump to Previous Todo" })
 map("n", "td", "<cmd> TodoTelescope <CR>", { desc = "Todo Find Todos" })
 
 -- trouble
-map("n", "<leader>q", "<cmd>Trouble diagnostics toggle<CR>", { desc = "Trouble Diagnostics" })
+map(
+    "n",
+    "<leader>q",
+    "<cmd>Trouble diagnostics toggle<CR>",
+    { desc = "Trouble Diagnostics" }
+)
 map(
     "n",
     "<leader>qb",
     "<cmd>Trouble diagnostics toggle filter.buf=0<CR>",
     { desc = "Trouble Diagnostics Current Buffer" }
 )
+
+map("n", "<leader>ca", function()
+    vim.lsp.buf.code_action()
+end, { desc = "LSP Code Action" })
+
+map("n", "<leader>fff", function()
+    require("fzf-lua").files()
+end, { desc = "FZFLua Find Files" })

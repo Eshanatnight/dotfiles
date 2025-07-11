@@ -1,7 +1,5 @@
 require("nvchad.configs.lspconfig").defaults()
 
-local lspconfig = require "lspconfig"
-local lsputil = require "lspconfig.util"
 local on_attach = require("nvchad.configs.lspconfig").on_attach
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 local utils = require "utils"
@@ -19,6 +17,7 @@ vim.lsp.config("clangd", {
         { offsetEncoding = { "utf-16", "utf-8" } },
         capabilities
     ),
+    filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
     single_file_support = true,
     cmd = {
         "clangd",
@@ -26,8 +25,8 @@ vim.lsp.config("clangd", {
         "--enable-config",
         "--background-index",
         "--pch-storage=memory",
-        -- You MUST set this arg ↓ to your c/cpp compiler location (if not included)!
-        "--query-driver=" .. utils.get_binary_paths { "clang++", "clang", "gcc", "g++" },
+        "--query-driver="
+            .. utils.get_binary_paths { "clang++", "clang", "gcc", "g++" },
         "--clang-tidy",
         "--inlay-hints",
         "--all-scopes-completion",
@@ -43,17 +42,22 @@ vim.lsp.config("bashls", {
     filetypes = { "sh", "bash", "zsh" },
 })
 
--- lua lsp
-local os = utils.get_os()
+vim.lsp.config("cmake", {})
+vim.lsp.config("taplo", {})
+vim.lsp.config("yamlls", {})
+vim.lsp.config("pyright", {})
+vim.lsp.config("powershell_es", {})
 
-if os == "Linux" or os == "Darwin" or os == "OSX" then
-    vim.lsp.enable "lua-language-server"
-else
-    vim.lsp.enable "lua-ls"
-end
-
-local servers = { "clangd", "cmake", "taplo", "yamlls", "bashls", "pyright", "powershell_es" }
+local servers = {
+    "lua_ls",
+    "clangd",
+    "cmake",
+    "taplo",
+    "yamlls",
+    "bashls",
+    "pyright",
+    "powershell_es",
+}
 
 vim.lsp.enable(servers)
-
 -- read :h vim.lsp.config for changing options of lsp servers

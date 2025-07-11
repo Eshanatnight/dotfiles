@@ -8,7 +8,7 @@ local opts = {
         null_ls.builtins.formatting.gofumpt, -- golang
         null_ls.builtins.formatting.goimports_reviser,
         null_ls.builtins.formatting.golines,
-        -- null_ls.builtins.formatting.stylua, -- lua
+        null_ls.builtins.formatting.stylua, -- lua
         null_ls.builtins.formatting.prettier, -- javascript
         null_ls.builtins.formatting.black, -- python
         null_ls.builtins.formatting.isort, -- python

@@ -29,7 +29,7 @@ return {
         event = "VeryLazy",
         ft = {
             -- "go",
-            -- "lua",
+            "lua",
             "json",
             "markdown",
             "cmake",
@@ -58,7 +58,7 @@ return {
             local M = require "nvchad.configs.cmp"
             table.insert(M.sources, { name = "crates" })
             -- add cody to sources
-            table.insert(M.sources, { name = "cody" })
+            -- table.insert(M.sources, { name = "cody" })
             return M
         end,
     },
@@ -303,5 +303,16 @@ return {
         config = function()
             require("trouble").setup()
         end,
+    },
+
+    -- fzf lua
+    {
+        "ibhagwan/fzf-lua",
+        -- optional for icon support
+        lazy = false,
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        -- or if using mini.icons/mini.nvim
+        -- dependencies = { "echasnovski/mini.icons" },
+        opts = {},
     },
 }

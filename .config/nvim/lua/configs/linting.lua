@@ -1,7 +1,7 @@
 local config = function()
     local lint = require "lint"
     local linters = {
-        python = { "pylint", "mypy" }, --cmake = {"cmakelint"},
+        python = { "pylint", "mypy" },
         sh = { "shellcheck" },
         bash = { "shellcheck" },
         zsh = { "shellcheck" },
